@@ -4,7 +4,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       ## Database authenticatable
+      # メールアドレスでユーザー登録
       t.string :email,              null: false, default: ""
+      # パスワードも必須
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -34,6 +36,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+      # 名前を登録してもらう
+      t.string:name,null:false
+    
+  
+      
     end
 
     add_index :users, :email,                unique: true
