@@ -38,6 +38,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.timestamps null: false
       # 名前を登録してもらう
       t.string:name,null:false
+      # 社歴？を登録
+      t.string:join_year,null:false
     
   
       
