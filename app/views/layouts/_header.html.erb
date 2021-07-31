@@ -1,12 +1,31 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><%= image_tag 'logo_my_port.png', size: '200x80' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        
+        <!--カスタマーログイン後-->
      <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <li class="nav-item">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete,class:"btn btn-light fas fa-sign-out-alt" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'My page', user_path(current_user.id),class:"btn btn-light fas fa-ship" %>
       </li>
     <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+      <li class="nav-item">
+        <%= link_to "Sign up", new_user_registration_path,class:"btn btn-light fas fa-user-plus" %>
       </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
+      <li class="nav-item">
+        <%= link_to "Log in", new_user_session_path,class:"btn btn-light fas fa-sign-in-alt" %>
       </li>
     <% end %>
+    </div>
+    </ul>
+    </div>
+    </nav>
+</header>
