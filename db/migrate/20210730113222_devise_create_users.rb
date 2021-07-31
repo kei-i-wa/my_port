@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string:name,null:false
       # 社歴？を登録
       t.string:join_year,null:false
-    
+      t.text:introduction
   
       
     end
