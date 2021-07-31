@@ -39,7 +39,7 @@
 -WBS:https://docs.google.com/spreadsheets/d/1bnECdGxYu506fDCI-aZTNsy_W873OcBbnySi80CQOyw/edit#gid=1773513600  
 
 ## チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1595I1zDz2yEzzFnJeY33xWypDl2b7tQUX3RyBnsZikw/edit?usp=sharing  
+https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
 ## 開発環境
 
