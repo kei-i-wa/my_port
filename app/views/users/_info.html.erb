@@ -3,13 +3,19 @@
   <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
   <div style="text-align:center;">輸出入/第4チーム</div>
   <div style="text-align:center;"><%= user.name %></div>
-  <div style="margin-top:20px;"><h6>About me</h6><%= user.introduction %></div>
+  <div style="margin-top:20px; text-align:center;">
+   
+    <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6>
+
+    </div>
+  
+  <div><%= link_to "",edit_user_path(@user),class:"btn btn-outline-secondary btn-block btn-sm fas fa-user-edit"%></div>
 </div>
 
-<!--そのユーザーの最新の投稿を５件表示-->
+<!--そのユーザーの自己紹介を表示-->
 <div class="col-md-8 ml-5" style="margin-top:1em;">
   <h6>Introduction</h6>
-
+  <p><%=safe_join(user.introduction.split("\n"),tag(:br)) %></p>
 </div>
 
 <!--グラフいいね数、閲覧数などの情報を表示-->
@@ -19,12 +25,15 @@
 
 <!--自分の投稿を表示-->
 <div class="col-md-8 ml-5 mt-3">
-<h6>my port</h6>
+<h6>My port</h6>
   <% @posts.each do |post| %>
   <%= link_to post_path(post.id) do %>
   <%= post.title %><% end %><% end %>
 </div>
-  
+
+<!--ページネーション-->
+  <%= paginate@posts %>
+
 
 
 
