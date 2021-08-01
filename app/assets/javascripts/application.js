@@ -23,3 +23,6 @@
 
 //= require chartkick
 //= require Chart.bundle
+
+//= require summernote/summernote-bs4.min 
+//= require summernote-init

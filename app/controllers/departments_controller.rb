@@ -1,4 +1,6 @@
 class DepartmentsController < ApplicationController
+  
+  
   def index
     @department=Department.new
     @departments=Department.all

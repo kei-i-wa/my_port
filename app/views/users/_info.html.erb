@@ -14,9 +14,10 @@
 <div class="col-md-8 ml-5" style="margin-top:1em;">
   <h6>Introduction</h6>
   <% if user.introduction.present?%>
-  <p><%=safe_join(user.introduction.split("\n"),tag(:br)) %></p>
+  <p><%== user.introduction %></p>
+  <!--<p>%== safe_join(user.introduction.split("\n"),tag(:br)) %></p>-->
   <% else %>
-  <p>自己紹介は未入力です。<br>
+  <p style="color:green;">自己紹介は未入力です。<br>
   社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p>
   <% end %>
 </div>

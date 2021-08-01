@@ -1,2 +1,21 @@
-<h1>Departments#edit</h1>
-<p>Find me in app/views/departments/edit.html.erb</p>
+<div class='container'>
+  <div class='row justify-content-center mx-auto'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>部署名編集</h2>
+
+
+<%= form_with model:@department,local:true do |f| %>
+<div class="form-group">
+  <%= f.label:"部署名（表示名）" %><br />
+  <%= f.text_field :name,placeholder:"部署名(表示名）",class:"form-control",required:true%>
+</div>
+<div class="form-group">
+  <%= f.label:"部署名（正式名称）" %><br />
+  <%= f.text_field :correct_name,placeholder:"部署名(正式名称)",class:"form-control",required:true%></div>
+<%= f.submit "変更を保存",class:"btn btn-secondary"%>
+<% end %>
+
+
+</div>
+  </div>
+</div>

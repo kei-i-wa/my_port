@@ -78,3 +78,6 @@ gem 'impressionist', '~>1.6.1'
 gem "chartkick"
 # デバッグ
 gem 'pry-byebug'
+# リッチなテキストエディタの導入
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.10.0'

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # デフォルトにないname/join_yearを追加しているので、それらを許可するよう記載している
+    # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
   end
 
