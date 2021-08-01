@@ -6,4 +6,6 @@ class User < ApplicationRecord
   attachment :profile_image
   # ユーザーは１つの部署に所属（現在の部署）
   belongs_to:department
+  # ユーザーは複数投稿できる　ユーザー消えても記事は残したい
+  has_many:posts
 end

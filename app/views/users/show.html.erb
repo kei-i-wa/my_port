@@ -4,9 +4,50 @@
     <!--col3にユーザーの基本情報格納-->
     <%= render 'info', user: @user %>
    
-    
-    
+  
+<!--そのユーザーの自己紹介を表示-->
+<div class="col-md-8 ml-5" style="margin-top:1em;">
+  <h6>Introduction</h6>
+  <% if @user.introduction.present?%>
+  <p><%== @user.introduction %></p>
+  <!--<p>%== safe_join(user.introduction.split("\n"),tag(:br)) %></p>-->
+  <% else %>
+  <p style="color:green;">自己紹介は未入力です。<br>
+  社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p>
+  <% end %>
+</div>
+
+<!--グラフいいね数、閲覧数などの情報を表示-->
+<div class="mt-3 col-md-3">
+  <h6>Status</h6>
+</div>
+
+<!--自分の投稿を表示-->
+<div class="col-md-8 ml-5 mt-3">
+<h6>My port</h6>
+  <% @posts.each do |post| %>
+  <%= link_to post_path(post.id) do %>
+  <%= post.title %><% end %><% end %>
+</div>
+
+<!--ページネーション-->
+<%= paginate@posts %>
+
+
     
   </div>
 </div>
 
+<style>
+  .user_box {
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    border: double 5px #5d627b;
+}
+
+h6 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+}
+</style>  
+    

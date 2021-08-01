@@ -17,11 +17,11 @@
       <th><%=department.name %></th>
       <th><%=department.correct_name %></th>
       <th><i class="fas fa-user-friends"> <%=department.users.count %></i></th>
-      <% if current_user.department_id == department.id %>
+      <!--% if current_user.department_id == department.id %>-->
       <th><%=link_to "編集",edit_department_path(department),class:"fas fa-edit"%></th>
-      <% else %>
+      <!--% else %>-->
       <th></th>
-      <% end %>
+      <!--% end %>-->
     </tr>
     <% end %>
   </tbody>

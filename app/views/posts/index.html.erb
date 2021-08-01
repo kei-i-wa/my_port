@@ -1,29 +1,50 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @posts.each do |post| %>
+<!--投稿はカードで囲む-->
+<div class="card">
+  <div class="card-body">
+    <!--表示される文字数は２５文字までにしてます-->
+    <h6 class="card-title">
+      <%=link_to post_path(post.id) do %><%= post.title.truncate(25) %>
+      <% end %>
+    </h6>
+    <p class="text-md-right">いいね、コメント数<%=post.user.name%>が投稿　<%=post.created_at%></p>
+  </div>
+</div>
+<% end %>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%== post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+
+<!--        <td>%= link_to 'Show', post %></td>-->
+<!--        <td%= link_to 'Edit', edit_post_path(post) %></td>-->
+<!--        <td>%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<!--    % end %>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
 
 <%= link_to 'New Post', new_post_path %>
+<%= paginate@posts %>
+</div>
+
+
+<style>
+.card{
+  padding:0;
+  margin:0;
+  border:none;
+}
+
+
+
+h6 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+}
+</style>
