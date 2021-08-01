@@ -8,4 +8,7 @@ class User < ApplicationRecord
   belongs_to:department
   # ユーザーは複数投稿できる　ユーザー消えても記事は残したい
   has_many:posts
+  # ユーザーは複数コメントできる ユーザー消えたらコメントも
+  has_many:post_comments,dependent: :destroy
+  
 end
