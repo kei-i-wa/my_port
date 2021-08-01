@@ -1,2 +1,35 @@
-<h1>Departments#index</h1>
-<p>Find me in app/views/departments/index.html.erb</p>
+<h2>部署一覧</h2>
+
+<div class="container">
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>NO</th>
+      <th>所属先(表示名）</th>
+      <th>正式名称</th>
+      <th>人数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @departments.each do |department|%>
+    <tr>
+      <th><%=department.id %></th>
+      <th><%=department.name %></th>
+      <th><%=department.correct_name %></th>
+      <th>所属人数</th>
+      <th><%=link_to "Edit",edit_department_path(department)%></th>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+
+
+<%= form_with model:@department,local:true do |f| %>
+<%= f.text_field :name,placeholder:"部署名",class:"form-control",required:true%>
+<%= f.text_field :correct_name,placeholder:"部署名(正式名称",class:"form-control",required:true%>
+<%= f.submit "新規追加"%>
+<% end %>
+
+</div>

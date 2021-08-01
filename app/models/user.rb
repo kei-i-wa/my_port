@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attachment :profile_image
+  # ユーザーは１つの部署に所属（現在の部署）
+  belongs_to:department
 end

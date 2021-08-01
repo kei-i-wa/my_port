@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'departments/update'
   resources :posts
   resources :users, only: [:show,:index,:edit,:update]
-  
+  resources :departments, only: [:index,:edit,:update,:create]
+
   root :to => 'homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
