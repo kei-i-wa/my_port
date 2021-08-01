@@ -1,7 +1,7 @@
 <!--プロフィール画像、所属部署、名前の名刺-->
 <div class="user_box col-md-3">
   <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
-  <div style="text-align:center;">輸出入/第4チーム</div>
+  <div style="text-align:center;"><%=link_to departments_path do %><%= user.department.name %><% end %></div>
   <div style="text-align:center;"><%= user.name %></div>
   <div style="margin-top:20px; text-align:center;">
   <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6></div>

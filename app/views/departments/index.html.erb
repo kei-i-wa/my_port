@@ -28,7 +28,7 @@
 
 <%= form_with model:@department,local:true do |f| %>
 <%= f.text_field :name,placeholder:"部署名",class:"form-control",required:true%>
-<%= f.text_field :correct_name,placeholder:"部署名(正式名称",class:"form-control",required:true%>
+<%= f.text_field :correct_name,placeholder:"部署名(正式名称)",class:"form-control",required:true%>
 <%= f.submit "新規追加"%>
 <% end %>
 
