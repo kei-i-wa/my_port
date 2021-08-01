@@ -1,6 +1,7 @@
+<p id="notice" class="text-center"><%= notice %></p>
 <div class="container">
   <div class="row">
-<p id="notice"><%= notice %></p>
+
 
 
 <%= render 'users/info', user: @post.user %>
@@ -12,10 +13,8 @@
 </div>
 
 <% if @post.user=current_user %>
-<%= link_to '編集', edit_post_path(@post),class:"btn btn-outline-secondary fas fa-edit" %>
-<%= link_to '戻る', posts_path,class:"btn btn-outline-secondary fas fa-undo"  %>
-<% else %>
-<%= link_to '戻る', posts_path,class:"btn btn-outline-secondary fas fa-undo"  %>
+<p><%= link_to '記事の編集', edit_post_path(@post),class:"btn btn-outline-secondary fas fa-edit" %></p>
+<p><%= link_to"記事の削除",post_path(@post), method: :delete,data: { confirm: '本当に消しますか？' },class:'btn btn-outline-danger fas fa-ban'%></p>
 <% end %>
 
 
