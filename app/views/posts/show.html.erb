@@ -25,16 +25,17 @@
   <div class="row">
     <div class="user-box col-md-3"></div>
     <div class="col-md-8 ml-5" style="margin-top:1em;">
-      
     　<div class="form-group">
-      <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-      <%= f.text_area :comment, rows:'2',placeholder: "参考になったらコメントで伝えましょう",class:"form-control" %>
-      <p><%=f.submit "コメントする",class:"btn btn-outline-secondary"%></p><% end %>
+        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows:'2',placeholder: "参考になったらコメントで伝えましょう",class:"form-control" %>
+        <p><%=f.submit "コメントする",class:"btn btn-outline-secondary"%></p><% end %>
 　　　</div>
-　　　  <% @post.post_comments.each do |post_comment| %>
-　　　  <h6 class="comment"><%= post_comment.comment %></h6>
-　　　  <p class="text-right">
-　　　    <%= attachment_image_tag post_comment.user,:profile_image,size:"20x20",fallback: "no_image.png"%><%= link_to user_path(post_comment.user) do %><%= post_comment.user.name %><% end %> <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+　　　 <% @post.post_comments.each do |post_comment| %>
+　　　 <h6 class="comment"><%= post_comment.comment %></h6>
+　　　 <p class="text-right">
+　　　   <% if post_comment.user == current_user %>
+　　　   <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %><% end %>
+　　　   <%= attachment_image_tag post_comment.user,:profile_image,size:"20x20",fallback: "no_image.png"%><%= link_to user_path(post_comment.user) do %><%= post_comment.user.name %><% end %> <%= post_comment.created_at.strftime('%Y/%m/%d') %>
 　　　  </p>
 　　　   <% end %>
 　　</div>
