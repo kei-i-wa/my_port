@@ -25,9 +25,17 @@
 <!--自分の投稿を表示-->
 <div class="col-md-8 ml-5 mt-3">
 <h6>My port</h6>
-  <% @posts.each do |post| %>
-  <%= link_to post_path(post.id) do %>
-  <%= post.title %><% end %><% end %>
+  <table>
+    <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <th><%= link_to post_path(post.id) do %><%= post.title %><% end %></th>
+        <th>いいね</th>
+        <th>コメント</th>
+      </tr>
+    </tbody>
+    <% end %>
+    </table>
 </div>
 
 <!--ページネーション-->

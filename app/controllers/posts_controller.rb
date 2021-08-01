@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
   end
 
   def new
@@ -22,6 +23,8 @@ class PostsController < ApplicationController
     @post.user_id=current_user.id
     if @post.save
       redirect_to posts_path(@post),notice:'投稿完了しました:)'
+    else 
+      render:new
     end
   end
 

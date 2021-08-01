@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   # ユーザー認証などが行われる前に、configure~が実行される
+  before_action :authenticate_user!,except: [:top]
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
