@@ -3,7 +3,41 @@
     <div class="col-sm-12 col-md-6 col-lg-7 px-5 px-sm-0">
   
 
-<%= render 'form', post: @post %>
+<%= form_with(model: @post, local: true) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<!--新規投稿エリア-->
+
+  <div class="form-group">
+    <%=f.label"タイトル"%>
+    <%= f.text_field:title,class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label"本文" %>
+    <%= f.text_area :content,'data-provider': :summernote %>
+  </div>
+  
+
+  <div class="field">
+    <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
+    <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+  </div>
+
+　<div class="actions" style="margin:20px 0;">
+    <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
+  </div>
+  <% end %>
 
 
 
