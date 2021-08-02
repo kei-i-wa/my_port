@@ -12,5 +12,9 @@ class User < ApplicationRecord
   has_many:post_comments,dependent: :destroy
   # お気に入りのアソシエーション
   has_many :favorites, dependent: :destroy
+  # グループのアソシエーション
+  has_many:group_users
+  # group_usersは中間テーブル
+  has_many:groups, through: :group_users
   
 end

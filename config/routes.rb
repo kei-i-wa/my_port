@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # タグの検索で使用する
   get "search_tag"=>"posts#search_tag"
+  resources :groups
 end
