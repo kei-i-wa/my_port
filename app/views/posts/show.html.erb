@@ -11,7 +11,7 @@
    
    <p class="text-md-right">
      <!--お気に入り-->
-   <%= render 'posts/favorites', post: @post %>
+   <div id="<%=@post.id %>"><%= render 'favorites/favorite', post: @post %></div>
    </p>
    
   <p><%== @post.content %></p>
