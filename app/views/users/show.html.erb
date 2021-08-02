@@ -30,7 +30,11 @@
     <tbody>
       <tr>
         <th><%= link_to post_path(post.id) do %><%= post.title %><% end %></th>
-        <th>いいね</th>
+        <% if post.favorited_by?(current_user) %>
+        <th><i class="fas fa-check"><%= post.favorites.count %></i></th>
+        <% else %>
+        <th><i class="far fa-star"><%=post.favorites.count%></i></th>
+        <% end %>
         <th><i class="far fa-comment-dots"><%=post.post_comments.count%></i></th>
       </tr>
     </tbody>

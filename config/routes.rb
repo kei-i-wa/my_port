@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :posts do
     # コメントは投稿に紐づくのでネストさせる
     resources:post_comments,only:[:create,:destroy]
+    # お気に入り
+    resource:favorites,only:[:create,:destroy]
   end
   
   resources :users, only: [:show,:index,:edit,:update]

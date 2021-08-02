@@ -8,10 +8,12 @@
 
 <div class="content-box col-md-8 ml-5" style="margin-top:1em;">
   <h4><%= @post.title %></h4>
+   
    <p class="text-md-right">
-      <i class="far fa-comment-dots"><%=@post.post_comments.count%></i>
-      <%=@post.created_at.strftime('%Y/%m/%d') %>
+     <!--お気に入り-->
+   <%= render 'posts/favorites', post: @post %>
    </p>
+   
   <p><%== @post.content %></p>
 </div>
 
@@ -22,28 +24,10 @@
   </div>
   <!--ここまでで１個目のrowが終わり-->
 
-  <div class="row">
-    <div class="user-box col-md-3"></div>
-    <div class="col-md-8 ml-5" style="margin-top:1em;">
-    　<div class="form-group">
-        <%= form_with(model:[@post, @post_comment], local: true) do |f| %>
-        <%= f.text_area :comment, rows:'2',placeholder: "参考になったらコメントで伝えましょう",class:"form-control" %>
-        <p><%=f.submit "コメントする",class:"btn btn-outline-secondary"%></p><% end %>
-　　　</div>
-　　　 <% @post.post_comments.each do |post_comment| %>
-　　　 <h6 class="comment"><%= post_comment.comment %></h6>
-　　　 <p class="text-right">
-　　　   <% if post_comment.user == current_user %>
-　　　   <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %><% end %>
-　　　   <%= attachment_image_tag post_comment.user,:profile_image,size:"20x20",fallback: "no_image.png"%><%= link_to user_path(post_comment.user) do %><%= post_comment.user.name %><% end %> <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-　　　  </p>
-　　　   <% end %>
-　　</div>
-  </div>
+<div id="comments-area"><%= render "post_comments/comment",post: @post,post_comment: @post_comment %></div>
 
 
 </div>
-
 
 <style>
 

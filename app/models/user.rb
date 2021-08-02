@@ -10,5 +10,7 @@ class User < ApplicationRecord
   has_many:posts
   # ユーザーは複数コメントできる ユーザー消えたらコメントも
   has_many:post_comments,dependent: :destroy
+  # お気に入りのアソシエーション
+  has_many :favorites, dependent: :destroy
   
 end

@@ -1,0 +1,20 @@
+  <div class="row">
+    <div class="user-box col-md-3"></div>
+    <div class="col-md-8 ml-5" style="margin-top:1em;">
+    　<div class="form-group">
+    　 <!--非同期通信のためlocal true→remote true or 削除にする-->
+        <%= form_with(model:[post, post_comment], remote: true) do |f| %>
+        <%= f.text_area :comment, rows:'2',placeholder: "感想や疑問点をコメントで伝えましょう",class:"form-control" %>
+        <p><%=f.submit "コメントする",class:"btn btn-outline-secondary"%></p><% end %>
+　　　</div>
+　　　 <% post.post_comments.each do |post_comment| %>
+　　　 <h6 class="comment"><%= post_comment.comment %></h6>
+　　　 <p class="text-right">
+　　　   <% if post_comment.user == current_user %>
+　　　   <!--非同期通信のため以下remote true追記！-->
+　　　   <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment),data: { confirm: '本当に消しますか？' }, method: :delete,remote: true %><% end %>
+　　　   <%= attachment_image_tag post_comment.user,:profile_image,size:"20x20",fallback: "no_image.png"%><%= link_to user_path(post_comment.user) do %><%= post_comment.user.name %><% end %> <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+　　　  </p>
+　　　   <% end %>
+　　</div>
+  </div>
