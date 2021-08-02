@@ -3,12 +3,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(10)
+    # タグを全表示するかどうかは悩み中
+    # 多い順に50個とかのほうが良い？
+    @tag_list=Tag.all
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment=PostComment.new
-    
+    @post_tags = @post.tags
   end
 
   def new
@@ -22,9 +25,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id=current_user.id
+    # 受け取った値を,で区切って配列にする
+    tag_list=params[:post][:name].split(',')
     if @post.save
+      @post.save_tag(tag_list)
       redirect_to posts_path(@post),notice:'投稿完了しました:)'
-    else 
+    else
       render:new
     end
   end
@@ -38,7 +44,7 @@ class PostsController < ApplicationController
     end
   end
 
-  
+
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
@@ -46,13 +52,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def search_tag
+    @tag_list=Tag.all
+    @tag=Tag.find(params[:tag_id])
+    @posts=@tag.posts.page(params[:page]).per(10)
+  end
+
   private
-    
+
     def set_post
       @post = Post.find(params[:id])
     end
 
-   
+
     def post_params
       params.require(:post).permit(:title, :content)
     end

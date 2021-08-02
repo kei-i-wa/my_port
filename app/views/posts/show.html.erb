@@ -9,10 +9,12 @@
 <div class="content-box col-md-8 ml-5" style="margin-top:1em;">
   <h4><%= @post.title %></h4>
    
-   <p class="text-md-right">
-     <!--お気に入り-->
+   <!--タグ-->
+  <% @post_tags.each do |tag| %>
+  <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %><% end %>
+  <!--お気に入り-->
    <div id="<%=@post.id %>"><%= render 'favorites/favorite', post: @post %></div>
-   </p>
+  
    
   <p><%== @post.content %></p>
 </div>
