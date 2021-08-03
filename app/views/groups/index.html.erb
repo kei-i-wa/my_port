@@ -1,2 +1,61 @@
-<div><%=link_to "勉強会作成",new_group_path,class:"btn btn-light"%> | <%=link_to "勉強会一覧",groups_path,class:"btn btn-light" %></div>
+<div class="container">
+  <div class="row">
+
+     <%= render 'groups/form', group: @group %>
+
+  <div class="col-md-7 ml-5 mt-5" style="margin-top:1em;">
+    <% @groups.each do |group| %>
+    <div class="card mb-3">
+        <h5><i class="fas fa-user-friends"></i>
+        <%=link_to group_path(group) do%><%=group.name %><% end %>
+        </h5>
+        <p class="card-text"><%= group.introduction.truncate(50)  %></p>
+        <p class="text-right"><i class="fas fa-flag"></i>参加条件:<%= group.status%>
+        <i class="far fa-clock"><%=group.created_at.strftime('%Y/%m/%d') %></i></p>
+
+
+    </div>
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+
+　</div>
+</div>
+
+
+<style>
+  .group_box {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+h6 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+}
+
+
+h5{
+  border-bottom: solid 2px #FF69A3;
+}
+
+.card{
+  padding:0;
+  margin:0;
+  border:none;
+}
+</style>
+
+
 

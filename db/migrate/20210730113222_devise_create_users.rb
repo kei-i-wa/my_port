@@ -41,7 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # 社歴？を登録
       t.string:join_year,null:false
       t.text:introduction
-      t.integer :department_id,null:false
+      t.integer :department_id
      
       
     end

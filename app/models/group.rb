@@ -4,7 +4,9 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
   
   validates :name, presence: true
-  attachment :image
+  validates :status, presence: true
+  validates :introduction, presence: true
+  
 # グループ紹介は必須でなくても良い気がする
 #   validates :introduction, presence: true
 end
