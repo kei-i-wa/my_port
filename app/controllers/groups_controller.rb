@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.new
+    @group.users << current_user
     @groups = Group.all
   end
   
@@ -13,7 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.owned_groups.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
       redirect_to groups_path
@@ -36,6 +37,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :introduction,:status)
+    params.require(:group).permit(:name, :introduction,:status,:user_id)
   end
 end

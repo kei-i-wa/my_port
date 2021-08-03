@@ -16,5 +16,7 @@ class User < ApplicationRecord
   has_many:group_users
   # group_usersは中間テーブル
   has_many:groups, through: :group_users
+  # グループオーナー表示のため
+  has_many :owned_groups, class_name: "Group"
   
 end

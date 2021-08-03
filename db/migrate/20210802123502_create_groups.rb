@@ -5,6 +5,7 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.text :introduction,null: false
       t.integer :owner_id
       t.string :status
+      t.references :user
       t.timestamps
     end
   end

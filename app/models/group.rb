@@ -2,6 +2,8 @@ class Group < ApplicationRecord
   has_many :group_users
   # グループは複数のユーザーを持つ。group_usersから参照可能
   has_many :users, through: :group_users
+  # グループオーナー表示のために
+  belongs_to :user
   
   validates :name, presence: true
   validates :status, presence: true
