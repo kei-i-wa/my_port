@@ -9,8 +9,9 @@
         <p><%=link_to user_path(member.id) do %><%=member.name%><% end %></p><% end %>
       </div>
       <% if @group.owner_id == current_user.id %>
+      <%= link_to 'Mail',group_new_mail_path(@group), class: "fas fa-paper-plane" %>
       <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-sm btn-light" %>
-      <!--%= link_to '勉強会削除', group_all_destroy_path,method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>-->
+      <%= link_to '勉強会削除',group_all_destroy_path(@group),method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
       <% elsif @group.users.include?(current_user) %>
       <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
       <%else %>

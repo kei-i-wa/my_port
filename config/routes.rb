@@ -24,6 +24,10 @@ Rails.application.routes.draw do
  
     # delete "exit" => "groups#exit"
    delete "all_destroy" => 'groups#all_destroy'
+   get "new/mail" => "groups#new_mail"
+   get "send/mail" => "groups#send_mail"
   end
+  
+  
   
 end
