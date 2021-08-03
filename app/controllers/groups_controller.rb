@@ -61,7 +61,7 @@ class GroupsController < ApplicationController
     @group=Group.find(params[:group_id])
   end
 
-  def send_email
+  def send_mail
     @group = Group.find(params[:group_id])
     group_users = @group.users
     @mail_title = params[:mail_title]

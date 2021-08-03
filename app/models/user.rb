@@ -13,10 +13,10 @@ class User < ApplicationRecord
   # お気に入りのアソシエーション
   has_many :favorites, dependent: :destroy
   # グループのアソシエーション
-  has_many:group_users
+  has_many:group_users,dependent: :destroy
   # group_usersは中間テーブル
-  has_many:groups, through: :group_users
+  has_many:groups, through: :group_users,dependent: :destroy
   # グループオーナー表示のため
   has_many :owned_groups, class_name: "Group"
-  
+
 end

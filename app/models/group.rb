@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   # グループは複数のユーザーを持つ。group_usersから参照可能
-  has_many :users, through: :group_users
+  has_many :users, through: :group_users, dependent: :destroy
   # グループオーナー表示のために
   belongs_to :user
   
