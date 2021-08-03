@@ -12,7 +12,7 @@
         <p class="card-text"><%= group.introduction.truncate(50)  %></p>
         <p class="text-right"><i class="fas fa-flag"></i>参加条件:<%= group.status%>
         <i class="far fa-clock"><%=group.created_at.strftime('%Y/%m/%d') %></i>
-        <%= group.user ? group.user.name : "不明" %>
+        <%= group.user ? group.user.name : "不明" %><%=group.users.count %>
         </p>
     </div>
     <% end %>

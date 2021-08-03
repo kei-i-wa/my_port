@@ -1,0 +1,40 @@
+<div class='container'>
+  <div class='row'>
+ 
+    
+   <div class="card col-md-3">
+     <div class="card-body">
+       <h6 class="card-title">メンバー</h6>
+       <% @group.users.each do |member| %>
+        <p><%=member.name%></p><% end %>
+      </div>
+    </div>
+
+     
+    
+   </div>
+     
+   
+    
+  
+    <div class="col-md-7 ml-5 mt-5" style="margin-top:1em;">
+      <h4><%= @group.name %></h4>
+      <p><%= @group.introduction %></p>
+      
+  
+            
+            <td>
+              <% if @group.owner_id == current_user.id %>
+                <%= link_to 'Edit', edit_group_path(@groups), class: "btn btn-sm btn-success" %>
+              <% elsif @groups.users.include?(current_user) %>
+                <%= link_to 'Leave this group', group_path(@groups), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% else %>
+                <%= link_to 'Join this group', group_join_path(@groups), class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
