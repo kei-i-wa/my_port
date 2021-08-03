@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   get "search_tag"=>"posts#search_tag"
   resources :groups do
     get "join" => "groups#join"
+ 
+    # delete "exit" => "groups#exit"
+   delete "all_destroy" => 'groups#all_destroy'
   end
+  
 end

@@ -1,40 +1,54 @@
 <div class='container'>
   <div class='row'>
- 
-    
-   <div class="card col-md-3">
+
+    <!--グループメンバー表示-->
+    <div class="card col-md-3 mt-5">
      <div class="card-body">
        <h6 class="card-title">メンバー</h6>
        <% @group.users.each do |member| %>
-        <p><%=member.name%></p><% end %>
+        <p><%=link_to user_path(member.id) do %><%=member.name%><% end %></p><% end %>
       </div>
+      <% if @group.owner_id == current_user.id %>
+      <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-sm btn-light" %>
+      <!--%= link_to '勉強会削除', group_all_destroy_path,method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>-->
+      <% elsif @group.users.include?(current_user) %>
+      <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
+      <%else %>
+      <%= link_to '参加', group_join_path(@group), class: "btn btn-sm btn-outline-success" %>
+      <% end %>
     </div>
 
-     
-    
-   </div>
-     
-   
-    
-  
-    <div class="col-md-7 ml-5 mt-5" style="margin-top:1em;">
+
+
+
+
+    <div class="group-info col-md-7 ml-5 mt-5" style="margin-top:1em;">
       <h4><%= @group.name %></h4>
       <p><%= @group.introduction %></p>
-      
-  
-            
-            <td>
-              <% if @group.owner_id == current_user.id %>
-                <%= link_to 'Edit', edit_group_path(@groups), class: "btn btn-sm btn-success" %>
-              <% elsif @groups.users.include?(current_user) %>
-                <%= link_to 'Leave this group', group_path(@groups), method: :delete, class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to 'Join this group', group_join_path(@groups), class: "btn btn-sm btn-success" %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <%= render 'groups/owner', group: @group %>
     </div>
+
   </div>
 </div>
+
+
+<style>
+  .card{
+  padding:0;
+  margin:0;
+  border:none;
+}
+
+.group-info{
+    padding: 0.5em 1em;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+h6 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+}
+</style>

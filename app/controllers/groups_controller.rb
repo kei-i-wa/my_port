@@ -31,9 +31,11 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group=Group.find(params[:id])
   end
 
   def update
+    @group=Group.find(params[:id])
     if @group.update(group_params)
       redirect_to groups_path
     else
@@ -46,6 +48,13 @@ class GroupsController < ApplicationController
   # current_userは@group_userから消える
    @group.users.delete(current_user)
    redirect_to groups_path
+  end
+  
+  def all_destroy
+    @group = Group.find(params[:id])
+    if @group.destroy_all
+    redirect_to groups_path
+    end
   end
 
   private
