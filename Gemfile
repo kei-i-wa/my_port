@@ -66,6 +66,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 #bootstrapの導入
 gem 'bootstrap', '~> 4.5'
+# jquery インクリメンタルサーチ
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 # deviseの導入

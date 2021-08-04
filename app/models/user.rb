@@ -13,10 +13,16 @@ class User < ApplicationRecord
   # お気に入りのアソシエーション
   has_many :favorites, dependent: :destroy
   # グループのアソシエーション
-  has_many:group_users,dependent: :destroy
+  has_many:group_users
   # group_usersは中間テーブル
   has_many:groups, through: :group_users,dependent: :destroy
   # グループオーナー表示のため
   has_many :owned_groups, class_name: "Group"
+  
+  def self.search(search)
+    return User.all unless search
+    User.where('name LIKE(?)', "%#{search}%").or(User.where('introduction LIKE ?', "%#{search}%"))
+    .or(User.where(department_id: search)).or(User.where(join_year: search))
+  end
 
 end
