@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   # devise_for :users
+  namespace :departments do
+  resources :searches, only: :index
+  end
   get 'departments/index'
   get 'departments/create'
   get 'departments/edit'

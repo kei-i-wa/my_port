@@ -1,0 +1,42 @@
+<div class="container">
+<%= form_with(url: departments_searches_path, local: true, method: :get, class: "search_form") do |f|%>
+<%= f.text_field :keyword, placeholder: "部署名で検索", class: "search_input"%>
+<%= f.submit "Search", class: "search_btn"%><% end %>
+  
+  
+  
+  <h2>部署一覧</h2>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>NO</th>
+      <th>所属先(表示名）</th>
+      <th>正式名称</th>
+      <th>所属人数</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @departments.each do |department|%>
+    <tr>
+      <th><%=department.id %></th>
+      <th><%=department.name %></th>
+      <th><%=department.correct_name %></th>
+      <th><i class="fas fa-user-friends"> <%=department.users.count %></i></th>
+      <th><%=link_to "編集",edit_department_path(department),class:"fas fa-edit"%></th>
+    
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<%= form_with model:@department,local:true do |f| %>
+<div class="form-group col-md-4">
+  <%= f.text_field :name,placeholder:"部署名(表示名）",class:"form-control",required:true%>
+  <%= f.text_field :correct_name,placeholder:"部署名(正式名称)",class:"form-control",required:true%>
+  <%= f.submit "新規登録",class:"btn btn-outline-secondary"%></div>
+<% end %>
+
+
+
+</div>
