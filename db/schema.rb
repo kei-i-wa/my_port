@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_123518) do
+ActiveRecord::Schema.define(version: 2021_08_04_061258) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_123518) do
     t.integer "department_id"
     t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+//= require jquery
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
@@ -24,6 +25,15 @@
 //= require chartkick
 //= require Chart.bundle
 
-//= require summernote/summernote-bs4.min 
+//= require summernote/summernote-bs4.min
 //= require summernote-init
 
+// テストのために記述
+var title = "javascriptが使えました";
+alert(title);
+
+$(document).ready(function () {
+  $('.jquery').on('click', function(){
+    $(this).css('color','red');
+  });
+});

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   namespace :departments do
   resources :searches, only: :index
   end
-  get 'departments/index'
-  get 'departments/create'
-  get 'departments/edit'
-  get 'departments/update'
+  
+  
+  resources :departments,only:[:index,:create,:edit,:update] do
+    get'search'
+  end
   
   namespace :posts do
   resources :searches, only: :index

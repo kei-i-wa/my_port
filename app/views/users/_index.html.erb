@@ -5,6 +5,7 @@
   <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
   <%=f.submit "Search", class: "search_btn"%><% end %>
 
+    <ul id="result"></ul>
 
 
       <% users.each do |user| %>

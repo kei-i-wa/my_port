@@ -3,8 +3,9 @@ class Users::SearchesController < ApplicationController
   users= User.search(params[:keyword])
   @users=users.page(params[:page]).per(25)
   respond_to do |format|
-    fornat.html
-    firmat.json
+    # format.json { render 'index', json: @users }
+    format.html
+    format.json
   end
   end
 
