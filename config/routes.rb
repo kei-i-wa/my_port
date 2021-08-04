@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get 'departments/create'
   get 'departments/edit'
   get 'departments/update'
+  
+  namespace :posts do
+  resources :searches, only: :index
+  end  
+  
   resources :posts do
     # コメントは投稿に紐づくのでネストさせる
     resources:post_comments,only:[:create,:destroy]
