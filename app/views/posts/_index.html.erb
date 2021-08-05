@@ -1,34 +1,49 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
+<div class="row">
 
 <!--タグリスト-->
-<% tag_list.each do |list|%>
-<%=link_to list.name,search_tag_path(tag_id: list.id) %>
-<%="(#{list.posts.count})" %><% end %>
-
-<%= form_with(url: posts_searches_path, local: true, method: :get, class: "search_form") do |f|%>
-<%= f.text_field :keyword, placeholder: "検索", class: "search_input"%>
-<%= f.submit "Search", class: "search_btn"%><% end %>
+    <% tag_list.each do |list|%>
+　　<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+　　<%="(#{list.posts.count})" %><% end %>
 
 
-
-<% posts.each do |post| %>
-<!--投稿はカードで囲む-->
-<div class="card">
-  <div class="card-body">
-    <!--タイトル表示される文字数は２５文字までにしてます-->
-    <h6 class="card-title">
-      <%=link_to post_path(post.id) do %><%= post.title.truncate(25) %>
-      <% end %>
-    </h6>
-    <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-      <div id="<%=post.id %>"><%= render 'favorites/favorite', post: post %></div>
-<h2>テスト</h2>
-
-  </div>
+<div class="post_box col-md-3 mt-3">
+  <div style="text-align:center;">
+    <h6><i class="fas fa-search">投稿記事を探す</i></h6>
+ 
+　　<%= form_with(url: posts_searches_path, local: true, method: :get, class: "search_form") do |f|%>
+　　<%= f.text_field :keyword, placeholder: "検索", class: "search_input"%>
+　　<%= f.submit "Search", class: "search_btn"%><% end %>
+　　<h6>並び替え</h6>
+　　<%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %>
+　  <!--%= link_to "いいね順", posts_path(sort: 'post.favorites.count DESC') %> | %= link_to "コメント数順", posts_path(sort: 'post.post_comments.count DESC')%>-->
+　 </div>
+  
 </div>
-<% end %>
 
+
+
+<div class="col-md-7 ml-5">
+  <% posts.each do |post| %>
+  <!--投稿はカードで囲む-->
+  <div class="card">
+    <div class="card-body">
+      <!--タイトル表示される文字数は２５文字までにしてます-->
+      <h6 class="card-title">
+        <%=link_to post_path(post.id) do %><%= post.title.truncate(25) %>
+        <% end %>
+      </h6>
+      <!--お気に入り、コメント数、投稿者は部分テンプレ-->
+        <div id="<%=post.id %>"><%= render 'favorites/favorite', post: post %></div>
+  <h2>テスト</h2>
+  
+    </div>
+  </div>
+  <% end %>
+</div>
+<!--rowのとじタグ-->
+</div>
        <div class="pagination pagination-sm justify-content-center">
        <%= paginate posts %></div>
 
@@ -42,6 +57,14 @@
   border:none;
 }
 
+.post_box {
+    padding: 0.5em 1em;
+    /*margin: 2em 0;*/
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
 
 
 h6 {

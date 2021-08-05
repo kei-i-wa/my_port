@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.page(params[:page]).per(10)
+    posts=Post.order(params[:sort])
+    @posts=posts.page(params[:page]).per(10)
+
     # タグを全表示するかどうかは悩み中
     # 多い順に50個とかのほうが良い？
     @tag_list=Tag.all
