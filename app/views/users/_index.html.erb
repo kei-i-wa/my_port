@@ -6,6 +6,9 @@
   <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
   <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
   <%=f.submit "Search", class: "search_btn"%><% end %>
+  <!--インクリメンタルサーチの結果が以下に出る-->
+  <ul id="result">
+  </ul>
 
   </div>
 
