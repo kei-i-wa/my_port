@@ -24,8 +24,8 @@ class User < ApplicationRecord
   def self.search(search)
     return User.all unless search
     User.where('name LIKE(?)', "%#{search}%")
-    # .or(User.where('introduction LIKE ?', "%#{search}%"))
-    # .or(User.where(department_id: search)).or(User.where(join_year: search))
+    .or(User.where('introduction LIKE ?', "%#{search}%"))
+    .or(User.where(department_id: search)).or(User.where(join_year: search))
   end
 
 end
