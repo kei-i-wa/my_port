@@ -16,10 +16,13 @@
 　　<%= f.text_field :keyword, placeholder: "検索", class: "search_input"%>
 　　<%= f.submit "Search", class: "search_btn"%><% end %>
 　　<h6>並び替え</h6>
-　　<%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %>
-　　<h6>ランキング</h6>
-　　<%= link_to"いいね順",post_favorite_order_path(posts) %>|<%= link_to"コメント順",post_comment_order_path(posts) %>
+　　<p><%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %></p>
+　　<p><%= link_to"いいね順",post_favorite_order_path(posts) %>|<%= link_to"コメント順",post_comment_order_path(posts) %></p>
 　  <!--%= link_to "いいね順", posts_path(sort: 'post.favorites.count DESC') %> | %= link_to "コメント数順", posts_path(sort: 'post.post_comments.count DESC')%>-->
+    <h6>いいね数ランキング</h6>
+    <p><%= link_to"ウィークリー",post_favorite_weekly_order_path(posts) %></p>
+    
+    
 　 </div>
   
 </div>

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  # 閲覧数はshowページでカウント
+  impressionist :actions => [:show]
 
   def index
     posts=Post.order(params[:sort])
@@ -12,6 +14,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # 閲覧数カウント、リロードしても閲覧数は
+    impressionist(@post,nil,unique: [:session_hash.to_s])
     @post_comment=PostComment.new
     @post_tags = @post.tags
   end
@@ -70,13 +74,30 @@ class PostsController < ApplicationController
         b.favorited_users.includes(:favorites).size <=> 
         a.favorited_users.includes(:favorites).size
       }
-     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
-    # タグを全表示するかどうかは悩み中
-    # 多い順に50個とかのほうが良い？
+     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(20)
+     
+  end
+  
+  def favorite_weekly_order
+      to=Time.current.at_end_of_day
+      from=(to-6.day).at_beginning_of_day
+      posts = Post.includes(:favorited_users).
+      sort {|a,b| 
+        b.favorited_users.includes(:favorites).where(created_at: from...to).size <=> 
+        a.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }
+     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(15)
+  
      
   end
   
   def comment_order
+    posts=Post.includes(:commented_users).
+    sort{|a,b|
+    b.commented_users.includes(:post_comments).size<=>
+    a.commented_users.includes(:post_comments).size
+    }
+    @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
   end
 
   private

@@ -11,6 +11,7 @@
       <% end %>
       
       <i class="far fa-comment-dots"><%=post.post_comments.count%></i>
+      <i class="fas fa-eye"><%= post.impressionist_count(:filter => :session_hash)%></i>
       <%= attachment_image_tag post.user,:profile_image,size:"20x20",fallback: "no_image.png"%>
       <%= link_to user_path(post.user) do %><%=post.user.name%><% end %>
       <%=post.created_at.strftime('%Y/%m/%d') %>

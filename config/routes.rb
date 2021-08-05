@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     # お気に入り
     resource:favorites,only:[:create,:destroy]
     get "favorite_order"=>"posts#favorite_order"
+    get "favorite_weekly_order"=>"posts#favorite_weekly_order"
     get "comment_order"=>"posts#comment_order"
   end
   

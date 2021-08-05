@@ -84,3 +84,5 @@ gem 'simple_form'
 gem 'summernote-rails', '~> 0.8.10.0'
 # 環境変数化のためのgem
 gem 'dotenv-rails'
+# 閲覧数カウントのためのgem
+gem 'impressionist', '~>1.6.1'
