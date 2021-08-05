@@ -2,10 +2,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
 
-<!--タグリスト-->
-    <% tag_list.each do |list|%>
-　　<%=link_to list.name,search_tag_path(tag_id: list.id) %>
-　　<%="(#{list.posts.count})" %><% end %>
+
 
 
 <div class="post_box col-md-3 mt-3">
@@ -23,6 +20,11 @@
     <p><%= link_to"ウィークリー",post_favorite_weekly_order_path(posts) %></p>
     <h6>コメント数ランキング</h6>
     <p><%= link_to"ウィークリー",post_comment_weekly_order_path(posts) %></p>
+    <h6>タグで</h6>
+    <p><!--タグリスト-->
+    <% tag_list.each do |list|%>
+　　<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+　　<%="(#{list.posts.count})" %><% end %></p>
     
     
     
