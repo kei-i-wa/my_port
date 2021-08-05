@@ -1,21 +1,46 @@
+// $(document).on('turbolinks:load', function(){
+//   $(document).on('keyup', '.search_input', function(e){
+//     e.preventDefault();
+//     var input = $.trim($(this).val());
+//     console.log('test2');
+  
+//     $.ajax({ //ajax通信で以下のことを行います
+//       url: '/users/searches', //urlを指定
+//       type: 'GET', //メソッドを指定
+//       data: ('keyword=' + input), //コントローラーに渡すデータを'keyword=input(入力された文字のことですね)'にするように指定
+//       processData: false, //おまじない
+//       contentType: false, //おまじない
+//       dataType: 'json' //データ形式を指定
+//     })
+//     .done(function(data){
+//     $('#result').find('li').remove();
+//     $(data).each(function(i, user){
+//     $('#result').append('<li>' + user.name + '</li>') 
+//     });
+//     })
+//   });
+// });
+
 $(function(){
   
   var search_list = $(".showZone");
   function appendUser(user) {
     var html = `<div class="user_box col-md-2 mr-4">
-                 <a href="/users/${user.id}">
-                 <div style="text-align:center;">未選択</div>
-                 <div style="text-align:center;">${user.name}</div>
-                 </div>`
+                <div style="text-align:center;">未選択</div>
+                <div style="text-align:center;">${user.name}</div>
+                  <div style="margin-top:20px; text-align:center;">
+                  <h6><i class="fas fa-anchor"></i></h6></div>
+                </div>`
                
     search_list.append(html);
-   }
+  }
 
   function appendErrMsgToHTML(msg) {
     var html = `<div class='name'>${ msg }</div>`
     search_list.append(html);
-  }
-  console.log('test');
+  
+  // console.log('test');
+ 
   // 何か入力される度に動作する
   $(".search_input").on("keyup",function() {
     console.log('test2');
@@ -23,7 +48,7 @@ $(function(){
   // 打ち込まれた値をinputとする
     var input = $(".search_input").val();
   // 動作確認のための出力
-    console.log(input);
+    // console.log(input);
 
   // 非同期通信を行います
     $.ajax({
@@ -53,12 +78,11 @@ $(function(){
         appendErrMsgToHTML("一致する投稿はありません");
       }
     })
-    .fail(function(){
+      .fail(function() {
       alert('error');
-    });
-    
   });
-});
+  });
+  };
 // コンソールログで出力ができない
 // ここまでですでにうまく渡せていないきがする
 

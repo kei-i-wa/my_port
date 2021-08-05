@@ -1,11 +1,12 @@
 <div class="container">
   <div class="row">
 
+　<div class="col-md-2 mr-4">
   <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
   <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
   <%=f.submit "Search", class: "search_btn"%><% end %>
-
-    <ul id="result"></ul>
+    <ul id="result"></ul></p>
+  </div>
 
 
       <% users.each do |user| %>

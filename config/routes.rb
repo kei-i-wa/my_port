@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   
   
   resources :departments,only:[:index,:create,:edit,:update] do
-    get'search'
   end
   
   namespace :posts do

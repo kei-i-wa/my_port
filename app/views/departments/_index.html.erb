@@ -1,8 +1,9 @@
 <div class="container">
+  
 <%= form_with(url: departments_searches_path, local: true, method: :get, class: "search_form") do |f|%>
 <%= f.text_field :keyword, placeholder: "部署名で検索", class: "search_input"%>
 <%= f.submit "Search", class: "search_btn"%><% end %>
-  
+<ul id="result"></ul>
   
   
   <h2>部署一覧</h2>
