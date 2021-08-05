@@ -20,11 +20,11 @@
     <p><%= link_to"ウィークリー",post_favorite_weekly_order_path(posts) %></p>
     <h6>コメント数ランキング</h6>
     <p><%= link_to"ウィークリー",post_comment_weekly_order_path(posts) %></p>
-    <h6>タグで</h6>
+    <h6>最新の投稿タグ</h6>
     <p><!--タグリスト-->
-    <% tag_list.each do |list|%>
-　　<%=link_to list.name,search_tag_path(tag_id: list.id) %>
-　　<%="(#{list.posts.count})" %><% end %></p>
+    <% tag_list.each do |list|%><i class="fas fa-tag"><%=link_to list.name,search_tag_path(tag_id: list.id) %><%="(#{list.posts.count})" %></i>
+　　
+　　<% end %></p>
     
     
     
