@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   # タグのリレーション
   has_many :post_tags,dependent: :destroy
   has_many :tags,through: :post_tags
+
+  has_many :favorited_users, through: :favorites, source: :user
   # 同じ記事を複数回お気に入りするのはNG
    def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

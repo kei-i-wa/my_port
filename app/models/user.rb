@@ -18,7 +18,9 @@ class User < ApplicationRecord
   has_many:groups, through: :group_users,dependent: :destroy
   # グループオーナー表示のため
   has_many :owned_groups, class_name: "Group"
+
   
+
   def self.search(search)
     return User.all unless search
     User.where('name LIKE(?)', "%#{search}%")

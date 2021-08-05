@@ -63,6 +63,21 @@ class PostsController < ApplicationController
     @tag=Tag.find(params[:tag_id])
     @posts=@tag.posts.page(params[:page]).per(10)
   end
+  
+  def favorite_order
+     posts = Post.includes(:favorited_users).
+      sort {|a,b| 
+        b.favorited_users.includes(:favorites).size <=> 
+        a.favorited_users.includes(:favorites).size
+      }
+     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
+    # タグを全表示するかどうかは悩み中
+    # 多い順に50個とかのほうが良い？
+     
+  end
+  
+  def comment_order
+  end
 
   private
 

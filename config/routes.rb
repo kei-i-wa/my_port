@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources:post_comments,only:[:create,:destroy]
     # お気に入り
     resource:favorites,only:[:create,:destroy]
+    get "favorite_order"=>"posts#favorite_order"
+    get "comment_order"=>"posts#comment_order"
   end
   
   namespace :users do
