@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # 閲覧数カウント、リロードしても閲覧数は
+    # 閲覧数カウント、リロードしても閲覧数は増えない
     impressionist(@post,nil,unique: [:session_hash.to_s])
     @post_comment=PostComment.new
     @post_tags = @post.tags
@@ -98,6 +98,22 @@ class PostsController < ApplicationController
     a.commented_users.includes(:post_comments).size
     }
     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
+  end
+  
+  def comment_weekly_order
+    to=Time.current.at_end_of_day
+    from=(to-6.day).at_beginning_of_day
+    posts = Post.includes(:commented_users).
+      sort {|a,b| 
+    b.commented_users.includes(:post_comments).where(created_at: from...to).size<=>
+    a.commented_users.includes(:post_comments).where(created_at: from...to).size
+    }
+    @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
+  end
+  
+  def impressions_order
+    posts=Post.order(impressions_count: 'DESC')
+    @posts=posts.page(params[:page]).per(10)
   end
 
   private

@@ -21,8 +21,10 @@ Rails.application.routes.draw do
     get "favorite_order"=>"posts#favorite_order"
     get "favorite_weekly_order"=>"posts#favorite_weekly_order"
     get "comment_order"=>"posts#comment_order"
+    get "comment_weekly_order"=>"posts#comment_weekly_order"
+    get "impressions_order"=>"posts#impressions_order"
   end
-  
+
   namespace :users do
   resources :searches, only: :index
   end
