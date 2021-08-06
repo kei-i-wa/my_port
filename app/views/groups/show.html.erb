@@ -9,8 +9,8 @@
         <p><%=link_to user_path(member.id) do %><%=member.name%><% end %></p><% end %>
       </div>
       <% if @group.owner_id == current_user.id %>
-      <%= link_to 'Mail',group_new_mail_path(@group), class: "fas fa-paper-plane" %>
-      <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-sm btn-light" %>
+      <%= link_to "メンバーへ連絡",group_new_mail_path(@group), class: "btn btn-sm btn-outline-info fas fa-paper-plane" %>
+      <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-sm btn-outline-primary" %>
       <%= link_to '勉強会削除',group_all_destroy_path(@group),method: :delete,data: { confirm: '本当に削除しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
       <% elsif @group.users.include?(current_user) %>
       <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
@@ -25,7 +25,7 @@
 
     <div class="group-info col-md-7 ml-5 mt-5" style="margin-top:1em;">
       <h4><%= @group.name %></h4>
-      <p><%= @group.introduction %></p>
+      <p><%= safe_join(@group.introduction.split("\n"),tag(:br)) %></p>
       <%= render 'groups/owner', group: @group %>
     </div>
 
@@ -41,7 +41,7 @@
 }
 
 .group-info{
-    padding: 0.5em 1em;
+    /*padding: 0.5em 1em;*/
     color: #474747;
     background: whitesmoke;/*背景色*/
     border-left: double 7px #4ec4d3;/*左線*/
@@ -49,6 +49,11 @@
 }
 
 h6 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px black;
+}
+
+h4 {
   /*線の種類（実線） 太さ 色*/
   border-bottom: solid 3px black;
 }

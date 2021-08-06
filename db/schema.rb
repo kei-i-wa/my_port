@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_051021) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
-    t.string "correct_name"
+    t.string "correct_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_051021) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "owner_id"
-    t.string "status"
+    t.string "status", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_051021) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.text "comment"
+    t.text "comment", null: false
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", null: false

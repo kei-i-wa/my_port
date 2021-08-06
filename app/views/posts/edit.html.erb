@@ -2,8 +2,8 @@
   <div class='row justify-content-center mx-auto'>
     <div class="col-sm-12 col-md-6 col-lg-7 px-5 px-sm-0">
   
-
 <%= form_with(model: @post, local: true) do |f| %>
+
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -15,6 +15,7 @@
       </ul>
     </div>
   <% end %>
+
   
 <!--新規投稿エリア-->
 
@@ -31,7 +32,7 @@
 
   <div class="field">
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+    <%= f.text_field :name,value: @tag_list,required: true,class:"form-control"%>
   </div>
 
 　<div class="actions" style="margin:20px 0;">

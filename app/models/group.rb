@@ -9,6 +9,9 @@ class Group < ApplicationRecord
   validates :status, presence: true
   validates :introduction, presence: true
 
-# グループ紹介は必須でなくても良い気がする
-#   validates :introduction, presence: true
+ def self.search(search)
+  return Group.all unless search
+  Group.where('name LIKE(?)', "%#{search}%").or(Group.where('introduction LIKE(?)', "%#{search}%"))
+  .or(Group.where('status LIKE(?)', "%#{search}%"))
+ end
 end

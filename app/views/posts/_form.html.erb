@@ -12,8 +12,8 @@
       </ul>
     </div>
   <% end %>
-  
-  
+
+
   <div class="form-group">
     <%=f.label"タイトル"%>
     <%= f.text_field:title,class:"form-control" %>
@@ -23,11 +23,11 @@
     <%= f.label"本文" %>
     <%= f.text_area :content,'data-provider': :summernote %>
   </div>
-  
+
 
   <div class="field">
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,class:"form-control"%>
+    <%= f.text_field :name,required: true,class:"form-control"%>
   </div>
 
 　<div class="actions" style="margin:20px 0;">

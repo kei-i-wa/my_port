@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     posts=Post.order(params[:sort])
-    @posts=posts.page(params[:page]).per(10)
+    @posts=posts.page(params[:page]).per(12)
 
     # タグを全表示するかどうかは悩み中
     # 多い順に50個とかのほうが良い？
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     tag_list=params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to posts_path(@post),notice:'投稿完了しました:)'
+      redirect_to post_path(@post),notice:'投稿完了しました:)'
     else
       render:new
     end

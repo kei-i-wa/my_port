@@ -4,7 +4,7 @@
     　<div class="form-group">
     　 <!--非同期通信のためlocal true→remote true or 削除にする-->
         <%= form_with(model:[post, post_comment], remote: true) do |f| %>
-        <%= f.text_area :comment, rows:'2',placeholder: "感想や疑問点をコメントで伝えましょう",class:"form-control" %>
+        <%= f.text_area :comment, rows:'2',placeholder: "感想や疑問点をコメントで伝えましょう",required: true,class:"form-control" %>
         <p><%=f.submit "コメントする",class:"btn btn-outline-secondary"%></p><% end %>
 　　　</div>
 　　　 <% post.post_comments.each do |post_comment| %>

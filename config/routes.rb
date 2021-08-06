@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   namespace :departments do
   resources :searches, only: :index
   end
-  
-  
+
+
   resources :departments,only:[:index,:create,:edit,:update] do
   end
-  
+
   namespace :posts do
   resources :searches, only: :index
-  end  
-  
+  end
+
   resources :posts do
     # コメントは投稿に紐づくのでネストさせる
     resources:post_comments,only:[:create,:destroy]
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   namespace :users do
   resources :searches, only: :index
   end
-  
+
   resources :users, only: [:show,:index,:edit,:update]
   resources :departments, only: [:index,:edit,:update,:create]
 
@@ -36,13 +36,18 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # タグの検索で使用する
   get "search_tag"=>"posts#search_tag"
+
+  namespace :groups do
+  resources :searches, only: :index
+  end
+
   resources :groups do
   get "join" => "groups#join"
    delete "all_destroy" => 'groups#all_destroy'
    get "new/mail" => "groups#new_mail"
    get "send/mail" => "groups#send_mail"
   end
-  
-  
-  
+
+
+
 end

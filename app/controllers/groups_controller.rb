@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       render 'index'
     end
@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
   def update
     @group=Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to group_path
     else
       render"edit"
     end
