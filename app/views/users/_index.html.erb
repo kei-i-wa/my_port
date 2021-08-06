@@ -1,30 +1,36 @@
 <div class="container">
   <div class="row">
 
-　<div class="search_box col-md-3 mr-2">
-　  <div style="text-align:center;"><h6><i class="fas fa-search">ユーザー検索</i></h6></div>
-  <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
-  <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
-  <%=f.submit "Search", class: "search_btn"%><% end %>
-  <!--インクリメンタルサーチの結果が以下に出る-->
-  <ul id="result">
-  </ul>
+  　<div class="search_box col-md-3">
+  　    <div style="text-align:center;" ><h6>並替</h6></div>
+  　    <%= link_to "新しい順",users_path(sort: 'created_at DESC') %>|<%= link_to "古い順 ",users_path(sort: 'created_at ASC') %>
+    　  <div style="text-align:center;" ><h6><i class="fas fa-search">ユーザー検索</i></h6></div>
+      <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
+      <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
+      <%=f.submit "Search", class: "search_btn"%><% end %>
+      <!--インクリメンタルサーチの結果が以下に出る-->
+      <ul id="result">
+      </ul>
+    </div>
 
-  </div>
-
-
-      <% users.each do |user| %>
-      <div class="user_box col-md-2 mr-4"><%= link_to user_path(user.id) do %>
-      <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
-      <div style="text-align:center;"><%= user.department.name %></div>
-      <div style="text-align:center;"><%= user.name %></div>
-      <div style="margin-top:20px; text-align:center;">
-      <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6></div><% end %>
+   <div class="col-md-8">
+     <div class="row">
+      <% users.each do |user| %> 
+        <div class="user_box col-md-3"><%= link_to user_path(user.id) do %>
+          <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
+          <div style="text-align:center;"><%= user.department.name %></div>
+          <div style="text-align:center;"><%= user.name %></div>
+          <div style="margin-top:20px; text-align:center;">
+          <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6></div><% end %>
       </div>
       <% end %>
+   </div>
 
-       <div class="pagination pagination-sm justify-content-center">
-       <%= paginate users %></div>
+
+       <p class="pagination pagination-sm justify-content-center">
+       <%= paginate users %>
+       </p>
+    </div>
   </div>
 </div>
 

@@ -10,7 +10,6 @@
   <h6>Introduction</h6>
   <% if @user.introduction.present?%>
   <p><%== @user.introduction %></p>
-  <!--<p>%== safe_join(user.introduction.split("\n"),tag(:br)) %></p>-->
   <% else %>
   <p style="color:green;">自己紹介は未入力です。<br>
   社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p>

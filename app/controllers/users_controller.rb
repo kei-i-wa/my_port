@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
-    @posts=Post.page(params[:page]).per(10)
+    @posts=Post.page(params[:page]).per(8)
     
   end
 
   def index
-    @users=User.page(params[:page]).per(20)
+    users=User.order(params[:sort])
+    @users=users.page(params[:page]).per(12)
   end
 
   def edit
