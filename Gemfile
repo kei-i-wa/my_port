@@ -86,3 +86,7 @@ gem 'summernote-rails', '~> 0.8.10.0'
 gem 'dotenv-rails'
 # 閲覧数カウントのためのgem
 gem 'impressionist', '~>1.6.1'
+
+group :production do
+  gem 'mysql2'
+end
