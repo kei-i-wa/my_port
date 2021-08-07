@@ -29,7 +29,7 @@ $(document).on('turbolinks:load', function(){
     $(data).each(function(i,department) {
 //     $('.js-users').append(
 //       `<li class="user"><a href="/users/${user.id}">${user.name}</a></li>`
-    $('#result_dep').append(`<li class="dep"><a href="/departments/${department.id}/edit">${department.name}</a></li>`)
+    // $('#result_dep').append(`<li class="dep"><a href="/departments/${department.id}/edit">${department.name}</a></li>`)
 //       );
 // });
 // })

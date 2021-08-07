@@ -77,8 +77,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'impressionist', '~>1.6.1'
 # グラフの表示
 gem "chartkick"
-# デバッグ
-gem 'pry-byebug'
+
 # リッチなテキストエディタの導入
 # gem 'simple_form'
 gem 'summernote-rails', '~> 0.8.10.0'
@@ -89,4 +88,9 @@ gem 'impressionist', '~>1.6.1'
 
 group :production do
   gem 'mysql2'
+end
+
+group :development, :test do
+  # デバッグ
+gem 'pry-byebug'
 end
