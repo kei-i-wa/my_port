@@ -8,6 +8,17 @@ def new
   @user = User.new
   @departments = Department.all
 end
+
+# def create
+#     @user=User.new(configure_permitted_parameters)
+#     if @user.save
+#     redirect_to posts_path
+#     else
+#     render :new
+#     end
+# end
+
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -15,7 +26,9 @@ end
 
   # POST /resource
   # def create
+  
   #   super
+
   # end
 
   # GET /resource/edit
@@ -61,6 +74,12 @@ end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
+  #   user_path(resource)
   # end
+
+# private
+# def configure_permitted_parameters
+#     # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
+#     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
+# end
 end

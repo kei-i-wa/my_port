@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :department_id, presence: true
+
   attachment :profile_image
   # ユーザーは１つの部署に所属（現在の部署）
   belongs_to:department
@@ -19,7 +21,7 @@ class User < ApplicationRecord
   # グループオーナー表示のため
   has_many :owned_groups, class_name: "Group"
 
-  
+
 
   def self.search(search)
     return User.all unless search

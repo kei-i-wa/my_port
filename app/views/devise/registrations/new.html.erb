@@ -6,27 +6,30 @@
   <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+
+
+
   <div class="form-group">
     <%= f.label :name,"お名前" %><br />
-    <%= f.text_field :name, autofocus: true,class:"form-control" %>
+    <%= f.text_field :name, autofocus: true,required: true,class:"form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :email,"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",required: true,class:"form-control" %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label :join_year,"クラス" %><br />
-    <%= f.select :join_year,[["1年目", "Beginner"], ["2年目", "Level2"], ["3年目", "Level3"],["4年目", "Level4"],["5年以上", "Level5"]], include_blank: "選択して下さい",class:"form-control" %>
+    <%= f.select :join_year,[["新入社員", "Beginner"], ["2年目", "Level2"], ["3年目", "Level3"],["4年目", "Level4"],["5年以上", "Level5"]],class:"form-control" %>
   </div>
-  
-  <% if @departments.present?%> 
+
+  <!--% if @departments.present?%> -->
   <div class="form-group">
     <%= f.label:"所属先" %><br />
-    <%= f.collection_select(:department_id, @departments, :id, :name, class: "form-control") %>
+    <%= f.collection_select(:department_id, Department.all, :id, :name, class: "form-control") %>
   </div>
-  <% end %>
+  <!--< end %>-->
 
 
 
@@ -35,12 +38,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上必要です。)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
+    <%= f.password_field :password, autocomplete: "new-password",required: true,class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation,"パスワード（もう一度ご入力ください）" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
+    <%= f.password_field :password_confirmation,autocomplete: "new-password",required: true,class:"form-control" %>
   </div>
 
   <div class="actions" style="margin:20px 0;">
