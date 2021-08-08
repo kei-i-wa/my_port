@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   impressionist :actions => [:show]
 
   def index
-    posts=Post.order(params[:sort])
-    @posts=posts.page(params[:page]).per(12)
+    # posts=Post.order(params[:sort])
+    # @posts=posts.page(params[:page]).per(12)
+    @posts = Post.published.order(params[:sort]).page(params[:page]).per(12)
 
     # タグを全表示するかどうかは悩み中
     # 多い順に50個とかのほうが良い？
@@ -118,6 +119,8 @@ class PostsController < ApplicationController
     @posts=posts.page(params[:page]).per(10)
     @tag_list=Tag.order('id DESC').limit(20)
   end
+  
+  
 
   private
 
@@ -127,6 +130,6 @@ class PostsController < ApplicationController
 
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content,:status)
     end
 end

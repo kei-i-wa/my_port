@@ -34,6 +34,11 @@
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
     <%= f.text_field :name,value: @tag_list,required: true,class:"form-control"%>
   </div>
+  
+   <div class="form-group">
+  <%= f.label"公開範囲を選択" %><br>
+  <%= f.select :status, [["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
+  </div>
 
 　<div class="actions" style="margin:20px 0;">
     <%= f.submit "投稿",class:"btn btn-outline-primary btn-block" %>
