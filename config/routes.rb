@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     member do
       get :favorites
       get :confirm
+      get :destroy_confirm
       patch :destroy
 
     end

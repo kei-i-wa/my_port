@@ -42,7 +42,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string:join_year,null:false
       t.text:introduction
       t.integer :department_id,null:false
-      t.boolean :is_valid,defalut: true
+      t.boolean :is_valid,default: true,null: false
      
       
     end
