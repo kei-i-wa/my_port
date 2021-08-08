@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @posts=Post.page(params[:page]).per(8)
-    @posts = Post.published.order("created_at DESC").page(params[:page]).per(8)
+    @posts = Post.where(status: :true).order("created_at DESC").page(params[:page]).per(8)
   end
 
   def index
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   
   def confirm
     @user = User.find(params[:id])
-    @posts=Post.draft.order("created_at DESC")
+    @posts=Post.where(status: :false).order("created_at DESC")
   end
   
   private

@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text :content,null:false
       t.references :user,foreign_key:true
       t.integer :impressions_count, default: 0
-      t.integer :status,default: 0,null: false
+      t.boolean :status,default: true
       t.timestamps
     end
   end

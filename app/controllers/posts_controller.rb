@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     # posts=Post.order(params[:sort])
     # @posts=posts.page(params[:page]).per(12)
-    @posts = Post.published.order(params[:sort]).page(params[:page]).per(12)
+    @posts = Post.where(status: :true).order(params[:sort]).page(params[:page]).per(12)
 
     # タグを全表示するかどうかは悩み中
     # 多い順に50個とかのほうが良い？

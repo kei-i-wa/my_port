@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_051021) do
     t.text "content", null: false
     t.integer "user_id"
     t.integer "impressions_count", default: 0
-    t.integer "status", default: 0, null: false
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

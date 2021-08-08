@@ -48,5 +48,5 @@ class Post < ApplicationRecord
   Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end
 
-  enum status: {draft: 1,published: 0}
+  # enum status: {draft: 1,published: 0}
 end
