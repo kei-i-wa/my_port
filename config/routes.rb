@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   # devise_for :users
+
   namespace :departments do
   resources :searches, only: :index
   end
@@ -29,7 +30,11 @@ Rails.application.routes.draw do
   resources :searches, only: :index
   end
 
-  resources :users, only: [:show,:index,:edit,:update]
+  resources :users, only: [:show,:index,:edit,:update] do
+    member do
+      get :favorites
+    end
+  end
   resources :departments, only: [:index,:edit,:update,:create]
 
   root :to => 'homes#top'

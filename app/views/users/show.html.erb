@@ -4,7 +4,7 @@
     <!--col3にユーザーの基本情報格納-->
     <%= render 'info', user: @user %>
    
-  
+<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
 <!--そのユーザーの自己紹介を表示-->
 <div class="col-md-8 ml-5" style="margin-top:1em;">
   <h6>Introduction</h6>
