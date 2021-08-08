@@ -35,6 +35,7 @@
         <%= f.submit "変更を保存" ,class:"btn btn-outline-primary btn-block" %>
       </div>
 　　　<% end %>
+　　　<%=link_to "退会する",user_path(@user),method: :patch,data: { confirm: '本当に削除しますか？' }%>
     </div>
   </div>
 </div>

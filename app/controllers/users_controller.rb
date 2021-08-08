@@ -34,6 +34,15 @@ class UsersController < ApplicationController
     @posts=Post.where(status: :false).order("created_at DESC")
   end
   
+  
+  
+  def destroy
+    @user=User.find(params[:id])
+    @user.update(is_valid: false)
+    reset_session
+    redirect_to :root
+  end
+    
   private
 
   

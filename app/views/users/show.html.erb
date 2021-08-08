@@ -27,6 +27,8 @@
 <h6>My port</h6>
 <p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
 <%=link_to "下書き一覧", confirm_user_path(@user)%>
+
+
   <table>
     <% @posts.each do |post| %>
     <tbody>

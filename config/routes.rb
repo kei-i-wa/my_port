@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     get "comment_order"=>"posts#comment_order"
     get "comment_weekly_order"=>"posts#comment_weekly_order"
     get "impressions_order"=>"posts#impressions_order"
-    
-   
+
+
 
   end
 
@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     member do
       get :favorites
       get :confirm
+      patch :destroy
+
     end
   end
   resources :departments, only: [:index,:edit,:update,:create]

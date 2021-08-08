@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_051021) do
     t.string "join_year", null: false
     t.text "introduction"
     t.integer "department_id", null: false
+    t.boolean "is_valid"
     t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
