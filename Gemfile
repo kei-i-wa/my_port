@@ -94,3 +94,9 @@ group :development, :test do
   # デバッグ
 gem 'pry-byebug'
 end
+
+# 管理者権限
+gem 'cancancan'
+gem 'rails_admin'
+# 日本語化する
+gem 'rails-i18n'

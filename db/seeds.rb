@@ -7,3 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Department.create!(name:  "未選択",
 # correct_name: "未選択です")
+User.create!(
+  name: '管理者',
+  email: 'admin@example.com',
+  password: 'adminadmin',
+  password_confirmation: 'adminadmin',
+  join_year: '新入社員',
+  department_id: 1,
+  admin: true
+)
