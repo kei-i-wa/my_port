@@ -1,12 +1,23 @@
-<h3 class="text-center">通知</h3>
- <%= link_to notification_path(@notifications), method: :delete do %>
-        <i class="fas fa-trash" style="color: black;"></i>
-        <h7 style="color: black;">全削除</h7>
-    <% end %>
-<% if @notifications.exists? %>
-    <div class="users-index">
+<div class="container">
+    <div class='row justify-content-center mx-auto'>
+        <div class="notification_box">
+            <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
+             <p class="text-right"><%= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-outline-warning fas fa-trash" %></p>
+        <% if @notifications.exists? %>
         <%= render @notifications %>
-    </div>
-<% else %>
-    <p>通知はありません</p>
-<% end %>
+        <% else %>
+        <p>通知はありません</p>
+        <% end %>
+　　　　</div>
+ 　　</div>
+</div>
+
+<style>
+.notification_box {
+    padding: 0.5em 2em 0.5em 1em;
+    margin: 2em 0;
+    background: #f0f7ff;
+    border: dashed 2px #5b8bd0;/*点線*/
+}
+
+</style>

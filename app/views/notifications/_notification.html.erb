@@ -1,10 +1,10 @@
 <% visiter = notification.visiter %>
 <% post = notification.post %>
 
-<div class="user-view clearfix ">
+<ul>
     
-    <%= notification_form(notification) %>
+    <li><%= notification_form(notification) %>
     <span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
-  
+    </li>
+</ul>
  
-</div>
