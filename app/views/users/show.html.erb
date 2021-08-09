@@ -44,15 +44,22 @@
     <script> 
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'line',                      
+        type: 'bar',                      
         data: {
             labels: ['3日前', '2日前', '1日前', '今日'],
             datasets: [{
-                label: "投稿数",
+                label: "あなたの投稿",
                 data: [<%= @posts.created_3days_ago.count %>, <%= @posts.created_2days_ago.count %>, <%= @posts.created_yesterday.count %>, <%= @posts.created_today.count %>],
                 backgroundColor: 'rgba(255, 80, 120, 1.0)',
                 borderColor: 'rgba(255, 80, 120, 1.0)',
-                fill: false
+                fill: false},{
+                
+                label: "全体の投稿",
+                data: [<%= @posts_all.created_3days_ago.count %>, <%= @posts_all.created_2days_ago.count %>, <%= @posts_all.created_yesterday.count %>, <%= @posts_all.created_today.count %>],
+                backgroundColor: "rgba(255,192,203,1)",
+                borderColor: 'rgba(255, 99, 71, 1.0)',
+                type: 'line', 
+                // fill: false
             }]
         },
     });
