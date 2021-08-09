@@ -88,7 +88,7 @@ class PostsController < ApplicationController
         b.favorited_users.includes(:favorites).where(created_at: from...to).size <=> 
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
       }
-     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(15)
+     @posts=Kaminari.paginate_array(posts).page(params[:page]).per(10)
      @tag_list=Tag.order('id DESC').limit(20)
   end
   
@@ -110,7 +110,7 @@ class PostsController < ApplicationController
     b.commented_users.includes(:post_comments).where(created_at: from...to).size<=>
     a.commented_users.includes(:post_comments).where(created_at: from...to).size
     }
-    @posts=Kaminari.paginate_array(posts).page(params[:page]).per(25)
+    @posts=Kaminari.paginate_array(posts).page(params[:page]).per(10)
     @tag_list=Tag.order('id DESC').limit(20)
   end
   

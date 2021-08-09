@@ -5,14 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Department.create!(name:  "未選択",
-# correct_name: "未選択です")
+
 
 
 Department.create!(
   id: 1,
+  name: '未登録',
+  correct_name: '未登録'
+)
+
+Department.create!(
+  id: 2,
+  name: '退職',
+  correct_name: '退職済'
+)
+
+Department.create!(
+  id: 3,
   name: '総務部',
-  correct_name: '総務部管理'
+  correct_name: '総務部'
+)
+
+Department.create!(
+  id: 4,
+  name: '研修生',
+  correct_name: 'オペレーション'
 )
 
 User.create!(
