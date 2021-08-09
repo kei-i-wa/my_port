@@ -30,5 +30,7 @@ class User < ApplicationRecord
     .or(User.where('introduction LIKE ?', "%#{search}%"))
     .or(User.where(department_id: search)).or(User.where(join_year: search))
   end
-
+  
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 end

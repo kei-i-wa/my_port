@@ -17,6 +17,7 @@ class Post < ApplicationRecord
   has_many :commented_users, through: :post_comments, source: :user
 #閲覧数のカウント
   is_impressionable counter_cashe: true
+  
 
   # 同じ記事を複数回お気に入りするのはNG
    def favorited_by?(user)
@@ -61,6 +62,28 @@ class Post < ApplicationRecord
 
   scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
   scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday))}
-  
+
+  has_many :notifications, dependent: :destroy
+
+ def create_notification_by(current_user)
+        notification = current_user.active_notifications.new(
+          post_id: id,
+          visited_id: user_id,
+          action: "favorite"
+        )
+        notification.save if notification.valid?
+ end
+
+def create_notification_by(current_user)
+        notification = current_user.active_notifications.new(
+          post_id: id,
+          visited_id: user_id,
+          action: "post_comment"
+        )
+        notification.save if notification.valid?
+end
+
+
+
 
 end

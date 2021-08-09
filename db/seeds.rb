@@ -14,23 +14,6 @@ Department.create!(
   correct_name: '未登録'
 )
 
-Department.create!(
-  id: 2,
-  name: '退職',
-  correct_name: '退職済'
-)
-
-Department.create!(
-  id: 3,
-  name: '総務部',
-  correct_name: '総務部'
-)
-
-Department.create!(
-  id: 4,
-  name: '研修生',
-  correct_name: 'オペレーション'
-)
 
 User.create!(
   name: '管理者',

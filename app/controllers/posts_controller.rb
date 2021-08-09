@@ -120,6 +120,21 @@ class PostsController < ApplicationController
     @tag_list=Tag.order('id DESC').limit(20)
   end
   
+  def create_notification(current_user, user)
+    #↓ すでに「いいね」されているかwhereで探しに行かせます。
+    past_notices = Notification.where(["sender_id = ? and recipenter_id = ? and post_id = ? and action = ?", current_user.id, user.id, id, 'favorite'])
+     #↓　blank?メソッドを使用すると、空の場合にtrueが返ります(RubyのメソッドではなくRailsに入っているActiveSupportのgemのメソッドらしいです)
+    if past_notices.blank?
+      #↓ blanK?がtrueの場合のみ、通知作成を行います。(いいねボタン連打したりする人がいると通知がその分作成されて困るからです)
+      notification = current_user.active_notifications.new(
+        post_id: id,
+        recipenter_id: end_user.id,
+        action: 'favorite'
+      )
+      notification.save  #バリデーションが実行された結果エラーが無い場合trueを返し，エラーが発生した場合falseを返す
+    end
+  end
+  
   
 
   private

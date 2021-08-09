@@ -1,13 +1,19 @@
 class FavoritesController < ApplicationController
+  
+  # after_create_commit :create_activities
+
   def create
-    @post = Post.find(params[:post_id])
+    
     # お気に入りに紐づく投稿取得
     post=Post.find(params[:post_id])
     favorite=current_user.favorites.new(post_id: post.id)
     favorite.save
-    # 非同期通信のため以下削除/@post上部追記
-    # redirect_to request.referer
-    
+    @post = Post.find(params[:post_id])
+    @post.create_notification_by(current_user)
+    respond_to do |format|
+        format.html {redirect_to request.referer}
+        format.js
+      end
   end
   
   def destroy
@@ -16,5 +22,10 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(post_id: post.id)
     favorite.destroy
   end
+  
+  # private
+  # def create_activities
+  #   post.create_notification(current_user, post._user)
+  # end
 
 end

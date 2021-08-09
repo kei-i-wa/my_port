@@ -5,11 +5,17 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = post.id
     comment.save
+    @post=Post.find(params[:post_id])
+    @post_comment = PostComment.new
+    @post.create_notification_by(current_user)
+    respond_to do |format|
+        format.html {redirect_to request.referer}
+        format.js
+    end
     # 非同期通信のためrender系は削除
     # redirect_to post_path(post)
     # 非同期通信のため以下の値を追加で定義
-    @post=Post.find(params[:post_id])
-    @post_comment = PostComment.new
+    
   end
   
   def destroy

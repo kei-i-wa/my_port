@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: 'users/registrations' }
   # devise_for :users
 
@@ -33,6 +32,8 @@ Rails.application.routes.draw do
   namespace :users do
   resources :searches, only: :index
   end
+  
+  resources :notifications, only: [:index,:destroy]
 
   resources :users, only: [:show,:index,:edit,:update] do
     member do
