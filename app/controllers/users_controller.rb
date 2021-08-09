@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user=User.find(params[:id])
-    @posts=Post.page(params[:page]).per(8)
-    @posts = Post.where(status: :true).order("created_at DESC").page(params[:page]).per(8)
+    # posts=@user.Post.page(params[:page]).per(8)
+    @posts =@user.posts.where(status: :true).order("created_at DESC").page(params[:page]).per(8)
+    @posts_all = Post.where(status: :true)
   end
 
   def index

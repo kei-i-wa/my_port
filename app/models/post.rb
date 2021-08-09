@@ -15,9 +15,9 @@ class Post < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
 # コメント数順で並べる
   has_many :commented_users, through: :post_comments, source: :user
-#閲覧数のカウント 
-  is_impressionable counter_cashe: true  
-  
+#閲覧数のカウント
+  is_impressionable counter_cashe: true
+
   # 同じ記事を複数回お気に入りするのはNG
    def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -48,5 +48,19 @@ class Post < ApplicationRecord
   Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end
 
-  # enum status: {draft: 1,published: 0}
+
+
+  #過去7日間の投稿数表示
+  scope :created_today,->{where(created_at: Time.zone.now.all_day)}
+  scope :created_yesterday,->{where(created_at: 1.day.ago.all_day)}
+  scope :created_2days_ago,->{where(created_at: 2.days.ago.all_day)}
+  scope :created_3days_ago,->{where(created_at: 3.days.ago.all_day)}
+  scope :created_4days_ago,->{where(created_at: 4.days.ago.all_day)}
+  scope :created_5days_ago,->{where(created_at: 5.days.ago.all_day)}
+  scope :created_6days_ago,->{where(created_at: 6.days.ago.all_day)}
+
+  scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
+  scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday))}
+  
+
 end
