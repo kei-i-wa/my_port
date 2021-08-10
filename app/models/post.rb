@@ -69,6 +69,7 @@ class Post < ApplicationRecord
       visited_id: user_id,
       action: 'favorite'
     )
+    
     notification.save if notification.valid?
   end
 
@@ -78,6 +79,7 @@ class Post < ApplicationRecord
       visited_id: user_id,
       action: 'post_comment'
     )
+    
     notification.save if notification.valid?
   end
 end

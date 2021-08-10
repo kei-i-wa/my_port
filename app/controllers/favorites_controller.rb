@@ -1,8 +1,5 @@
 class FavoritesController < ApplicationController
-  # after_create_commit :create_activities
-
   def create
-    # お気に入りに紐づく投稿取得
     post = Post.find(params[:post_id])
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
@@ -20,9 +17,4 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(post_id: post.id)
     favorite.destroy
   end
-
-  # private
-  # def create_activities
-  #   post.create_notification(current_user, post._user)
-  # end
 end

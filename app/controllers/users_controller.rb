@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # posts=@user.Post.page(params[:page]).per(8)
-    @posts = @user.posts.where(status: :true).order('created_at DESC').page(params[:page]).per(8)
-    @posts_all = Post.where(status: :true)
+    @posts = @user.posts.where(status: true).order('created_at DESC').page(params[:page]).per(8)
+    @posts_all = Post.where(status: true)
   end
 
   def index
-    users = User.where(is_valid: :true)
+    users = User.where(is_valid: true)
     @users = users.order(params[:sort]).page(params[:page]).per(12)
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.find(params[:id])
-    @posts = Post.where(status: :false).order('created_at DESC')
+    @posts = Post.where(status: false).order('created_at DESC')
   end
 
   def destroy_confirm

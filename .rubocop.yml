@@ -1,15 +1,15 @@
 # inherit_from: .rubocop_todo.yml
 
-inherit_from: .rubocop_todo.yml
+# inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.7.1　
-  TargetRailsVersion: 6.0.3.4　
-  Exclude: 
+  TargetRubyVersion: 2.7.1
+  TargetRailsVersion: 6.0.3.4
+  Exclude:
     - "vendor/**/*" # rubocop config/default.yml
     - "db/schema*.rb"
     - "node_modules/**/*"
-    - "db/migrate/**/*" 
+    - "db/migrate/**/*"
     - "app/channels/**/*"
     - "config/**/*"
     - "config.ru"
@@ -22,3 +22,52 @@ AllCops:
     - "Rakefile"
     - "helpers/**/*"
     - "db/seeds.rb"
+
+
+
+
+  # コメント除外
+# Offense count: 52
+# Configuration parameters: AllowedChars.
+# AllowedChars: ©
+Style/AsciiComments:
+  Enabled: false
+  # Exclude:
+    # - 'app/controllers/application_controller.rb'
+    # - 'app/controllers/favorites_controller.rb'
+    # - 'app/controllers/groups_controller.rb'
+    # - 'app/controllers/notifications_controller.rb'
+    # - 'app/controllers/post_comments_controller.rb'
+    # - 'app/controllers/posts_controller.rb'
+    # - 'app/controllers/users/registrations_controller.rb'
+    # - 'app/helpers/notifications_helper.rb'
+    # - 'app/mailers/contact_mailer.rb'
+    # - 'app/models/department.rb'
+    # - 'app/models/group.rb'
+    # - 'app/models/post.rb'
+    # - 'app/models/post_comment.rb'
+    # - 'app/models/tag.rb'
+    # - 'app/models/user.rb'
+
+
+    # あとで直す
+# Offense count: 1
+Lint/DuplicateMethods:
+  Exclude:
+    - 'app/models/post.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+  
+  
+Style/ClassAndModuleChildren:
+  Enabled: false
+  
+Naming/AsciiIdentifiers:
+  Enabled: false
+  
+Layout/LineLength:
+  Enabled: false
