@@ -27,15 +27,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
   protected
 
-    def reject_user
+  def reject_user
     @user = User.find_by(email: params[:user][:email])
-    if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.is_valid == false))
-        flash[:alert] = "このアカウントは退会済みです。"
-        redirect_to new_user_session_path
-      end
-    else
+    if @user && (@user.valid_password?(params[:user][:password]) && (@user.is_valid == false))
+      flash[:alert] = 'このアカウントは退会済みです。'
+      redirect_to new_user_session_path
     end
-    end
+  end
 end
-

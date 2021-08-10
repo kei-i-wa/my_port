@@ -1,5 +1,5 @@
 json.array! @users do |user|
-　json.id user.id
+  　json.id user.id
   json.name user.name
   json.introduction user.introduction
   json.profile_image_id user.profile_image_id

@@ -1,32 +1,31 @@
 class Post < ApplicationRecord
-  belongs_to:user
+  belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
   validates :title, presence: true
   validates :content, presence: true
   # コメント（ユーザーは複数コメントする）
   has_many :post_comments, dependent: :destroy
-   #お気に入り（ユーザーは複数お気に入りする）
-  has_many :favorites,dependent: :destroy
+  # お気に入り（ユーザーは複数お気に入りする）
+  has_many :favorites, dependent: :destroy
   # タグのリレーション
-  has_many :post_tags,dependent: :destroy
-  has_many :tags,through: :post_tags
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
-# いいね数順で並べる
+  # いいね数順で並べる
   has_many :favorited_users, through: :favorites, source: :user
-# コメント数順で並べる
+  # コメント数順で並べる
   has_many :commented_users, through: :post_comments, source: :user
-#閲覧数のカウント
+  # 閲覧数のカウント
   is_impressionable counter_cashe: true
-  
 
   # 同じ記事を複数回お気に入りするのはNG
-   def favorited_by?(user)
+  def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
-   end
+  end
 
   def save_tag(sent_tags)
-  # タグが存在していれば、タグの名前を配列として全て取得
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
+    # タグが存在していれば、タグの名前を配列として全て取得
+    current_tags = tags.pluck(:name) unless tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
     old_tags = current_tags - sent_tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
@@ -34,56 +33,51 @@ class Post < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+      tags.delete　Tag.find_by(name: old)
     end
 
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
-      self.tags << new_post_tag
-   end
+      tags << new_post_tag
+    end
   end
 
   def self.search(search)
-  return Post.all unless search
-  Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
+    return Post.all unless search
+
+    Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end
 
-
-
-  #過去7日間の投稿数表示
-  scope :created_today,->{where(created_at: Time.zone.now.all_day)}
-  scope :created_yesterday,->{where(created_at: 1.day.ago.all_day)}
-  scope :created_2days_ago,->{where(created_at: 2.days.ago.all_day)}
-  scope :created_3days_ago,->{where(created_at: 3.days.ago.all_day)}
-  scope :created_4days_ago,->{where(created_at: 4.days.ago.all_day)}
-  scope :created_5days_ago,->{where(created_at: 5.days.ago.all_day)}
-  scope :created_6days_ago,->{where(created_at: 6.days.ago.all_day)}
+  # 過去7日間の投稿数表示
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+  scope :created_2days_ago, -> { where(created_at: 2.days.ago.all_day) }
+  scope :created_3days_ago, -> { where(created_at: 3.days.ago.all_day) }
+  scope :created_4days_ago, -> { where(created_at: 4.days.ago.all_day) }
+  scope :created_5days_ago, -> { where(created_at: 5.days.ago.all_day) }
+  scope :created_6days_ago, -> { where(created_at: 6.days.ago.all_day) }
 
   scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
-  scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday))}
+  scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
 
   has_many :notifications, dependent: :destroy
 
- def create_notification_by(current_user)
-        notification = current_user.active_notifications.new(
-          post_id: id,
-          visited_id: user_id,
-          action: "favorite"
-        )
-        notification.save if notification.valid?
- end
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id,
+      action: 'favorite'
+    )
+    notification.save if notification.valid?
+  end
 
-def create_notification_by(current_user)
-        notification = current_user.active_notifications.new(
-          post_id: id,
-          visited_id: user_id,
-          action: "post_comment"
-        )
-        notification.save if notification.valid?
-end
-
-
-
-
+  def create_notification_by(current_user)
+    notification = current_user.active_notifications.new(
+      post_id: id,
+      visited_id: user_id,
+      action: 'post_comment'
+    )
+    notification.save if notification.valid?
+  end
 end

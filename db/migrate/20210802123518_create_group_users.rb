@@ -4,7 +4,7 @@ class CreateGroupUsers < ActiveRecord::Migration[5.2]
       # 以下の外部キーを保持
       t.references  :user, foreign_key: true
       t.references  :group, foreign_key: true
-      t.timestamps 
+      t.timestamps
     end
   end
 end

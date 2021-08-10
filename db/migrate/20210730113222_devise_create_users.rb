@@ -5,9 +5,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       ## Database authenticatable
       # メールアドレスでユーザー登録
-      t.string :email,              null: false, default: ""
+      t.string :email,              null: false, default: ''
       # パスワードも必須
-      t.string :encrypted_password, null: false, default: ""
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
@@ -34,17 +34,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
       t.timestamps null: false
       # 名前を登録してもらう
-      t.string:name,null:false
+      t.string :name, null: false
       # 社歴？を登録
-      t.string:join_year,null:false
-      t.text:introduction
-      t.integer :department_id,default: 1,null:false
-      t.boolean :is_valid,default: true,null: false
-     
-      
+      t.string :join_year, null: false
+      t.text :introduction
+      t.integer :department_id, default: 1, null: false
+      t.boolean :is_valid, default: true, null: false
     end
 
     add_index :users, :email,                unique: true

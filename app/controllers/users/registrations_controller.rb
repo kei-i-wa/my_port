@@ -4,20 +4,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-def new
-  @user = User.new
-  @departments = Department.all
-end
+  def new
+    @user = User.new
+    @departments = Department.all
+  end
 
-# def create
-#     @user=User.new(configure_permitted_parameters)
-#     if @user.save
-#     redirect_to posts_path
-#     else
-#     render :new
-#     end
-# end
-
+  # def create
+  #     @user=User.new(configure_permitted_parameters)
+  #     if @user.save
+  #     redirect_to posts_path
+  #     else
+  #     render :new
+  #     end
+  # end
 
   # GET /resource/sign_up
   # def new
@@ -26,7 +25,7 @@ end
 
   # POST /resource
   # def create
-  
+
   #   super
 
   # end
@@ -77,9 +76,9 @@ end
   #   user_path(resource)
   # end
 
-# private
-# def configure_permitted_parameters
-#     # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
-#     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
-# end
+  # private
+  # def configure_permitted_parameters
+  #     # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
+  #     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
+  # end
 end
