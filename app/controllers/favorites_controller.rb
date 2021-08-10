@@ -4,11 +4,11 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
     @post = Post.find(params[:post_id])
-    @post.create_notification_by(current_user)
-    respond_to do |format|
-      format.html { redirect_to request.referer }
-      format.js
-    end
+    # @post.create_notification_by(current_user)
+    # respond_to do |format|
+    #   format.html { redirect_to request.referer }
+    #   format.js
+    # end
   end
 
   def destroy

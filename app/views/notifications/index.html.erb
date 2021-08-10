@@ -4,6 +4,7 @@
             <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
              <p class="text-right"><%= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-outline-warning fas fa-trash" %></p>
         <% if @notifications.exists? %>
+        <!--%= render "notifications/notification" ,notification: @notifications %>-->
         <%= render @notifications %>
         <% else %>
         <p>通知はありません</p>
