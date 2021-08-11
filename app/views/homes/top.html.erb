@@ -1,6 +1,4 @@
-<div class="container">
-<div class="row">
-  <div class="col-sm-12 m-auto">
+
     <!--画像表示スライドはBootstrapのカルーセルで行う　動きはjquery-->
     <div class="carousel slide" data-ride="carousel" id="carousel">
       <!--下の棒（インディケーター）出すための記述-->
@@ -10,58 +8,82 @@
         <li data-target="#carousel" data-slide-to="2"></li>
         <li data-target="#carousel" data-slide-to="3"></li>
         <li data-target="#carousel" data-slide-to="4"></li>
-        <li data-target="#carousel" data-slide-to="5"></li>
       </ol>
       <!--表示する画像、表示する文、一番最初に出したいのはactiveにする-->
       <div class="carousel-inner">
-        <div class="carousel-item active"><%= image_tag 'lighthouse.jpg',class:"img-fluid w-100 mx-auto" %>
+
+        <div class="carousel-item carousel-image-1 active">
         <!--画像が小さくなったら、もう文字は表示しない-->
         <div class="carousel-caption d-none d-md-block">
             <p class="title1">Welcome to my port !</p>
             <p class="introduction"><br>"my port"は業務に関する知識をアウトプットし、社内で共有するサービスです。</p>
           </div>
         </div>
-        
-        <div class="carousel-item"><%= image_tag 'port-terminal.jpg',class:"img-fluid w-100 mx-auto" %>
-          <div class="carousel-caption d-none d-md-block" id="port">
-            <h1><storng>Port</storng>-港-</h1>
-            <p class="introduction">港は貨物が集まる場所です。<br>
-            貨物が多い港は、大きく発展します。<br><br>
-            知識をアウトプットしあなたの港(my port)を<br>
-            大きくしていきましょう。</p>
+
+
+        <div class="carousel-item carousel-image-2">
+          <div class="carousel-caption d-none d-md-block" id="output">
+            <p class="title2" style="color:black;">Output your knowledge</p>
+            <p class="introduction2">あなたの知識・経験ををmy portに投稿しよう。</p>
+            <p class="introduction2">アウトプットをすることで情報が整理され、理解が深まります。</p>
+            <p class="introduction2">あなたの投稿でmy portは、大きな港へと発展していきます。</p>
           </div>
         </div>
-        
-        <div class="carousel-item"><%= image_tag 'ship1.jpg',class:"img-fluid w-100 mx-auto"%>
-        
-        
 
+
+        <div class="carousel-item carousel-image-3">
+          <div class="carousel-caption d-none d-md-block" id="output">
+            <p class="title2">Notice your strength</p>
+            <p class="introduction2" style="color:white;">日々行なっている仕事は人それぞれ。</p>
+            <p class="introduction2" style="color:white;">投稿を通して自身や他者の強み/得意に気づくはずです。</p>
+          </div>
         </div>
 
-        <div class="carousel-item"><%= image_tag 'ship5.jpg',class:"img-fluid w-100 mx-auto"%></div>
-        <div class="carousel-item"><%= image_tag 'ship4.jpg',class:"img-fluid w-100 mx-auto" %></div>
-        
-        <div class="carousel-item"><%= image_tag 'sea2.jpg',class:"img-fluid w-100 mx-auto" %></div>
+
+
+
+
+         <div class="carousel-item carousel-image-5">
+          <div class="carousel-caption d-none d-md-block" id="output">
+            <p class="title2" style="color:black;">Find the solution</p>
+            <p class="introduction2">迷った時はmy portで解決策を探してみましょう。</p>
+            <p class="introduction2">my portにはあなたの問題を解決する道標があるかもしれません。</p>
+            <p class="introduction2">社内に同じ経験をしてる人がいるかもしれません。</p>
+          </div>
+        </div>
+
+
+        <div class="carousel-item carousel-image-6">
+          <div class="carousel-caption d-none d-md-block" id="output">
+            <p class="title2">Go on a voyage</p>
+            <p class="introduction2" style="color:white;">my portで投稿をはじめよう。</p>
+            <p class="introduction2" style="color:white;">my portはあなたの知識・理解を深め、</p>
+            <p class="introduction2" style="color:white;">あなたの投稿により社内の誰かの問題を解決できるかもしれません。</p>
+            <p><%= link_to "新規登録", new_user_registration_path,class:"btn btn-outline-dark fas fa-user-plus" %>
+            <%= link_to "ログイン", new_user_session_path,class:"btn btn-outline-light fas fa-sign-in-alt" %></p>
+          </div>
+        </div>
 
       </div>
       <!--画像横の< > 出すための記述-->
-      <!--<a class="carousel-control-prev" href="#carousel" data-slide="prev">-->
-      <!--  <span class="carousel-control-prev-icon"></span>-->
-      <!--</a>-->
-      <!--<a class="carousel-control-next" href="#carousel" data-slide="next">-->
-      <!--  <span class="carousel-control-next-icon"></span>-->
-      <!--</a>-->
+      <a class="carousel-control-prev" href="#carousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
       </div>
-    </div>
-  </div>
-</div>
+
+
+
+
 
 <style>
   $(".carousel").carousel({
     /*２秒間隔*/
     interval: 2000,
     /*マウスが乗ったら止める*/
-    pause: "hover",
+    /*pause: "hover",*/
   })
 
 
