@@ -113,7 +113,19 @@ anime {
 
 .contents li {
   position: relative;
+  // opacity: 0;
+  // // 下からふわっと（元々下に配置しておく）
+  // transform: translateY(50px);
+  // // 時間をかけて出てきてくれる
+  // transition: 1s;
 }
+
+// javascriptの記述ででshowがつくことになってる
+// .contents li.show {
+  // opacityだとポンっと出てくる
+  // opacity: 1;
+  // transform:none;
+// }
 
 .contents li:not(:first-of-type){
   margin-top: 200px;
@@ -148,6 +160,9 @@ anime {
   background-color:rgba(135, 206, 250,.8);
   padding:10px 20px;
   border-radius:5px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
 }
 
 .contents p{
@@ -158,4 +173,20 @@ anime {
   margin-top:30px;
   border-radius:5px;
   background-color:rgb(224, 255, 255);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 1s;
+}
+
+.img-fluid{
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: 1s;
+}
+
+.contents li.show h2,
+.contents li.show p,
+.contents li.show .img-fluid{
+  transform:none;
+  opacity:1;
 }

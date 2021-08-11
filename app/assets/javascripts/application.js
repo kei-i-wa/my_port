@@ -28,23 +28,58 @@
 //= require summernote/summernote-bs4.min
 //= require summernote-init
 
-// テストのために記述
 
-
-// $(document).ready(function () {
-//   $('.jquery').on('click', function(){
-//     $(this).css('color','red');
-//   });
-// });
-
-// /*アニメーションターゲット取得し、画面上に見えたらアニメーションする*/
-const targetElement = document.querySelectorAll(".animationTarget");
+// 以下で、４つの要素を取得している
+const targetElement = document.getElementsByClassName("animationTarget");
+// ４件取得できる
 // console.log(targetElement);
-// 上からのきょりようし自身の高さを取得し、今どれくらいかを判断
-for (let i = 0; i < targetElement.length; i++){
-  const getElementDistance = targetElement[i].getBoundingClientRect().top
-  // これで上からの距離をとる
-  // いま見えてるとこから、その要素の画像の上までの距離
-  
-  console.log(getElementDistance);
-}
+console.log("画面の高さ",window.innerHeight)
+
+// 以下スクロールで検知します　の記述
+document.addEventListener("scroll",function(){
+  // ４件分上からの距離を取得する　for文で回す
+  for (let i = 0; i < targetElement.length; i++){
+  // 上からの距離と、その要素がある程度たっしてから　６割くらい見えたら
+  const getElementDistance = targetElement[i].getBoundingClientRect().top + targetElement[i].clientHeight *.6
+// 距離の取得ができない。
+  // console.log(getElementDistance);
+// いまのブラウザの高さ取得
+//   if (i === 1){
+//     console.log(getElementDistance)
+// }
+  if(window.innerHeight > getElementDistance) {
+    // これにより、表示されたanimation targetのクラスにshowがつく
+    targetElement[i].classList.add("show")
+  }
+  }
+})
+
+
+
+
+const scrollEvent = function () {
+    window.addEventListener("scroll", function () {
+        // スクロール量の取得
+        let scrollValue = window.pageYOffset;
+
+        // 要素の取得
+        let scrollEle = document.getElementsByClassName("animationTarget");
+        console.log(scrollEle)
+        // 画面の高さを取得
+        let windowHeight = window.innerHeight;
+        console.log(windowHeight)
+        // はみ出させる値（お好みで設定）
+        let value = 100;
+
+        // 条件設定
+        for (let a = 0; a < scrollEle.length; a++) {
+            // 取得した要素のtop値の取得 + スクロール量
+            let scrollTop = scrollEle[a].getBoundingClientRect().top + scrollValue;
+            if (scrollValue > scrollTop - windowHeight + value) {
+                scrollEle[a].classList.add("js-fade");
+            }
+        }
+    });
+};
+
+scrollEvent();
