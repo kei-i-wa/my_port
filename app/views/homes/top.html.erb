@@ -1,33 +1,56 @@
 <div class="container">
 <div class="row">
-  <div class="col-sm-8 m-auto">
+  <div class="col-sm-12 m-auto">
     <!--画像表示スライドはBootstrapのカルーセルで行う　動きはjquery-->
     <div class="carousel slide" data-ride="carousel" id="carousel">
       <!--下の棒（インディケーター）出すための記述-->
       <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0"></li>
-        <li class="active" data-target="#carousel" data-slide-to="1"></li>
+        <li class="active" data-target="#carousel" data-slide-to="0"></li>
+        <li  data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
+        <li data-target="#carousel" data-slide-to="3"></li>
+        <li data-target="#carousel" data-slide-to="4"></li>
+        <li data-target="#carousel" data-slide-to="5"></li>
       </ol>
       <!--表示する画像、表示する文、一番最初に出したいのはactiveにする-->
       <div class="carousel-inner">
-        <div class="carousel-item"><%= image_tag('ship.jpg')%>
+        <div class="carousel-item active"><%= image_tag 'lighthouse.jpg',class:"img-fluid w-100 mx-auto" %>
         <!--画像が小さくなったら、もう文字は表示しない-->
-          <div class="carousel-caption d-none d-md-block">
-            <h3>つながる</h3>
-            <p>あなたの手配はどこまでもつながるよ</p>
+        <div class="carousel-caption d-none d-md-block">
+            <p class="title1">Welcome to my port !</p>
+            <p class="introduction"><br>"my port"は業務に関する知識をアウトプットし、社内で共有するサービスです。</p>
           </div>
         </div>
-        <div class="carousel-item active"><%= image_tag('terminal.jpg')%></div>
-        <div class="carousel-item"><%= image_tag('ship2.jpg')%></div>
+        
+        <div class="carousel-item"><%= image_tag 'port-terminal.jpg',class:"img-fluid w-100 mx-auto" %>
+          <div class="carousel-caption d-none d-md-block" id="port">
+            <h1><storng>Port</storng>-港-</h1>
+            <p class="introduction">港は貨物が集まる場所です。<br>
+            貨物が多い港は、大きく発展します。<br><br>
+            知識をアウトプットしあなたの港(my port)を<br>
+            大きくしていきましょう。</p>
+          </div>
+        </div>
+        
+        <div class="carousel-item"><%= image_tag 'ship1.jpg',class:"img-fluid w-100 mx-auto"%>
+        
+        
+
+        </div>
+
+        <div class="carousel-item"><%= image_tag 'ship5.jpg',class:"img-fluid w-100 mx-auto"%></div>
+        <div class="carousel-item"><%= image_tag 'ship4.jpg',class:"img-fluid w-100 mx-auto" %></div>
+        
+        <div class="carousel-item"><%= image_tag 'sea2.jpg',class:"img-fluid w-100 mx-auto" %></div>
+
       </div>
       <!--画像横の< > 出すための記述-->
-      <a class="carousel-control-prev" href="#carousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#carousel" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
+      <!--<a class="carousel-control-prev" href="#carousel" data-slide="prev">-->
+      <!--  <span class="carousel-control-prev-icon"></span>-->
+      <!--</a>-->
+      <!--<a class="carousel-control-next" href="#carousel" data-slide="next">-->
+      <!--  <span class="carousel-control-next-icon"></span>-->
+      <!--</a>-->
       </div>
     </div>
   </div>
@@ -40,4 +63,6 @@
     /*マウスが乗ったら止める*/
     pause: "hover",
   })
+
+
 </style>
