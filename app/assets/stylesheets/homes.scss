@@ -102,13 +102,9 @@
 //   position: absolute;
 
 // }
-
-.drg{margin-top:50px;}
-
-anime {
-  // max-width:400px;
-  // width:80%;
-  margin:50px auto;
+h4{
+  color:rgba(70, 130, 180,.8);
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
 }
 
 .contents li {
@@ -149,7 +145,7 @@ anime {
   flex-direction:column;
   align-items:flex-end;
   position:absolute;
-  top:40px;
+  top:40%;
 
 }
 
@@ -168,7 +164,7 @@ anime {
 .contents p{
   line-height: 1.6;
   font-size:15px;
-  max-width:400px;
+  max-width:500px;
   padding:15px;
   margin-top:30px;
   border-radius:5px;

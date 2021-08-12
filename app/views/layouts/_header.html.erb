@@ -45,6 +45,9 @@
         <%= link_to "Log out", destroy_user_session_path, method: :delete,class:"btn btn-light fas fa-sign-out-alt" %>
       </li>
     <% else %>
+    <li class="nav-item">
+        <%= link_to " Top","/",class:"btn btn-light fas fa-ship" %>
+    
       <li class="nav-item">
         <%= link_to "Sign up", new_user_registration_path,class:"btn btn-light fas fa-user-plus" %>
       </li>
