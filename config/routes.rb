@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show index edit update] do
     member do
       get :favorites
+      get :comments
       get :confirm
       get :destroy_confirm
       patch :destroy

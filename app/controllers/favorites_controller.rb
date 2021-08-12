@@ -4,11 +4,14 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
     @post = Post.find(params[:post_id])
-    # @post.create_notification_by(current_user)
-    # respond_to do |format|
-    #   format.html { redirect_to request.referer }
-    #   format.js
-    # end
+    
+    unless @post.user == current_user
+    @post.point_by(current_user)
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
+    end
   end
 
   def destroy
@@ -16,5 +19,10 @@ class FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     favorite = current_user.favorites.find_by(post_id: post.id)
     favorite.destroy
+    # @post.destroy_point_by(current_user)
+    # respond_to do |format|
+    #   format.html { redirect_to request.referer }
+    #   format.js
+    # end
   end
 end

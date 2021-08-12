@@ -20,6 +20,10 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users, dependent: :destroy
   # グループオーナー表示のため
   has_many :owned_groups, class_name: 'Group', dependent: :destroy
+  # タグ
+  has_many :post_tags,dependent: :destroy
+  has_many :tags,through: :post_tags
+  
 
   def self.search(search)
     return User.all unless search
@@ -28,7 +32,10 @@ class User < ApplicationRecord
         .or(User.where('introduction LIKE ?', "%#{search}%"))
         .or(User.where(department_id: search)).or(User.where(join_year: search))
   end
-
+# 通知
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+# ポイント
+  has_many :active_points, class_name: 'Point', foreign_key: 'giver_id', dependent: :destroy
+  has_many :passive_points, class_name: 'Point', foreign_key: 'getter_id', dependent: :destroy
 end

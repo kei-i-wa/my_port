@@ -12,8 +12,11 @@
   <p><%== @user.introduction %></p>
   <% else %>
   <p style="color:green;">自己紹介は未入力です。<br>
-  社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p>
-  <% end %>
+  社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p><% end %>
+  <% @posts_tag.each do |tag| %>
+  <%=tag.name%><% end %>
+  <%= @point.length %> </p>
+  
 </div>
 
 <!--グラフいいね数、閲覧数などの情報を表示-->
@@ -73,7 +76,7 @@
 <h6>My port</h6>
 <p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
 <%=link_to "下書き一覧", confirm_user_path(@user)%>
-
+<%=link_to "コメントした記事", comments_user_path(@user)%>
 
 
 

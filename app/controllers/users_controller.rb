@@ -3,7 +3,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # posts=@user.Post.page(params[:page]).per(8)
     @posts = @user.posts.where(status: true).order('created_at DESC').page(params[:page]).per(8)
+    # myport全体の投稿数確認のため
     @posts_all = Post.where(status: true)
+    @point=@user.passive_points.all
+    @posts_tag=@user.tags
   end
 
   def index
@@ -24,8 +27,15 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
+    # このユーザーがしたいいね　そしてそのpost_id
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+  end
+  
+  def comments
+    @user = User.find(params[:id])
+    comments = PostComment.where(user_id: @user.id).pluck(:post_id)
+    @comment_posts=Post.find(comments)
   end
 
   def confirm

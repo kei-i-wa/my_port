@@ -6,10 +6,13 @@ class PostCommentsController < ApplicationController
     comment.save
     @post = Post.find(params[:post_id])
     @post_comment = PostComment.new
+    
+    unless current_user==@post.user
     @post.create_notification_by(current_user)
     respond_to do |format|
       format.html { redirect_to request.referer }
       format.js
+    # end
     end
     # 非同期通信のためrender系は削除
     # redirect_to post_path(post)

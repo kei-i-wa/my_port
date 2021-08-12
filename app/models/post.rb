@@ -39,7 +39,7 @@ class Post < ApplicationRecord
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
-      tags << new_post_tag
+      post_tags.new(user_id: user_id,tag_id: new_post_tag.id).save
     end
   end
 
@@ -62,6 +62,7 @@ class Post < ApplicationRecord
   scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
 
   has_many :notifications, dependent: :destroy
+  has_many :points, dependent: :destroy
 
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
@@ -69,10 +70,17 @@ class Post < ApplicationRecord
       visited_id: user_id,
       action: 'post_comment'
     )
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
-    
+  
     notification.save if notification.valid?
   end
+
+  def point_by(current_user)
+    point = current_user.active_points.new(
+      post_id: id,
+      getter_id: user_id
+      )
+    point.save if point.valid?
+
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_075246) do
+ActiveRecord::Schema.define(version: 2021_08_12_090035) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 2021_08_09_075246) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "points", force: :cascade do |t|
+    t.integer "giver_id", null: false
+    t.integer "getter_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment", null: false
     t.integer "user_id"
@@ -94,11 +102,13 @@ ActiveRecord::Schema.define(version: 2021_08_09_075246) do
   create_table "post_tags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "tag_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id", "tag_id"], name: "index_post_tags_on_post_id_and_tag_id", unique: true
     t.index ["post_id"], name: "index_post_tags_on_post_id"
     t.index ["tag_id"], name: "index_post_tags_on_tag_id"
+    t.index ["user_id"], name: "index_post_tags_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

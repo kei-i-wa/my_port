@@ -1,15 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :correct_user, only: [:edit, :update]
   # 閲覧数はshowページでカウント
   impressionist actions: [:show]
 
   def index
-    # posts=Post.order(params[:sort])
-    # @posts=posts.page(params[:page]).per(12)
     @posts = Post.where(status: true).order(params[:sort]).page(params[:page]).per(12)
-
-    # タグを全表示するかどうかは悩み中
-    # 多い順に50個とかのほうが良い？
     @tag_list = Tag.order('id DESC').limit(20)
   end
 
@@ -35,6 +31,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # 受け取った値を,で区切って配列にする
+    # @postオブジェクトを参照してタグの名前取得
     tag_list = params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
@@ -141,4 +138,14 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content, :status)
   end
+  
+  def correct_user
+    @post=Post.find(params[:id])
+    @user=@post.user
+    # 今のユーザーがpostのユーザーと違うなら
+    if current_user!=@user
+      redirect_to posts_path
+    end
+  end
+  
 end
