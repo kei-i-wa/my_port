@@ -83,15 +83,15 @@
 
 <div class="mt-3 col-md-3">
   <h6>Stock</h6>
-  <p><%=link_to "下書き", confirm_user_path(@user)%></p>
-  <!--<p>%=link_to"いいねした記事",favorites_user_path(@user) %></p>-->
+  <p><%=link_to "下書き記事　　", confirm_user_path(@user)%></p>
+  <p><%=link_to"いいねした記事　",favorites_user_path(@user)%></p>
   <p><%=link_to "コメントした記事", comments_user_path(@user)%></p>
 </div>
 
 <!--自分の投稿を表示-->
 <div class="col-md-8 ml-5 mt-3">
-<h6>My port</h6>
-  <table class="table table-hover">
+  <h6>My port</h6>
+      <table class="table table-hover">
     <thead>
       <tr>
         <th style="width:80%;">Title</th>
@@ -113,10 +113,7 @@
     </tbody>
     <% end %>
     </table>
-
-    
-
-</div>
+    </div>
 
 <!--ページネーション-->
 <%= paginate@posts %>

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       get :comments
       get :confirm
       get :destroy_confirm
-      patch :destroy
+      patch :destroy_user
     end
   end
   resources :departments, only: %i[index edit update create]

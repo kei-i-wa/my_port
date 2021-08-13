@@ -7,8 +7,6 @@ class UsersController < ApplicationController
     @posts_all = Post.where(status: true)
     @point=@user.passive_points.all
     @posts_tag = @user.tags.order('created_at DESC')
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
   end
 
   def index
@@ -27,12 +25,12 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  # def favorites
-    # @user = User.find(params[:id])
+  def favorites
+    @user = User.find(params[:id])
     # このユーザーがしたいいね　そしてそのpost_id
-    # favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    # @favorite_posts = Post.find(favorites)
-  # end
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
   
   def comments
     @user = User.find(params[:id])
@@ -48,8 +46,8 @@ class UsersController < ApplicationController
   def destroy_confirm
     @user = current_user
   end
-
-  def destroy
+  
+  def destroy_user
     @user = current_user
     @user.update(is_valid: false)
     reset_session
@@ -59,6 +57,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :join_year, :department_id, :is_valid)
+    params.require(:user).permit(:name, :profile_image, :introduction, :join_year, :department_id)
   end
 end
