@@ -57,6 +57,8 @@ document.addEventListener("scroll",function(){
 
 
 
+
+
 const scrollEvent = function () {
     window.addEventListener("scroll", function () {
         // スクロール量の取得
@@ -83,3 +85,4 @@ const scrollEvent = function () {
 };
 
 scrollEvent();
+

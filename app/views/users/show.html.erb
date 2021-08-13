@@ -7,16 +7,42 @@
 
 <!--そのユーザーの自己紹介を表示-->
 <div class="col-md-8 ml-5" style="margin-top:1em;">
-  <h6>Introduction</h6>
-  <% if @user.introduction.present?%>
-  <p><%== @user.introduction %></p>
-  <% else %>
-  <p style="color:green;">自己紹介は未入力です。<br>
-  社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p><% end %>
-  <% @posts_tag.each do |tag| %>
-  <%=tag.name%><% end %>
-  <%= @point.length %> </p>
+ 
+<ul class="tabs">
+  <li><a href="" class="active">たぶ１</a></li>
+  <li><a href="">たぶ２</a></li>
+</ul>
+
+<ul class="contents">
+  <li class="active">コンテンツ１</li>
+  <li>コンテンツ２</li>
+</ul>
+
+    
+    
+    
+    
+
+    <% if @user.introduction.present?%>
+    <p><%== @user.introduction %></p>
+    <% else %>
+    <p style="color:green;">自己紹介は未入力です。<br>
+    社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p><% end %>
+  </div>
+  <div>
+  <p><%= image_tag 'ikari.png',size:"20x20"%><i class="fas fa-ship"></i>
+  獲得数：<strong><%= @point.length %></strong>TEU</p>
+  <!--%= pie_chart User.group(:tag).count%>-->
   
+<p>最近の投稿に紐付けたタグ</p>  
+<% @posts_tag.each do |tag| %>
+  <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>(<%= tag.posts.count%>)
+<% end %>
+</div>
+</ul>
+  
+
+
 </div>
 
 <!--グラフいいね数、閲覧数などの情報を表示-->
@@ -44,10 +70,10 @@
 
 <canvas id="myChart" width="300" height="100"> </canvas>
 
-    <script> 
+    <script>
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'bar',                      
+        type: 'bar',
         data: {
             labels: ['3日前', '2日前', '1日前', '今日'],
             datasets: [{
@@ -56,19 +82,46 @@
                 backgroundColor: 'rgba(255, 80, 120, 1.0)',
                 borderColor: 'rgba(255, 80, 120, 1.0)',
                 fill: false},{
-                
+
                 label: "全体の投稿",
                 data: [<%= @posts_all.created_3days_ago.count %>, <%= @posts_all.created_2days_ago.count %>, <%= @posts_all.created_yesterday.count %>, <%= @posts_all.created_today.count %>],
                 backgroundColor: "rgba(255,192,203,1)",
                 borderColor: 'rgba(255, 99, 71, 1.0)',
-                type: 'line', 
+                type: 'line',
                 // fill: false
             }]
         },
     });
 </script>
 
-  
+<canvas id="myChart_2" width="300" height="100"> </canvas>
+
+    <script>
+    var ctx = document.getElementById("myChart_2").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['3日前', '2日前', '1日前', '今日'],
+            datasets: [{
+                label: "あなたの投稿",
+                data: [<%= @posts.created_3days_ago.count %>, <%= @posts.created_2days_ago.count %>, <%= @posts.created_yesterday.count %>, <%= @posts.created_today.count %>],
+                backgroundColor: 'rgba(255, 80, 120, 1.0)',
+                borderColor: 'rgba(255, 80, 120, 1.0)',
+                fill: false},{
+
+                label: "いいね",
+                data: [<%= @point.created_3days_ago.count %>, <%= @point.created_2days_ago.count %>, <%= @point.created_yesterday.count %>, <%= @point.created_today.count %>],
+                backgroundColor: "rgba(255,192,203,1)",
+                borderColor: 'rgba(255, 99, 71, 1.0)',
+                type: 'line',
+                // fill: false
+            }]
+        },
+    });
+</script>
+
+
+
 </div>
 
 <!--自分の投稿を表示-->
@@ -116,4 +169,9 @@ h6 {
   /*線の種類（実線） 太さ 色*/
   border-bottom: solid 3px black;
 }
+
+
+
+
+
 </style>

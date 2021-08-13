@@ -38,4 +38,7 @@ class User < ApplicationRecord
 # ポイント
   has_many :active_points, class_name: 'Point', foreign_key: 'giver_id', dependent: :destroy
   has_many :passive_points, class_name: 'Point', foreign_key: 'getter_id', dependent: :destroy
+  
+  
+   
 end

@@ -6,7 +6,10 @@ class UsersController < ApplicationController
     # myport全体の投稿数確認のため
     @posts_all = Post.where(status: true)
     @point=@user.passive_points.all
-    @posts_tag=@user.tags
+    # @posts_tag=@user.tags.order('count(@user.tags) DESC')
+    # @posts_tag = User.find(PostTag.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+    # @posts_tag = @user.tags.order('count(post_id) desc')
+    @posts_tag = @user.tags.order('created_at DESC')
   end
 
   def index

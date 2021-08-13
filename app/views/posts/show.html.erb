@@ -16,8 +16,6 @@
   <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %><% end %>
   <!--お気に入り-->
    <div id="<%=@post.id %>"><%= render 'favorites/favorite', post: @post %></div>
-  
-   
   <p><%== @post.content %></p>
 </div>
 
@@ -53,4 +51,6 @@ h4 {
     margin: 1em 0;
     /*border: double 5px #5d627b;*/
 }
+
+
 </style>
