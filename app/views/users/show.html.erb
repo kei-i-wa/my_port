@@ -43,9 +43,17 @@
       <strong><%= @point.length %></strong> TEU</h3>
 
       <p>最近の投稿に紐付けたタグ</p>
+      <!--last_tagという箱を作成-->
+      <% last_tag=nil %>
       <% @posts_tag.each do |tag| %>
+      <!--タグが被ってなければ、名前表示　タグ被ってたら何もせず-->
+      <%  if tag != last_tag %>
       <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>(<%= tag.posts.count%>)
       <% end %>
+      <!--今取り出したタグをlast_tagに入れる-->
+      <%  last_tag = tag %>
+      <% end %>
+      
   </div>
 
   <div class="tab_contents_item" style="padding:10px;">
