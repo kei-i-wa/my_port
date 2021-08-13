@@ -32,13 +32,22 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     # 受け取った値を,で区切って配列にする
     # @postオブジェクトを参照してタグの名前取得
-    tag_list = params[:post][:name].split(',')
-    if @post.save
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: '投稿完了しました:)'
-    else
-      render :new
-    end
+    # もし公開記事だったら、
+    # if params[:post][:status]=="true"
+   
+      if @post.save && params[:post][:status]=="true"
+        tag_list = params[:post][:name].split(',')
+        @post.save_tag(tag_list)
+        redirect_to post_path(@post), notice: '投稿完了しました:)'
+      elsif @post.save && params[:post][:status]=="false"
+        redirect_to post_path(@post), notice: '下書きに登録しました。'
+      else
+        render :new
+      end
+    # elsif params[:post][:status]=="false"
+    #   @post.save
+    #   redirect_to post_path(@post), notice: '下書きに登録しました。'
+    # end
   end
 
   def update
@@ -138,7 +147,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content, :status)
   end
-  
+
   def correct_user
     @post=Post.find(params[:id])
     @user=@post.user
@@ -147,5 +156,5 @@ class PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-  
+
 end

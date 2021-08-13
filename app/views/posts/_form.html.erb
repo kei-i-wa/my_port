@@ -28,13 +28,14 @@
   <div class="field">
     <!--%= f.hidden_field :user_id, :value => current_user.id %>-->
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,required: true,class:"form-control"%>
+    <%= f.text_field :name,class:"form-control"%>
+    <p>※下書き保存では、タグの情報は保存されません。</p>
   </div>
 
    <div class="form-group row">
     <%=f.label:"公開範囲",class:"col-sm-4"%>
     <div style="padding-right:20px;">
-    <%= f.radio_button :status, "販売中",checked: true %>
+    <%= f.radio_button :status, "公開",checked: true %>
     <%= f.label :status, "公開", {value: :true, style: "display: inline-block;"} %></div>
     <div style="padding-right:20px;">
     <%= f.radio_button :status, :false %>
