@@ -7,133 +7,98 @@
 
 <!--そのユーザーの自己紹介を表示-->
 <div class="col-md-8 ml-5" style="margin-top:1em;">
- 
-<ul class="tabs">
-  <li><a href="" class="active">たぶ１</a></li>
-  <li><a href="">たぶ２</a></li>
+
+<ul class="nav nav-tabs" id="tabs">
+  <% if @user.id == current_user.id %>
+  <li class="nav-item"><a class="nav-link" href=""><h6>Introduction</h6></a></li>
+  <li class="nav-item"><a class="nav-link active" href=""><h6>Status</h6></i></a></li>
+  <li class="nav-item"><a class="nav-link" href=""><h6>Activity</h6></i></a></li>
+  <% else %>
+  <li class="nav-item"><a class="nav-link active" href="">Introduction</a></li>
+  <li class="nav-item"><a class="nav-link" href="">Status</i></a></li>
+  <li class="nav-item"><a class="nav-link" href="">Activity</i></a></li>
+  <% end %>
+
 </ul>
 
-<ul class="contents">
-  <li class="active">コンテンツ１</li>
-  <li>コンテンツ２</li>
-</ul>
-
-    
-    
-    
-    
-
+<ul id="tab-contents">
+  <% if @user.id == current_user.id %>
+  <div class="tab_contents_item" style="padding:10px;">
+  <% else %>
+  <div class="tab_contents_item active" style="padding:10px;">
+  <% end %>
     <% if @user.introduction.present?%>
     <p><%== @user.introduction %></p>
     <% else %>
     <p style="color:green;">自己紹介は未入力です。<br>
     社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p><% end %>
   </div>
-  <div>
-  <p><%= image_tag 'ikari.png',size:"20x20"%><i class="fas fa-ship"></i>
-  獲得数：<strong><%= @point.length %></strong>TEU</p>
-  <!--%= pie_chart User.group(:tag).count%>-->
-  
-<p>最近の投稿に紐付けたタグ</p>  
-<% @posts_tag.each do |tag| %>
-  <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>(<%= tag.posts.count%>)
-<% end %>
-</div>
-</ul>
-  
+
+  <% if @user.id == current_user.id %>
+  <div class="tab_contents_item active" style="padding:10px;">
+  <% else %>
+  <div class="tab_contents_item" style="padding:10px;">
+  <% end %>
+      <h3><i class="fas fa-ship"></i>
+      <strong><%= @point.length %></strong> TEU</h3>
+
+      <p>最近の投稿に紐付けたタグ</p>
+      <% @posts_tag.each do |tag| %>
+      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>(<%= tag.posts.count%>)
+      <% end %>
+  </div>
+
+  <div class="tab_contents_item" style="padding:10px;">
 
 
-</div>
-
-<!--グラフいいね数、閲覧数などの情報を表示-->
-<div class="mt-3 col-md-3">
-
-  <h6>Status</h6>
-<table class="table">
-  <thead>
-    <tr>
-      <th>今日/全体</th>
-      <th>昨日/全体</th>
-      <th>3日前/全体</th>
-      <th>先週/全体</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th><%= @posts.created_today.count %>/<%= @posts_all.created_today.count %></th>
-      <th><%= @posts.created_yesterday.count %>/<%= @posts_all.created_yesterday.count %></th>
-      <th><%= @posts.created_2days_ago.count %>/<%= @posts_all.created_2days_ago.count %></th>
-      <th><%= @posts_all.created_this_week.count %>/<%= @posts_all.created_this_week.count %></th>
-    </tr>
-  </tbody>
-</table>
-
-<canvas id="myChart" width="300" height="100"> </canvas>
-
-    <script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['3日前', '2日前', '1日前', '今日'],
-            datasets: [{
-                label: "あなたの投稿",
-                data: [<%= @posts.created_3days_ago.count %>, <%= @posts.created_2days_ago.count %>, <%= @posts.created_yesterday.count %>, <%= @posts.created_today.count %>],
-                backgroundColor: 'rgba(255, 80, 120, 1.0)',
-                borderColor: 'rgba(255, 80, 120, 1.0)',
-                fill: false},{
-
-                label: "全体の投稿",
-                data: [<%= @posts_all.created_3days_ago.count %>, <%= @posts_all.created_2days_ago.count %>, <%= @posts_all.created_yesterday.count %>, <%= @posts_all.created_today.count %>],
-                backgroundColor: "rgba(255,192,203,1)",
-                borderColor: 'rgba(255, 99, 71, 1.0)',
-                type: 'line',
-                // fill: false
-            }]
-        },
-    });
-</script>
-
-<canvas id="myChart_2" width="300" height="100"> </canvas>
+<canvas id="myChart_2" width="200" height="50"></canvas>
 
     <script>
     var ctx = document.getElementById("myChart_2").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['3日前', '2日前', '1日前', '今日'],
+            labels: ['6日前', '5日前', '4日前','3日前', '2日前', '1日前', '今日'],
             datasets: [{
-                label: "あなたの投稿",
-                data: [<%= @posts.created_3days_ago.count %>, <%= @posts.created_2days_ago.count %>, <%= @posts.created_yesterday.count %>, <%= @posts.created_today.count %>],
-                backgroundColor: 'rgba(255, 80, 120, 1.0)',
-                borderColor: 'rgba(255, 80, 120, 1.0)',
+                label: "投稿数",
+                data: [<%= @posts.created_6days_ago.count %>,<%= @posts.created_5days_ago.count %>,<%= @posts.created_4days_ago.count %>,<%= @posts.created_3days_ago.count %>, <%= @posts.created_2days_ago.count %>, <%= @posts.created_yesterday.count %>, <%= @posts.created_today.count %>],
+                backgroundColor: 'rgba(175, 238, 238, 1.0)',
+                borderColor: 'rgba(175, 238, 238, 1.0)',
                 fill: false},{
 
-                label: "いいね",
-                data: [<%= @point.created_3days_ago.count %>, <%= @point.created_2days_ago.count %>, <%= @point.created_yesterday.count %>, <%= @point.created_today.count %>],
+                label: "もらったいいね数",
+                data: [<%= @point.created_6days_ago.count %>,<%= @point.created_5days_ago.count %>,<%= @point.created_4days_ago.count %>,<%= @point.created_3days_ago.count %>, <%= @point.created_2days_ago.count %>, <%= @point.created_yesterday.count %>, <%= @point.created_today.count %>],
                 backgroundColor: "rgba(255,192,203,1)",
-                borderColor: 'rgba(255, 99, 71, 1.0)',
+                borderColor: 'rgba(255,192,203,1)',
                 type: 'line',
                 // fill: false
             }]
         },
     });
 </script>
+</div>
+</ul>
+</div>
 
 
-
+<div class="mt-3 col-md-3">
+  <h6>Stock</h6>
+  <p><%=link_to "下書き", confirm_user_path(@user)%></p>
+  <!--<p>%=link_to"いいねした記事",favorites_user_path(@user) %></p>-->
+  <p><%=link_to "コメントした記事", comments_user_path(@user)%></p>
 </div>
 
 <!--自分の投稿を表示-->
 <div class="col-md-8 ml-5 mt-3">
 <h6>My port</h6>
-<p><%=link_to"お気に入り記事",favorites_user_path(@user) %></p>
-<%=link_to "下書き一覧", confirm_user_path(@user)%>
-<%=link_to "コメントした記事", comments_user_path(@user)%>
-
-
-
-  <table>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width:80%;">Title</th>
+        <th style="width:10%;">Good!</th>
+        <th style="width:10%;">Comments</th>
+      </tr>
+    </thead>
     <% @posts.each do |post| %>
     <tbody>
       <tr>
@@ -148,6 +113,9 @@
     </tbody>
     <% end %>
     </table>
+
+    
+
 </div>
 
 <!--ページネーション-->

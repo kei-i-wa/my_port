@@ -1,7 +1,9 @@
 <p class="text-center" style="color:blue;"><i class="far fa-smile">現在、「過去１週間のお気に入り数順」で表示しています。</i><p>
 <%= render 'posts/search', tag_list: @tag_list,posts: @posts %>
 
-
+<% unless @posts.present? %>
+<p>まだ投稿はありません</p>
+<% end %>
 
 <div class="col-md-7 ml-5">
     <% user_favorite = 0 %>

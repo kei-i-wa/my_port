@@ -1,15 +1,13 @@
 RailsAdmin.config do |config|
+
   ### Popular gems integration
 
   ## == Devise ==
-  # コメントアウトをはずす
   config.authenticate_with do
     warden.authenticate! scope: :user
   end
-  config.current_user_method(&:current_user)
-
+    config.current_user_method(&:current_user)
   ## == CancanCan ==
-  # コメントアウトを
   config.authorize_with :cancancan
 
   ## == Pundit ==

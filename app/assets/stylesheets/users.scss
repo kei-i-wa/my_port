@@ -1,43 +1,50 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 *{
   text-decoration: none;
   color: black;
 }
 
-.tabs{
-  display: flex;
-  justify-content:space-between;
-  
-}
+// .tabs{
+//   display: flex;
+//   justify-content:space-between;
 
-.tabs li{
-  width:42%;
-  list-style:none;
-}
+// }
 
-.tabs li a{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:40px;
+// .tabs li{
+//   width:42%;
+//   list-style:none;
+// }
+
+// .tabs li a{
+//   display:flex;
+//   align-items:center;
+//   justify-content:center;
+//   height:40px;
+//   background-color:#bbb;
+// }
+
+// .tabs li a:hover{
+//   opacity: 0.7;
+// }
+
+
+// activeがついてない時
+.nav-link {
   background-color:#bbb;
 }
 
-.tabs li a:hover{
+.nav-link:hover {
   opacity: 0.7;
+  transition: 0.3s;
 }
 
-.tabs li a.active{
-  background-color:pink;
-}
-
-.contents li{
+.tab_contents_item{
   display:none;
-  
 }
 
-.contents li.active{
+.tab_contents_item.active{
   display:block;
 }

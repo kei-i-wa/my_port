@@ -6,10 +6,9 @@ class UsersController < ApplicationController
     # myport全体の投稿数確認のため
     @posts_all = Post.where(status: true)
     @point=@user.passive_points.all
-    # @posts_tag=@user.tags.order('count(@user.tags) DESC')
-    # @posts_tag = User.find(PostTag.group(:user_id).order('count(user_id) desc').pluck(:user_id))
-    # @posts_tag = @user.tags.order('count(post_id) desc')
     @posts_tag = @user.tags.order('created_at DESC')
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   def index
@@ -28,12 +27,12 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  def favorites
-    @user = User.find(params[:id])
+  # def favorites
+    # @user = User.find(params[:id])
     # このユーザーがしたいいね　そしてそのpost_id
-    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
-  end
+    # favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    # @favorite_posts = Post.find(favorites)
+  # end
   
   def comments
     @user = User.find(params[:id])

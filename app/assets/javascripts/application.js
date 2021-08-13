@@ -55,34 +55,53 @@ document.addEventListener("scroll",function(){
 })
 
 
+// const tabs = document.getElementsByClassName("nav-link");
+// const tab_contents = document.getElementsByClassName("tab_contents_item");
+// console.log(tabs);
+// console.log(tab_contents);
+// window.addEventListener('DOMContentLoaded', function() {
+// tabs[0].addEventListener("click",function(e){
+//   e.preventDefault();
+//   tabs[0].classList.remove("active");
+//   tabs[1].classList.remove("active");
+//   tab_contents[0].classList.remove("active");
+//   tab_contents[1].classList.remove("active");
+//   tabs[0].classList.add("active");
+//   tab_contents[0].classList.add("active");
+// });
+// tabs[1].addEventListener("click",function(e){
+//   e.preventDefault();
+//   tabs[0].classList.remove("active");
+//   tabs[1].classList.remove("active");
+//   tab_contents[0].classList.remove("active");
+//   tab_contents[1].classList.remove("active");
+//   tabs[1].classList.add("active");
+//   tab_contents[1].classList.add("active");
+// });
+// }
+// , false);
 
+// window.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function() {
+const tabs = document.getElementsByClassName("nav-link");
+const tab_contents = document.getElementsByClassName("tab_contents_item");
+console.log(tabs);
+console.log(tab_contents);
+for (let i = 0; i < tabs.length; i++){
+tabs[i].addEventListener("click",function(e){
+  e.preventDefault();
 
+  for (let j = 0; j < tabs.length; j++){
+    tabs[j].classList.remove("active");
+  }
+  for (let j = 0; j < tabs.length; j++){
+    tab_contents[j].classList.remove("active");
+  }
+  tabs[i].classList.add("active");
+  tab_contents[i].classList.add("active");
+});
+}
 
-
-const scrollEvent = function () {
-    window.addEventListener("scroll", function () {
-        // スクロール量の取得
-        let scrollValue = window.pageYOffset;
-
-        // 要素の取得
-        let scrollEle = document.getElementsByClassName("animationTarget");
-        console.log(scrollEle)
-        // 画面の高さを取得
-        let windowHeight = window.innerHeight;
-        console.log(windowHeight)
-        // はみ出させる値（お好みで設定）
-        let value = 100;
-
-        // 条件設定
-        for (let a = 0; a < scrollEle.length; a++) {
-            // 取得した要素のtop値の取得 + スクロール量
-            let scrollTop = scrollEle[a].getBoundingClientRect().top + scrollValue;
-            if (scrollValue > scrollTop - windowHeight + value) {
-                scrollEle[a].classList.add("js-fade");
-            }
-        }
-    });
-};
-
-scrollEvent();
+})
 
