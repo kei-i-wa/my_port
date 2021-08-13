@@ -51,9 +51,18 @@ class PostsController < ApplicationController
   end
 
   def update
+    # postのid持ってくる
     @post = Post.find(params[:id])
+    # 入力されたタグを受け取る
     tag_list = params[:post][:name].split(',')
+    # もしpostの情報が更新されたら
     if @post.update(post_params)
+    # このpost_idに紐づいていたタグを@oldに入れる
+      @old_relations=PostTag.where(post_id: @post.id)
+    # それらを取り出し、消す。消し終わる
+      @old_relations.each do |relation|
+      relation.delete
+      end  
       @post.save_tag(tag_list)
       redirect_to post_path(@post.id), notice: '投稿完了しました:)'
     else
