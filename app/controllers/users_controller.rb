@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    # posts=@user.Post.page(params[:page]).per(8)
-    @posts = @user.posts.where(status: true).order('created_at DESC').page(params[:page]).per(8)
-    # myport全体の投稿数確認のため
-    @posts_all = Post.where(status: true)
+    @posts = @user.posts.where(status: true).order('created_at DESC').page(params[:page]).per(20)
     @point=@user.passive_points.all
-    @posts_tag = @user.tags.order('created_at DESC')
+    @posts_tag = @user.tags.order('created_at DESC').limit(15)
   end
 
   def index

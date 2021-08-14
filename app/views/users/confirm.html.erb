@@ -1,2 +1,6 @@
-<p class="text-center" style="color:blue;"><i class="far fa-smile">現在下書き記事を表示しています。</i><p>
+<% if @posts.present?%>
+<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">現在下書き記事を表示しています。</i></p>
+<% else %>
+<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">下書き記事はありません。</i></p>
+<% end %>
 <%= render 'favorites', favorite_posts: @posts,user: @user %>
