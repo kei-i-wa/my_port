@@ -19,7 +19,7 @@
   <p><%== @post.content %></p>
 </div>
 
-<% if @post.user=current_user %>
+<% if @post.user==current_user %>
 <p><%= link_to '記事の編集', edit_post_path(@post),class:"btn btn-outline-secondary fas fa-edit" %></p>
 <p><%= link_to"記事の削除",post_path(@post), method: :delete,data: { confirm: '本当に消しますか？' },class:'btn btn-outline-danger fas fa-ban'%></p>
 <% end %>

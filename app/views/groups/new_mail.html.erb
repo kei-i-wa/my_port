@@ -1,20 +1,20 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2><%=@group.name %>メンバーへのメール</h2>
-    <%= form_with url: group_send_mail_path(@group),method: :get, local: true do |f| %>
-    <div class="form-group">
-        <%= f.label :mail_title %>
-        <%= f.text_field :mail_title,class:'form-control'%>
+    <div class="col-sm-12 col-md-8  mx-auto mt-5">
+      <p style="font-size:20px;">「<%=@group.name %>」の参加者へのメール</p>
+        <%= form_with url: group_send_mail_path(@group),method: :get, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :"件名" %>
+          <%= f.text_field :mail_title,class:'form-control'%>
         </div>
-    <div class="form-group">
-        <%=f.label:mail_content %>
-        <%= f.text_area :mail_content,class:'form-control' %>
+        <div class="form-group">
+          <%=f.label:"本文" %>
+          <%= f.text_area :mail_content,class:'form-control' %>
+        </div>
+        <div><%= f.submit'送信',class:"btn btn-outline-info btn-block"%>
+        </div>
+        <p>送信ボタンを押すと送信が完了します。</p>
+        <% end %>
     </div>
-    <div>
-    <%= f.submit'送信' %>
-    </div>
-    <% end %>
-    </div>
-    </div>
-    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
-<p class="text-right">
-  <i class="fas fa-flag">参加条件:<%= group.status%></i>
+<p class="text-right" style="font-size:14px;">
+  <i class="fas fa-flag">参加条件:<%= group.status.truncate(15)%></i>
    <i class="fas fa-user-friends"><%=group.users.count %>人が参加中</i>
 
    <%= group.user ? group.user.name : "不明" %>が

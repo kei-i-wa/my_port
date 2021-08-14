@@ -1,1 +1,4 @@
+<% unless @groups.present?%>
+<p class="text-center" style="color:blue; font-size:18px;">まだ勉強会はありません。</p>
+<% end %>
 <%= render 'groups/index', group: @group,groups: @groups %>

@@ -5,10 +5,11 @@ class Group < ApplicationRecord
   # グループオーナー表示のために
   belongs_to :user
 
-  validates :name, presence: true
-  validates :status, presence: true
+  validates :name, presence: true,
+                  length: {maximum:25}
+  validates :status, presence: true,
+                  length: {maximum:25}
   validates :introduction, presence: true
-
   def self.search(search)
     return Group.all unless search
 

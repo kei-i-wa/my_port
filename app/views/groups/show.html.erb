@@ -3,32 +3,30 @@
 
     <!--グループメンバー表示-->
     <div class="card col-md-3 mt-5">
-     <div class="card-body">
-       <h6 class="card-title">メンバー</h6>
-       <% @group.users.each do |member| %>
-        <p><%=link_to user_path(member.id) do %><%=member.name%><% end %></p><% end %>
+      <div class="card-body">
+       <h5 class="card-title"><i class="fas fa-users"></i>  勉強会参加者</h5>
+        <% @group.users.each do |member| %>
+          <p id="group_text"><%=link_to user_path(member.id) do %><%=member.name%><% end %>
+          </p>
+        <% end %>
       </div>
+    <!--オーナーは勉強会編集削除ができる。それ以外は参加、退出のみ-->
       <% if @group.owner_id == current_user.id %>
-      <%= link_to "メンバーへ連絡",group_new_mail_path(@group), class: "btn btn-sm btn-outline-info fas fa-paper-plane" %>
-      <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-sm btn-outline-primary" %>
-      <%= link_to '勉強会削除',group_all_destroy_path(@group),method: :delete,data: { confirm: '本当に削除しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
+        <%= link_to "参加者へ一斉通知",group_new_mail_path(@group), class: "btn btn-outline-info fas fa-paper-plane" %>
+        <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-outline-primary fas fa-edit" %>
+        <%= link_to '勉強会削除',group_all_destroy_path(@group),method: :delete,data: { confirm: '本当に削除しますか？' } ,class: "btn btn-outline-danger fas fa-exclamation-triangle" %>
       <% elsif @group.users.include?(current_user) %>
-      <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-sm btn-outline-danger" %>
+        <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-outline-danger " %>
       <%else %>
-      <%= link_to '参加', group_join_path(@group), class: "btn btn-sm btn-outline-success" %>
+        <%= link_to '参加', group_join_path(@group), class: "btn btn-outline-success" %>
       <% end %>
     </div>
 
-
-
-
-
     <div class="group-info col-md-7 ml-5 mt-5" style="margin-top:1em;">
-      <h4><%= @group.name %></h4>
-      <p><%= safe_join(@group.introduction.split("\n"),tag(:br)) %></p>
+      <h3><i class="fas fa-graduation-cap"></i><%= @group.name %></h3>
       <%= render 'groups/owner', group: @group %>
+      <p id="group_text"><%= safe_join(@group.introduction.split("\n"),tag(:br)) %></p>
     </div>
-
   </div>
 </div>
 
@@ -42,19 +40,25 @@
 
 .group-info{
     /*padding: 0.5em 1em;*/
-    color: #474747;
-    background: whitesmoke;/*背景色*/
-    border-left: double 7px #4ec4d3;/*左線*/
-    border-right: double 7px #4ec4d3;/*右線*/
+
+    border: double 5px rgba(255, 105, 180,0.4);
 }
 
-h6 {
-  /*線の種類（実線） 太さ 色*/
+h5 {
   border-bottom: solid 3px black;
 }
 
-h4 {
+h3 {
   /*線の種類（実線） 太さ 色*/
-  border-bottom: solid 3px black;
+  /*border-bottom: solid 3px black;*/
+  border-bottom: solid 2px black;
+}
+
+#group_text{
+  font-size:15px;
+  /*隣との間を広げる*/
+  letter-spacing: 1px;
+  /*１行ずつの間に高さ出す*/
+  line-height: 2;
 }
 </style>

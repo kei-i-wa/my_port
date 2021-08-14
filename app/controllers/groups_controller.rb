@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def index
     @group = Group.new
     @group.users << current_user
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(20)
   end
 
   def new; end

@@ -1,29 +1,36 @@
 <div class="container">
-  <div class="row">
-    <%= render 'layouts/errors', obj: group %>
-
-     <%= render 'groups/form', group: group %>
+  
+  <!--エラーメッセージ-->
+  <% if group.errors.any? %>
+    <%= render 'errors', obj: group %>
+  <% end %>
+  
+<div class="row">
+  <!--勉強会の新規作成画面-->
+  <%= render 'groups/form', group: group %>
 
   <div class="col-md-7 ml-5 mt-5" style="margin-top:1em;">
-    <% groups.each do |group| %>
-    <div class="card mb-3">
-        <h5><i class="fas fa-user-friends"></i>
-        <%=link_to group_path(group) do%><%=group.name %><% end %>
-        </h5>
-        <p class="card-text"><%= group.introduction.truncate(50)  %></p>
-        <%= render 'groups/owner', group: group %>
-    </div>
+    <%if groups.present? %>
+      <% groups.each do |group| %>
+        <div class="card mb-3">
+          <h4><i class="fas fa-user-friends"></i>
+            <%=link_to group_path(group) do%><%=group.name %><% end %>
+          </h4>
+            <p class="card-text" style="font-size:15px;"><%= group.introduction.truncate(50)  %></p>
+            <%= render 'groups/owner', group: group %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-
-
-
-　</div>
+  <div class="pagination pagination-sm justify-content-center">
+    <%= paginate groups %>
+  </div>
+</div>
 </div>
 
 
 <style>
-  .group_box {
+.group_box {
     padding: 0.5em 1em;
     margin: 2em 0;
     color: #474747;
@@ -38,14 +45,13 @@ h6 {
 }
 
 
-h5{
+h4{
   border-bottom: solid 2px #FF69A3;
 }
 
 .card{
-  padding:0;
-  margin:0;
-  border:none;
+  padding:10px;
+  /*border:none;*/
 }
 </style>
 

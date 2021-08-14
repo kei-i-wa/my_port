@@ -33,13 +33,11 @@ class PostsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     # @postオブジェクトを参照してタグの名前取得
     # もし公開記事だったら、
-    # if params[:post][:status]=="true"
-   
-      if @post.save && params[:post][:status]=="true"
+      if @post.save && params[:post][:status]== :true
         tag_list = params[:post][:name].split(',')
         @post.save_tag(tag_list)
         redirect_to post_path(@post), notice: '投稿完了しました:)'
-      elsif @post.save && params[:post][:status]=="false"
+      elsif @post.save && params[:post][:status]== :false
         redirect_to post_path(@post), notice: '下書きに登録しました。'
       else
         render :new
