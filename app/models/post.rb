@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title, presence: true,length:{maximum:60}
+  validates :content, presence: true,length:{maximum:4000}
   # コメント（ユーザーは複数コメントする）
   has_many :post_comments, dependent: :destroy
   # お気に入り（ユーザーは複数お気に入りする）
@@ -10,7 +10,6 @@ class Post < ApplicationRecord
   # タグのリレーション
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-
   # いいね数順で並べる
   has_many :favorited_users, through: :favorites, source: :user
   # コメント数順で並べる
@@ -43,9 +42,9 @@ class Post < ApplicationRecord
     end
   end
 
+　# 検索、タイトル、コンテンツで検索可能
   def self.search(search)
     return Post.all unless search
-
     Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end
 
@@ -58,12 +57,13 @@ class Post < ApplicationRecord
   scope :created_5days_ago, -> { where(created_at: 5.days.ago.all_day) }
   scope :created_6days_ago, -> { where(created_at: 6.days.ago.all_day) }
 
-  scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
-  scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
+  # scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
+  # scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
 
+# 通知のアソシエーション
   has_many :notifications, dependent: :destroy
   has_many :points, dependent: :destroy
-
+# 通知の作成
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,
@@ -73,7 +73,7 @@ class Post < ApplicationRecord
   
     notification.save if notification.valid?
   end
-
+# ポイントの
   def point_by(current_user)
     point = current_user.active_points.new(
       post_id: id,

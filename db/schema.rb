@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2021_08_12_090035) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2021_08_12_090035) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visiter_id", null: false
     t.integer "visited_id", null: false
-    t.integer "post_id"
-    t.string "action"
+    t.integer "post_id", null: false
+    t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(version: 2021_08_12_090035) do
 
   create_table "post_comments", force: :cascade do |t|
     t.text "comment", null: false
-    t.integer "user_id"
-    t.integer "post_id"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,9 +114,9 @@ ActiveRecord::Schema.define(version: 2021_08_12_090035) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "impressions_count", default: 0
-    t.boolean "status", default: true
+    t.boolean "status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"

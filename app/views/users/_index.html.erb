@@ -1,9 +1,7 @@
 <div class="container">
   <div class="row">
   　<div class="search_box col-md-3 mt-5">
-    　  <div style="text-align:center;" >
     　    <h6><i class="fas fa-search">ユーザー検索</i></h6>
-       </div>
         <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
           <%= f.text_field :keyword, placeholder: "キーワード", class: "search_input"%>
           <%=f.submit "検索", class: "search_btn"%>
@@ -68,6 +66,7 @@
 
 h6 {
   /*線の種類（実線） 太さ 色*/
+  text-align:center;
   border-bottom: solid 3px black;
 }
 

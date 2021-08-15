@@ -9,7 +9,9 @@ class Group < ApplicationRecord
                   length: {maximum:25}
   validates :status, presence: true,
                   length: {maximum:25}
-  validates :introduction, presence: true
+  validates :introduction, presence: true,length: {maximum:4000}
+  
+  # 検索
   def self.search(search)
     return Group.all unless search
 
