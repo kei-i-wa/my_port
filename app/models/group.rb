@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   has_many :group_users
   # グループは複数のユーザーを持つ。group_usersから参照可能
   has_many :users, through: :group_users, dependent: :destroy

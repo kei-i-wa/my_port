@@ -1,7 +1,7 @@
 <% if @comment_posts.present? %>
-<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">コメントした記事を表示しています。</i></p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>コメントした記事を表示しています。</p>
 <% else %>
-<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">コメントした記事はありません。</i></p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>コメントした記事はありません。</p>
 <% end %>
 
 <%= render 'favorites', favorite_posts: @comment_posts,user: @user %>

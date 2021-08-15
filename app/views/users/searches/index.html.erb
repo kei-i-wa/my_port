@@ -1,1 +1,9 @@
+<!--検索に該当するものがあれば、件数表示-->
+<% if @users.present?%>
+  <p class="text-center" style="color:blue; font-size:15px;">
+    <i class="far fa-smile"></i>「<%=@value%>」に該当するものが<%= @users.count %>件見つかりました。
+  </p>
+<% else %>
+  <p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>該当の検索結果はありませんでした。</p>
+<% end %>
 <%= render 'users/index', users: @users ,departments: @departments%>

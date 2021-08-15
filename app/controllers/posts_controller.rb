@@ -61,7 +61,7 @@ class PostsController < ApplicationController
         relation.delete
         end  
          @post.save_tag(tag_list)
-        redirect_to post_path(@post.id), notice: '投稿完了しました:)'
+        redirect_to post_path(@post.id), notice: '更新完了しました:)'
       else redirect_to posts_path, notice: '下書きに登録しました。'
       end
     else
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page]).per(10)
+    @posts = @tag.posts.page(params[:page]).per(20)
   end
 
   def favorite_order
@@ -87,7 +87,7 @@ class PostsController < ApplicationController
         a.favorited_users.includes(:favorites).size
     end
     @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def favorite_weekly_order
@@ -98,8 +98,8 @@ class PostsController < ApplicationController
       b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
     end
-    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(10)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def comment_order
@@ -108,8 +108,8 @@ class PostsController < ApplicationController
       b.commented_users.includes(:post_comments).size <=>
         a.commented_users.includes(:post_comments).size
     end
-    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(25)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def comment_weekly_order
@@ -120,14 +120,14 @@ class PostsController < ApplicationController
       b.commented_users.includes(:post_comments).where(created_at: from...to).size <=>
         a.commented_users.includes(:post_comments).where(created_at: from...to).size
     end
-    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(10)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def impressions_order
     posts = Post.order(impressions_count: 'DESC')
-    @posts = posts.page(params[:page]).per(10)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @posts = posts.page(params[:page]).per(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def create_notification(current_user, user)

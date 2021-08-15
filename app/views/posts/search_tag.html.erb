@@ -1,2 +1,2 @@
-<p class="text-center" style="color:blue;"><i class="far fa-smile">現在、「<%=@tag.name%>」タグの投稿を表示しています。</i><p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>「<%=@tag.name%>」タグの投稿が<%= @tag.posts.count%>件あります。<p>
 <%= render 'posts/index', tag_list: @tag_list,posts: @posts %>

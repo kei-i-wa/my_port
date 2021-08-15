@@ -22,8 +22,9 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @group.users << current_user
     if @group.save
-      redirect_to group_path(@group)
+      redirect_to group_path(@group), notice: '投稿完了しました:)'
     else
+      @groups = Group.page(params[:page]).per(20)
       render 'index'
     end
   end
@@ -35,7 +36,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path
+      redirect_to group_path, notice: '更新完了しました:)'
     else
       render 'edit'
     end

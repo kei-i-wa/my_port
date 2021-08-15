@@ -18,9 +18,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    @departments=Department.all
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id),notice:"更新完了しました:)"
+    else
+      render :edit
+    end
   end
 
   def favorites
@@ -52,11 +56,7 @@ class UsersController < ApplicationController
     redirect_to :root
   end
   
-  def search_department
-    @departments=Department.all
-    @department=Department.find(params[:department_id])
-    @users=@department.users.page(params[:page]).per(10)
-  end
+
 
   private
 

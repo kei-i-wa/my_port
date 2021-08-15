@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
   belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
   validates :title, presence: true,length:{maximum:60}

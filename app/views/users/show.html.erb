@@ -1,4 +1,6 @@
 <div class="container">
+  <p id="notice" style="text-align:center"><%=notice %></p>
+  <%= render 'layouts/errors', obj: @user %>
   <%if @user.is_valid == true %>
   <div class="row">
 

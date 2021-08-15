@@ -1,1 +1,9 @@
+<% if @departments.present?%>
+  <p class="text-center" style="color:blue; font-size:15px;">
+    <i class="far fa-smile"></i>「<%=@value%>」に該当するものが<%= @departments.count %>件見つかりました。
+  </p>
+<% else %>
+  <p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>該当の検索結果はありませんでした。</p>
+<% end %>
+
 <%= render 'departments/index', departments: @departments %>

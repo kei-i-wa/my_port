@@ -1,7 +1,7 @@
 <% if @favorite_posts.present? %>
-<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">いいね記事を表示しています。</i></p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>いいね記事を表示しています。</p>
 <% else %>
-<p class="text-center" style="color:blue; font-size:18px;"><i class="far fa-smile">いいねした記事はありません。</i></p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>いいねした記事はありません。</p>
 <% end %>
 
 <%= render 'favorites', favorite_posts: @favorite_posts,user: @user %>

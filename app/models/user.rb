@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  default_scope -> { order(created_at: :desc) }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :department_id, presence: true
+  validates :name, presence: true
   validates :introduction, length:{maximum:800}
   # refile使用時の記述
   attachment :profile_image
@@ -37,7 +39,7 @@ class User < ApplicationRecord
 # ポイント　ポイント与える側、もらう側で２通り
   has_many :active_points, class_name: 'Point', foreign_key: 'giver_id', dependent: :destroy
   has_many :passive_points, class_name: 'Point', foreign_key: 'getter_id', dependent: :destroy
-  
-  
-   
+
+
+
 end

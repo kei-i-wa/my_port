@@ -21,7 +21,7 @@
       </div>
         <% @departments.each do |department| %>
            <%=link_to users_searches_path(keyword: department.id) do%>
-            <li><%= department.name %>(<%=department.users.count %>)</li>
+            <li style="list-style:none;"><%=department.id %>：<%= department.name %>(<%=department.users.count %>)</li>
           <%end %>
         <% end %>
   </div>
