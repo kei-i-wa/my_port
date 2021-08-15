@@ -1,20 +1,31 @@
-     <div class="text-md-right">
-      <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
-      <% if post.favorited_by?(current_user) %>
-     <!--非同期通信のためremote true追記-->
-      <%= link_to post_favorites_path(post), method: :delete,remote: true do %>
-      <i class="fas fa-check"></i><%= post.favorites.count %><% end %>
-      <% else %>
+<div class="text-md-right">
+ <!--タグの表示-->
+  <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
+ <!--いいねのエリア-->
+   <% if post.favorited_by?(current_user) %>
+   <!--非同期通信のためremote true追記-->
+    <%= link_to post_favorites_path(post), method: :delete,remote: true do %>
+      <i class="fas fa-check"></i><%= post.favorites.count %>
+    <% end %>
+   <% else %>
       <!--非同期通信のためremote true追記-->
-      <%= link_to post_favorites_path(post), method: :post,remote: true do %>
-      <i class="far fa-star"></i><%= post.favorites.count %><% end %>
-      <% end %>
-      
-      <i class="far fa-comment-dots"><%=post.post_comments.count%></i>
-      
-      <% if post.user_id == current_user.id %>
-      <i class="fas fa-eye"><%= post.impressionist_count(:filter => :session_hash)%></i><% end %>
-      <%= attachment_image_tag post.user,:profile_image,size:"20x20",fallback: "no_image.png"%>
-      <%= link_to user_path(post.user) do %><%=post.user.name%><% end %>が
-      <%=post.created_at.strftime('%Y/%m/%d') %>に作成
-      </div>
+    <%= link_to post_favorites_path(post), method: :post,remote: true do %>
+      <i class="far fa-star"></i><%= post.favorites.count %>
+    <% end %>
+   <% end %>
+  <!--コメントのエリア-->
+  <% if post.user_id == current_user.id %>
+   <i class="far fa-comment-dots">
+    <%=post.post_comments.count%>
+   </i>
+  <!--閲覧数のエリア-->
+    <i class="fas fa-eye"><%= post.impressionist_count(:filter => :session_hash)%>
+    </i>
+   <% end %>
+ 　<!--投稿者のエリア-->
+   <%= attachment_image_tag post.user,:profile_image,size:"20x20",fallback: "no_image.png"%>
+    <%= link_to user_path(post.user) do %>
+     <%=post.user.name%>
+    <% end %>
+    (<%=post.created_at.strftime('%Y/%m/%d') %>)
+</div>

@@ -5,8 +5,8 @@ class PostsController < ApplicationController
   impressionist actions: [:show]
 
   def index
-    @posts = Post.where(status: true).order(params[:sort]).page(params[:page]).per(12)
-    @tag_list = Tag.order('id DESC').limit(20)
+    @posts = Post.where(status: true).order(params[:sort]).page(params[:page]).per(20)
+    @tag_list = Tag.order('id DESC').limit(50)
   end
 
   def show

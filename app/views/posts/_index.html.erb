@@ -1,66 +1,79 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
-<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
 
-
-
+<!--投稿がない時、メッセージを表示するための条件分岐-->
 <% if posts.present? %>
-<div class="post_box col-md-3 mt-3">
-  <div style="text-align:center;">
-    <h6><i class="fas fa-search">投稿記事を探す</i></h6>
- 
-　　<%= form_with(url: posts_searches_path, local: true, method: :get, class: "search_form_posts") do |f|%>
-　　<%= f.text_field :posts_keyword, placeholder: "検索", class: "search_input_posts"%>
-　　<%= f.submit "Search", class: "search_btn"%><% end %>
-　　<ul id="result_posts">
-     </ul>
-　　
-　　
-　　<h6>並び替え</h6>
-　　
-　　<p><%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %></p>
-　　<p><%= link_to"お気に入り数",post_favorite_order_path(posts) %>|<%= link_to"コメント数",post_comment_order_path(posts) %>|<%= link_to"閲覧数",post_impressions_order_path(posts) %></p>
-　  <!--%= link_to "いいね順", posts_path(sort: 'post.favorites.count DESC') %> | %= link_to "コメント数順", posts_path(sort: 'post.post_comments.count DESC')%>-->
-    <h6>いいね数ランキング</h6>
-    <p><%= link_to"ウィークリー",post_favorite_weekly_order_path(posts) %></p>
-    <h6>コメント数ランキング</h6>
-    <p><%= link_to"ウィークリー",post_comment_weekly_order_path(posts) %></p>
-    
-    <h6>最新の投稿タグ</h6>
-    <p><!--タグリスト-->
-    <% tag_list.each do |list|%><i class="fas fa-tag"><%=link_to list.name,search_tag_path(tag_id: list.id) %><%="(#{list.posts.count})" %></i>
-　　
-　　<% end %></p>
-　 </div>
-</div>
+  <div class="post_box col-md-3 mt-5">
+    <div style="text-align:center;">
+      <h6><i class="fas fa-search">投稿記事を探す</i></h6>
+    </div>
+    　　  <%= form_with(url: posts_searches_path, local: true, method: :get, class: "search_form_posts") do |f|%> <%= f.text_field :posts_keyword, placeholder:"キーワード", class: "search_input_posts"%>
+    　     <%= f.submit "検", class: "search_btn"%>
+    　   <% end %>
+    　　    <ul id="result_posts">
+          </ul>
+
+  　<div class="mb-5" style="text-align:center;">
+  　  <h6><i class="fas fa-sort">並び替え</i></h6>
+  　　    <%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %>
+  　　  <br>
+  　　    <%= link_to"いいね数",post_favorite_order_path(posts) %>|<%= link_to"コメント数",post_comment_order_path(posts) %>|<%= link_to"閲覧数",post_impressions_order_path(posts) %>
+    </div>
+
+    <div class="mb-5" style="text-align:center;">
+      <h6><i class="fas fa-crown">Weeklyランキング</i></h6>
+          <%= link_to"いいね数",post_favorite_weekly_order_path(posts) %>｜<%= link_to"コメント数",post_comment_weekly_order_path(posts) %>
+    </div>
+
+    <div style="text-align:center;">
+      <h6><i class="fas fa-tag">最新の投稿タグ</i></h6>
+    </div>
+        <div class="flex">
+          <!--タグリスト-->
+            <% tag_list.each do |list|%>
+              <%=link_to search_tag_path(tag_id: list.id) do%>
+                <span id="tag" class="btn btn-light">
+                  <%= list.name %>
+                  <%="(#{list.posts.count})" %>
+                </span>
+              <% end %>
+            <% end %>
+  　　    </div>
+  </div>
 <% else %>
-<p style="color:blue;">最初の投稿をお願いします。<br>投稿後、検索や並び替え等の機能がご利用可能です。:)</p>
+<!--まだ投稿が１件もない時-->
+  <p style="color:green;">
+    <i class="far fa-smile-wink"></i>
+      最初の投稿をお願いします。<br>投稿後、検索や並び替え等の機能がご利用可能です。:)
+  </p>
 <% end %>
 
 
-<div class="col-md-7 ml-5">
+<div class="col-md-8 ml-2 mt-5">
   <% posts.each do |post| %>
   <!--投稿はカードで囲む-->
-  <div class="card">
-    <div class="card-body">
+    <div class="card mb-3">
+      <div class="card-body">
       <!--タイトル表示される文字数は２５文字までにしてます-->
-      <h6 class="card-title">
-        <%=link_to post_path(post.id) do %><%= post.title.truncate(25) %>
-        <% end %>
-      </h6>
-      <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-        <div id="<%=post.id %>"><%= render 'favorites/favorite', post: post %></div>
-
-  
+        <h5 class="card-title">
+          <%=link_to post_path(post.id) do %>
+            <%= post.title.truncate(25) %>
+          <% end %>
+        </h5>
+          <!--お気に入り、コメント数、投稿者は部分テンプレ-->
+          <div id="<%=post.id %>">
+            <%= render 'favorites/favorite', post: post %>
+          </div>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 <!--rowのとじタグ-->
 </div>
        <div class="pagination pagination-sm justify-content-center">
-       <%= paginate posts %></div>
-
+         <%= paginate posts %>
+       </div>
 </div>
 
 
@@ -68,7 +81,7 @@
 .card{
   padding:0;
   margin:0;
-  border:none;
+  /*border:none;*/
 }
 
 .post_box {
@@ -80,9 +93,25 @@
     border-right: double 7px #4ec4d3;/*右線*/
 }
 
+h5 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 3px rgba(70, 130, 180,0.7);
+}
 
 h6 {
   /*線の種類（実線） 太さ 色*/
   border-bottom: solid 3px black;
+}
+
+.flex{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+
+#tag{
+  font-size:16px;
+  /*letter-spacing: 1px;*/
+  /*１行ずつの間に高さ出す*/
 }
 </style>

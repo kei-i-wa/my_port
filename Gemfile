@@ -102,3 +102,5 @@ gem 'rails_admin'
 # 日本語化する
 gem 'rails-i18n'
 
+gem 'devise-i18n'
+gem 'devise-i18n-views'
