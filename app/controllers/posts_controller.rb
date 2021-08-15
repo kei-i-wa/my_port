@@ -33,19 +33,17 @@ class PostsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     # @postオブジェクトを参照してタグの名前取得
     # もし公開記事だったら、
-      if @post.save && params[:post][:status]== :true
-        tag_list = params[:post][:name].split(',')
-        @post.save_tag(tag_list)
-        redirect_to post_path(@post), notice: '投稿完了しました:)'
-      elsif @post.save && params[:post][:status]== :false
-        redirect_to post_path(@post), notice: '下書きに登録しました。'
+      if @post.save
+      tag_list = params[:post][:name].split(',')
+        if params[:post][:status]== "公開"
+          @post.save_tag(tag_list)
+          redirect_to post_path(@post), notice: '投稿完了しました:)'
+        else
+          redirect_to posts_path, notice: '下書きに登録しました。'
+        end
       else
         render :new
       end
-    # elsif params[:post][:status]=="false"
-    #   @post.save
-    #   redirect_to post_path(@post), notice: '下書きに登録しました。'
-    # end
   end
 
   def update
@@ -55,14 +53,17 @@ class PostsController < ApplicationController
     tag_list = params[:post][:name].split(',')
     # もしpostの情報が更新されたら
     if @post.update(post_params)
+      if params[:post][:status]== "公開"
     # このpost_idに紐づいていたタグを@oldに入れる
-      @old_relations=PostTag.where(post_id: @post.id)
+        @old_relations=PostTag.where(post_id: @post.id)
     # それらを取り出し、消す。消し終わる
-      @old_relations.each do |relation|
-      relation.delete
-      end  
-      @post.save_tag(tag_list)
-      redirect_to post_path(@post.id), notice: '投稿完了しました:)'
+        @old_relations.each do |relation|
+        relation.delete
+        end  
+         @post.save_tag(tag_list)
+        redirect_to post_path(@post.id), notice: '投稿完了しました:)'
+      else redirect_to posts_path, notice: '下書きに登録しました。'
+      end
     else
       render :edit
     end

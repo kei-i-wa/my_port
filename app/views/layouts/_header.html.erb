@@ -11,10 +11,10 @@
         
   
   <!--ログインしてるユーザーが管理者の場合のみ-->
-  <!--% if current_user.try(:admin?) %>-->
-  <!--<li class="nav-item">-->
-  <!--  %= link_to '管理者ログイン', rails_admin_path %></li>-->
-  <!--% end %>-->
+  <% if current_user.try(:admin?) %>
+  <li class="nav-item">
+    <%= link_to '管理者', rails_admin_path,class:"btn btn-light fab fa-adn" %></li>
+  <% end %>
 
         <!--カスタマーログイン後-->
      <% if user_signed_in? %>

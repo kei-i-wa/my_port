@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
   validates :title, presence: true,length:{maximum:60}
-  validates :content, presence: true,length:{maximum:4000}
+  validates :content, presence: true
   # コメント（ユーザーは複数コメントする）
   has_many :post_comments, dependent: :destroy
   # お気に入り（ユーザーは複数お気に入りする）
@@ -42,8 +42,8 @@ class Post < ApplicationRecord
     end
   end
 
-　# 検索、タイトル、コンテンツで検索可能
   def self.search(search)
+    
     return Post.all unless search
     Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end

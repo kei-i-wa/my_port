@@ -1,5 +1,7 @@
 <div class="container">
+  <%if @user.is_valid == true %>
   <div class="row">
+
     <!--col3にユーザーの基本情報格納-->
     <%= render 'info', user: @user%>
 
@@ -9,9 +11,9 @@
   <ul class="nav nav-tabs" id="tabs">
     <!--自分のページか他人のページかでタグの表示を変える-->
     <% if @user.id == current_user.id %>
-      <li class="nav-item"><a class="nav-link" href=""><h6>Introduction</h6></a></li>
-      <li class="nav-item"><a class="nav-link active" href=""><h6>Status</h6></i></a></li>
-      <li class="nav-item"><a class="nav-link" href=""><h6>Activity</h6></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="">Introduction</a></li>
+      <li class="nav-item"><a class="nav-link active" href="">Status</i></a></li>
+      <li class="nav-item"><a class="nav-link" href="">Activity</i></a></li>
     <% else %>
       <li class="nav-item"><a class="nav-link active" href="">Introduction</a></li>
       <li class="nav-item"><a class="nav-link" href="">Status</i></a></li>
@@ -27,7 +29,7 @@
       <div class="tab_contents_item active" style="padding:10px;">
     <% end %>
       <% if @user.introduction.present?%>
-        <p><%== @user.introduction %></p>
+        <p style="font-size:17px;"><%=safe_join(@user.introduction.split("\n"),tag(:br))%></p>
       <% else %>
         <p style="color:green; font-size:15px;">自己紹介は未入力です。<br>
           社員の皆さんに現在の業務内容、得意分野についてシェアしましょう。</p>
@@ -77,7 +79,7 @@
                     backgroundColor: 'rgba(30, 144, 255, 0.5)',
                     borderColor: 'rgba(30, 144, 255, 0.5)',
                     fill: false},{
-    
+
                     label: "もらったいいね数",
                     data: [<%= @point.created_6days_ago.count %>,<%= @point.created_5days_ago.count %>,<%= @point.created_4days_ago.count %>,<%= @point.created_3days_ago.count %>, <%= @point.created_2days_ago.count %>, <%= @point.created_yesterday.count %>, <%= @point.created_today.count %>],
                     backgroundColor: "rgba(255,0,0,0.4)",
@@ -130,6 +132,8 @@
 </div>
 
 <!--rowの閉じタグ-->
+<% else %><h5 style="text-align:center;"><i class="far fa-sad-tear"></i>退会済ユーザーのため表示できません。</h5>
+<% end %>
   </div>
 <!--コンテナ閉じタグ-->
 </div>
@@ -139,6 +143,7 @@
     padding: 0.5em 1em;
     margin: 1em 0;
     border: double 5px #5d627b;
+    max-height:270px;
 }
 
   h6 {
