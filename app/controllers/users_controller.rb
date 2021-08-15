@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def index
     users = User.where(is_valid: true)
     @users = users.order(params[:sort]).page(params[:page]).per(12)
+    @departments=Department.all
   end
 
   def edit
@@ -49,6 +50,12 @@ class UsersController < ApplicationController
     @user.update(is_valid: false)
     reset_session
     redirect_to :root
+  end
+  
+  def search_department
+    @departments=Department.all
+    @department=Department.find(params[:department_id])
+    @users=@department.users.page(params[:page]).per(10)
   end
 
   private

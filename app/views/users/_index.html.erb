@@ -1,35 +1,57 @@
 <div class="container">
   <div class="row">
-
-  　<div class="search_box col-md-3">
-  　    <div style="text-align:center;" ><h6>並替</h6></div>
-  　    <%= link_to "新しい順",users_path(sort: 'created_at DESC') %>|<%= link_to "古い順 ",users_path(sort: 'created_at ASC') %>
-    　  <div style="text-align:center;" ><h6><i class="fas fa-search">ユーザー検索</i></h6></div>
-      <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
-      <%= f.text_field :keyword, placeholder: "Name", class: "search_input"%>
-      <%=f.submit "Search", class: "search_btn"%><% end %>
+  　<div class="search_box col-md-3 mt-5">
+    　  <div style="text-align:center;" >
+    　    <h6><i class="fas fa-search">ユーザー検索</i></h6>
+       </div>
+        <%= form_with(url: users_searches_path, local: true, method: :get, class: "search_form") do |f|%>
+          <%= f.text_field :keyword, placeholder: "キーワード", class: "search_input"%>
+          <%=f.submit "検索", class: "search_btn"%>
+        <% end %>
       <!--インクリメンタルサーチの結果が以下に出る-->
-      <ul id="result">
-      </ul>
-    </div>
+        <ul id="result">
+        </ul>
 
-   <div class="col-md-8">
-     <div class="row">
-      <% users.each do |user| %> 
-        <div class="user_box col-md-3"><%= link_to user_path(user.id) do %>
-          <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
-          <div style="text-align:center;"><%= user.department.name %></div>
-          <div style="text-align:center;"><%= user.name %></div>
-          <div style="margin-top:20px; text-align:center;">
-          <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6></div><% end %>
+      <div class="mt-5" style="text-align:center;" >
+        <h6><i class="fas fa-sort">並び替え</i></h6>
+  　    <%= link_to "新着順",users_path(sort: 'created_at DESC') %>|<%= link_to "登録日順 ",users_path(sort: 'created_at ASC')%>
       </div>
-      <% end %>
-   </div>
 
 
-       <p class="pagination pagination-sm justify-content-center">
-       <%= paginate users %>
-       </p>
+      <div class="mt-5" style="text-align:center;" >
+        <h6><i class="fas fa-search-plus">所属先で絞り込み</i></i></h6>
+      </div>
+        <% @departments.each do |department| %>
+           <%=link_to users_searches_path(keyword: department.id) do%>
+            <%= department.name %>(<%=department.users.count %>)
+          <%end %>
+        <% end %>
+  </div>
+
+    <div class="col-md-8 mt-5 ml-3">
+      <div class="row">
+        <% users.each do |user| %>
+          <div class="user_box col-md-3 ml-5">
+            <%= link_to user_path(user.id) do %>
+              <div style="text-align:center;">
+                <%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %>
+              </div>
+              <div style="text-align:center;">
+                <%= user.department.name %>
+              </div>
+              <div style="text-align:center;">
+                <%= user.name %>
+              </div>
+              <div style="margin-top:20px; text-align:center;">
+                <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+        <p class="pagination pagination-sm justify-content-center">
+         <%= paginate users %>
+        </p>
     </div>
   </div>
 </div>
@@ -41,6 +63,7 @@
     padding: 0.5em 1em;
     margin: 1em 0;
     border: double 1px #5d627b;
+    max-width:230px;
 }
 
 h6 {
@@ -48,9 +71,22 @@ h6 {
   border-bottom: solid 3px black;
 }
 
+ /*.search_box {*/
+ /*   color: #474747*/
+ /*   margin: 2em 0;*/
+
+ /*}*/
+
  .search_box {
-    color: #474747
-    margin: 2em 0;
-    
- }
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+.user_box{
+  disply:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
 </style>

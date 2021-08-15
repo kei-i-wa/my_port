@@ -1,12 +1,22 @@
 <!--プロフィール画像、所属部署、名前の名刺-->
 <div class="user_box col-md-3">
-  <div style="text-align:center;"><%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %></div>
-  <div style="text-align:center;"><%=link_to departments_path do %><%= user.department.name %><% end %></div>
-  <div style="text-align:center;"><%= user.name %></div>
+  <div style="text-align:center;">
+    <%= attachment_image_tag user, :profile_image,size:"120x120", fallback: "no_image.png" %>
+  </div>
+  <div style="text-align:center;">
+    <%=link_to users_searches_path(keyword: user.department.id) do%>
+    <%= user.department.name %><%end %>
+  </div>
+  <div style="text-align:center;">
+    <%= user.name %>
+  </div>
   <div style="margin-top:20px; text-align:center;">
-  <h6><i class="fas fa-anchor"><%=user.join_year%></i></h6></div>
+    <h6><i class="fas fa-anchor"><%= link_to user.join_year, users_searches_path(keyword: user.join_year) %></i></h6>
+  </div>
   <% if user.id == current_user.id %>
-  <div><%= link_to "",edit_user_path(user),class:"btn btn-outline-secondary btn-block btn-sm fas fa-user-edit"%></div>
+  <div>
+    <%= link_to "",edit_user_path(user),class:"btn btn-outline-secondary btn-block btn-sm fas fa-user-edit"%>
+  </div>
   <% end %>
 </div>
 
@@ -23,5 +33,4 @@ h6 {
   /*線の種類（実線） 太さ 色*/
   border-bottom: solid 3px black;
 }
-</style>  
-    
+</style>

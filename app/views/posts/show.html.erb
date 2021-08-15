@@ -21,9 +21,9 @@
         <%= link_to"記事の削除",post_path(@post), method: :delete,data: { confirm: '本当に消しますか？' },class:'btn btn-outline-danger fas fa-ban'%>
       </p>
     <% end %>
-    <p><%== @post.content %></p>
+      <%== @post.content %>
   </div>
-  
+
   <div class="mt-3">
     <i class="fas fa-search-location">この投稿についているタグで検索</i><br>
     <% @post_tags.each do |tag| %>
@@ -70,6 +70,5 @@ h3 {
     margin: 1em 0;
     /*border: double 5px #5d627b;*/
 }
-
 
 </style>
