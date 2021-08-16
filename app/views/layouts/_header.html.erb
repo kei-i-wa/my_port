@@ -45,15 +45,20 @@
         <%= link_to "Log out", destroy_user_session_path, method: :delete,class:"btn btn-light fas fa-sign-out-alt" %>
       </li>
     <% else %>
+    
+    <li class="nav-item">
+        <%= link_to "ゲストログイン", users_guest_sign_in_path,class:"btn btn-light fas fa-seedling",method: :post %>
+    </li>
     <li class="nav-item">
         <%= link_to " Top","/",class:"btn btn-light fas fa-ship" %>
-    
+    </li>
       <li class="nav-item">
         <%= link_to "Sign up", new_user_registration_path,class:"btn btn-light fas fa-user-plus" %>
       </li>
       <li class="nav-item">
         <%= link_to "Log in", new_user_session_path,class:"btn btn-light fas fa-sign-in-alt" %>
       </li>
+      
     <% end %>
     </div>
     </ul>

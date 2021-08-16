@@ -39,7 +39,17 @@ class User < ApplicationRecord
 # ポイント　ポイント与える側、もらう側で２通り
   has_many :active_points, class_name: 'Point', foreign_key: 'giver_id', dependent: :destroy
   has_many :passive_points, class_name: 'Point', foreign_key: 'getter_id', dependent: :destroy
+  
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー',
+        email: 'guest@example.com',
+        join_year: '新入社員',
+        department_id: 1,
+        is_valid: true) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+  
 
-
-
+  
 end

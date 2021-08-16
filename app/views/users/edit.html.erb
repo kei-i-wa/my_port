@@ -34,9 +34,13 @@
 　　　<% end %>
 　　　
 　　　
+　　　<% if @user.email == 'guest@example.com'%>
+　　　<p class="text-right">ゲストログインは退会処理ができませんので<br>ログアウトしてください。</p>
+　　　<% else %>
 　　　<p class="text-right">
 　　　<%=link_to "退会処理へすすむ",destroy_confirm_user_path(@user),class:"fas fa-exclamation-circle"%>
 　　　</p>
+　　　<% end %>
 　　　
     </div>
   </div>

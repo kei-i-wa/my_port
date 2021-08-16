@@ -10,15 +10,15 @@
 
 <div class="col-md-8 ml-5" style="margin-top:1em;">
   <div class="content-box">
-    <h3><%= @post.title %></h3>
+    <h5><%= @post.title %></h5>
     <!--お気に入り-->
     <div id="<%=@post.id %>">
       <%= render 'favorites/favorite', post: @post %>
     </div>
     <% if @post.user==current_user %>
       <p class="mt-3" style="text-align:right">
-        <%= link_to '記事の編集', edit_post_path(@post),class:"btn btn-outline-secondary fas fa-edit" %>
-        <%= link_to"記事の削除",post_path(@post), method: :delete,data: { confirm: '本当に消しますか？' },class:'btn btn-outline-danger fas fa-ban'%>
+        <%= link_to '記事の編集', edit_post_path(@post),class:"btn-sm btn btn-outline-secondary fas fa-edit" %>
+        <%= link_to"記事の削除",post_path(@post), method: :delete,data: { confirm: '本当に消しますか？' },class:'btn btn-sm btn-outline-danger fas fa-ban'%>
       </p>
     <% end %>
       <%== @post.content %>
@@ -56,7 +56,7 @@
     border: double 5px #4ec4d3;
 }
 
-h3 {
+h5 {
   border-bottom: solid 3px black;
 }
 

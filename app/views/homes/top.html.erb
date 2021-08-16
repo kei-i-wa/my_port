@@ -33,7 +33,7 @@
 
         <div class="carousel-item carousel-image-3">
           <div class="carousel-caption d-none d-md-block" id="output">
-            <p class="title2">Notice</p>
+            <p class="title2" style="color:white;">Notice</p>
             <p class="introduction2" style="color:white;">日々行なっている仕事は人それぞれ。</p>
             <p class="introduction2" style="color:white;">投稿を通して自身や他者の強み/得意に気づくはずです。</p>
           </div>
@@ -75,11 +75,10 @@
       </div>
 
 <div class="container mt-5">
-  <h4 class="text-center">How to use</h4>
-<ul class="contents mt-3">
-
+  <h4 id="how_to_use" class="text-center">How to use</h4>
+<ul class="contents">
   <li class="animationTarget">
-    <%= image_tag 'test2.png',class:"img-fluid"%>
+    <%= image_tag 'show2.png',class:"img-fluid"%>
     <div class="contentsText">
       <h2>記事の閲覧と検索</h2>
       <p>Postの一覧ページでは投稿記事の一覧が見れます。<br>
@@ -89,34 +88,36 @@
       参考になった投稿には、いいね(★)やコメントをしましょう</p>
     </div>
   </li>
-
   <li class="animationTarget">
-    <%= image_tag 'memo_color.png',size:"200x200",class:"img-fluid"%>
+    <%= image_tag 'show3.png',class:"img-fluid"%>
     <div class="contentsText">
       <h2>マイページ</h2>
-      <p>マイページで<br>
-      。ここに文章が入ります。ここに文章が入ります。</p>
+      <!--<p>マイページでは自分の投稿、いいねした記事等が閲覧できます。<br>-->
+      <!--記事がいいねされると<strong>Status</strong>の値が増えていきます。<br>-->
+      <!--<strong>Activity</strong>ではあなたの頑張りをグラフにしています。<br>-->
+      <!--<strong>最近投稿したタグ</strong>であなたの得意分野がわかります。</p>-->
+    </div>
+  </li>
+  <li class="animationTarget">
+    <%= image_tag 'show4.png',class:"img-fluid"%>
+    <div class="contentsText">
+      <h2>勉強会</h2>
+      <p>社内での勉強会の開催をお知らせできます。<br>
+      詳細ページから勉強会への参加、退出ができます。<br>
+      管理者はメンバーにメールでの一斉通知が可能です。</p>
     </div>
   </li>
 
   <li class="animationTarget">
-    <%= image_tag 'memo_color.png',size:"200x200",class:"img-fluid"%>
+    <%= image_tag 'show5.png',class:"img-fluid"%>
     <div class="contentsText">
-      <h2>Dummy Title</h2>
-      <p>ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。<br>
-      。ここに文章が入ります。ここに文章が入ります。</p>
+      <h2>いいね・コメント</h2>
+      <p>いいねやコメントをしましょう！<br>
+      いいねをもらうとマイページのTEUが増えていきます。<br>
+      コメントは通知からも確認可能です。<br>
+      未読の通知があるとNOTICEが赤くなります。</p>
     </div>
   </li>
-
-  <li class="animationTarget">
-    <%= image_tag 'memo_color.png',size:"200x200",class:"img-fluid"%>
-    <div class="contentsText">
-      <h2>Dummy Title</h2>
-      <p>ここに文章が入ります。ここに文章が入ります。ここに文章が入ります。<br>
-      。ここに文章が入ります。ここに文章が入ります。</p>
-    </div>
-  </li>
-
 </ul>
 </div>
 

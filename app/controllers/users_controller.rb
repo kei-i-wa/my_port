@@ -51,9 +51,14 @@ class UsersController < ApplicationController
   
   def destroy_user
     @user = current_user
-    @user.update(is_valid: false)
-    reset_session
-    redirect_to :root
+      if @user.email=='guest@example.com'
+        reset_session
+        redirect_to :root
+      else
+        @user.update(is_valid: false)
+        reset_session
+        redirect_to :root
+      end
   end
   
 
