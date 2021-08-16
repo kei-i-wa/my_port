@@ -46,7 +46,7 @@
   position: relative;
 }
 .carousel-image-1 {
-  background-image: image-url(lighthouse.jpg);
+  background-image: image-url("lighthouse.jpg");
   background-size: cover;
   background-position:center;
   position: relative;
@@ -55,7 +55,7 @@
 }
 
 .carousel-image-2 {
-  background-image: image-url(port-terminal.jpg);
+  background-image: image-url("port-terminal.jpg");
   background-size: cover;
   background-position:center;
   position: relative;
@@ -64,7 +64,7 @@
 }
 
 .carousel-image-3 {
-  background-image: image-url(ship1.jpg);
+  background-image: image-url("ship1.jpg");
   background-size: cover;
   background-position:center;
   position: relative;
@@ -73,7 +73,7 @@
 }
 
 .carousel-image-5 {
-  background-image: image-url(ship4.jpg);
+  background-image: image-url("ship4.jpg");
   background-size: cover;
   background-position:center;
   position: relative;
@@ -84,7 +84,7 @@
 
 
 .carousel-image-6 {
-  background-image: image-url(sea2.jpg);
+  background-image: image-url("sea2.jpg");
   background-size: cover;
   background-position:center;
   position: relative;
@@ -104,7 +104,7 @@
 // }
 #how_to_use{
   color:rgba(70, 130, 180,.8);
-  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif
 }
 
 li{
