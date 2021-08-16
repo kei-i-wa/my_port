@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
   before_action :correct_user, only: [:edit, :update]
   # 閲覧数はshowページでカウント
   impressionist actions: [:show]
@@ -148,9 +147,7 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+ 
 
   def post_params
     params.require(:post).permit(:title, :content, :status)

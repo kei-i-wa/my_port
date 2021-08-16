@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :correct_user
   def index
     @department = Department.new
     @departments = Department.all
@@ -30,5 +31,12 @@ class DepartmentsController < ApplicationController
 
   def department_params
     params.require(:department).permit(:name, :correct_name)
+  end
+  
+  def correct_user
+    # 今のユーザーがpostのユーザーと違うなら
+    if current_user.admin !=true
+      redirect_to posts_path
+    end
   end
 end

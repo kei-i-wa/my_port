@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
   def index
     @group = Group.new
     @group.users << current_user
@@ -70,5 +71,13 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :introduction, :status, :user_id)
+  end
+  
+  def correct_user
+    @group=Group.find(params[:id])
+    # 今のユーザーがpostのユーザーと違うなら
+    if current_user.id !=@group.owner_id
+      redirect_to groups_path
+    end
   end
 end

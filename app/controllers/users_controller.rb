@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:edit, :update,:confirm,:favorites,
+  :comments,:confirm,:destroy_confirm,:destroy_user]
+  
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.where(status: true).order('created_at DESC').page(params[:page]).per(20)
@@ -67,5 +70,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction, :join_year, :department_id)
+  end
+  
+  def correct_user
+    @user=User.find(params[:id])
+    # 今のユーザーがpostのユーザーと違うなら
+    if current_user!=@user
+      redirect_to users_path
+    end
   end
 end
