@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :department_id, presence: true
-  validates :name, presence: true
-  validates :introduction, length:{maximum:800}
+  validates :name, presence: true,length:{in:2..8}
+  validates :introduction, length:{maximum:400}
   # refile使用時の記述
   attachment :profile_image
   # ユーザーは１つの部署に所属（現在の部署）
