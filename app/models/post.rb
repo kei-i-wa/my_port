@@ -2,8 +2,8 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
-  validates :title, presence: true,length:{maximum:60}
-  validates :content, presence: true
+  validates :title, presence: true,length:{in:2..60}
+  validates :content, presence: true,length:{minimum:20}
   # コメント（ユーザーは複数コメントする）
   has_many :post_comments, dependent: :destroy
   # お気に入り（ユーザーは複数お気に入りする）
@@ -40,6 +40,7 @@ class Post < ApplicationRecord
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
       post_tags.new(user_id: user_id,tag_id: new_post_tag.id).save
+      byebug
     end
   end
 

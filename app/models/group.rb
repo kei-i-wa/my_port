@@ -7,10 +7,10 @@ class Group < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true,
-                  length: {maximum:25}
+                  length: {in:2..25}
   validates :status, presence: true,
-                  length: {maximum:25}
-  validates :introduction, presence: true,length: {maximum:4000}
+                  length: {in:2..25}
+  validates :introduction, presence: true,length: {in:2..1000}
   
   # 検索
   def self.search(search)

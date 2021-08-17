@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     impressionist(@post, nil, unique: [:session_hash.to_s])
     @post_comment = PostComment.new
     @post_tags = @post.tags
+    # @comment = current_user.post_comments.new(post_comment_params)
   end
 
   def new
