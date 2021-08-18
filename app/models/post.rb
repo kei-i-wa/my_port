@@ -40,7 +40,6 @@ class Post < ApplicationRecord
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
       post_tags.new(user_id: user_id,tag_id: new_post_tag.id).save
-      byebug
     end
   end
 
