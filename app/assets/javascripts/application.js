@@ -77,15 +77,14 @@ tabs[i].addEventListener("click",function(e){
 }
 })
 
-document.addEventListener("turbolinks:load", function() {
-const forms = document.getElementsByClassName("form-group");
-console.log(forms);
-for (let k = 0; k < forms.length; k++){
-  forms[k].addEventListener("blur", TurnOffValid);
-  function TurnOffValid(){
-  forms[k].classList.add('was-validated');
-}}  
-});
+// document.addEventListener("turbolinks:load", function() {
+// const forms = document.getElementsByClassName("form-group");
+// console.log(forms);
+// for (let k = 0; k < forms.length; k++){
+//   forms[k].addEventListener("click",function(e){
+//     e.preventDefault();
+//     forms[k].classList.add("was-validated");
+//   })}
 // const mail_div = document.getElementById('mail_div');
 
 
@@ -93,3 +92,29 @@ for (let k = 0; k < forms.length; k++){
 // function TurnOffValid() {
 //   mail.classList.remove('was-validated');
 // }
+
+jQuery(function() {
+  var appear = false;
+  var pagetop = $('#page_top');
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {  //100pxスクロールしたら
+      if (appear == false) {
+        appear = true;
+        pagetop.stop().animate({
+          'bottom': '50px' //下から50pxの位置に
+        }, 300); //0.3秒かけて現れる
+      }
+    } else {
+      if (appear) {
+        appear = false;
+        pagetop.stop().animate({
+          'bottom': '-50px' //下から-50pxの位置に
+        }, 300); //0.3秒かけて隠れる
+      }
+    }
+  });
+  pagetop.click(function () {
+    $('body, html').animate({ scrollTop: 0 }, 500); //0.5秒かけてトップへ戻る
+    return false;
+  });
+});
