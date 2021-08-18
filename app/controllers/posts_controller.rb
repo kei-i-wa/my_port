@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     # 閲覧数カウント、リロードしても閲覧数は増えない
     impressionist(@post, nil, unique: [:session_hash.to_s])
     @post_comment = PostComment.new
-    @post_tags = @post.tags
+    @post_tags = @post.tags.limit(10)
     # @comment = current_user.post_comments.new(post_comment_params)
   end
 

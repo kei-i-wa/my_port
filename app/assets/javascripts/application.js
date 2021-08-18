@@ -56,40 +56,11 @@ document.addEventListener("scroll",function(){
   }
 })
 
-
-// const tabs = document.getElementsByClassName("nav-link");
-// const tab_contents = document.getElementsByClassName("tab_contents_item");
-// console.log(tabs);
-// console.log(tab_contents);
-// window.addEventListener('DOMContentLoaded', function() {
-// tabs[0].addEventListener("click",function(e){
-//   e.preventDefault();
-//   tabs[0].classList.remove("active");
-//   tabs[1].classList.remove("active");
-//   tab_contents[0].classList.remove("active");
-//   tab_contents[1].classList.remove("active");
-//   tabs[0].classList.add("active");
-//   tab_contents[0].classList.add("active");
-// });
-// tabs[1].addEventListener("click",function(e){
-//   e.preventDefault();
-//   tabs[0].classList.remove("active");
-//   tabs[1].classList.remove("active");
-//   tab_contents[0].classList.remove("active");
-//   tab_contents[1].classList.remove("active");
-//   tabs[1].classList.add("active");
-//   tab_contents[1].classList.add("active");
-// });
-// }
-// , false);
-
-// window.addEventListener('DOMContentLoaded', function() {
-// document.addEventListener("turbolinks:load", function() {
 document.addEventListener("turbolinks:load", function() {
 const tabs = document.getElementsByClassName("nav-link");
 const tab_contents = document.getElementsByClassName("tab_contents_item");
-console.log(tabs);
-console.log(tab_contents);
+// console.log(tabs);
+// console.log(tab_contents);
 for (let i = 0; i < tabs.length; i++){
 tabs[i].addEventListener("click",function(e){
   e.preventDefault();
@@ -104,6 +75,21 @@ tabs[i].addEventListener("click",function(e){
   tab_contents[i].classList.add("active");
 });
 }
-
 })
 
+document.addEventListener("turbolinks:load", function() {
+const forms = document.getElementsByClassName("form-group");
+console.log(forms);
+for (let k = 0; k < forms.length; k++){
+  forms[k].addEventListener("blur", TurnOffValid);
+  function TurnOffValid(){
+  forms[k].classList.add('was-validated');
+}}  
+});
+// const mail_div = document.getElementById('mail_div');
+
+
+// addEventListener('focus', TurnOffValid);
+// function TurnOffValid() {
+//   mail.classList.remove('was-validated');
+// }

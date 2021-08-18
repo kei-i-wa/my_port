@@ -3,16 +3,16 @@
 
 
 <div class="col-md-7 ml-5">
-    <% user_favorite = 0 %>
+    <% user_comment= 0 %>
     <% j = 1 %>
   <% @posts.each.with_index(1) do |post,i| %>
   <!--1つ目の場合そのお気に入り数を代入-->
     <% if i == 1 %>
-    <% user_favorite = post.favorites.count %>
+    <% user_comment = post.post_comments.count %>
     <% end %>
   <div class="card">
   <!--２個目に取り出したやつが、１個目のやつと等しくないなら-->
-    <% if post.favorites.count != user_favorite %>
+    <% if post.post_comments.count != user_comment %>
   <!--jにiを入れる。取り出した順番を順位にする-->
   <!--投稿はカードで囲む-->
       <p><i class="fas fa-crown" style="color:green;">第<%= i %>位</i></p>

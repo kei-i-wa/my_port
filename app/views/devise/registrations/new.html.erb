@@ -9,7 +9,7 @@
 
 
 
-  <div class="form-group">
+  <div class="name_field form-group">
     <%= f.label :name,"お名前" %><br />
     <%= f.text_field :name, autofocus: true,required: true,class:"form-control" %>
   </div>
@@ -24,16 +24,12 @@
     <%= f.select :join_year,[["新入社員", "新入社員"],["1年目", "1年目"], ["2年目", "２年目"], ["3年目", "3年目"],["4年目", "４年目"],["5年以上", "5年以上"],["管理職", "管理職"]],class:"form-control" %>
   </div>
 
-  <!--% if @departments.present?%> -->
   <div class="form-group">
     <%= f.label:"所属先" %><br />
     <%= f.collection_select(:department_id, Department.all, :id, :name, class: "form-control") %>
   </div>
-  <!--< end %>-->
 
-   <!--<= f.hidden_field :is_valid, value: true %>-->
-
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :password,"パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上必要です。)</em>
@@ -41,7 +37,7 @@
     <%= f.password_field :password, autocomplete: "new-password",required: true,class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :password_confirmation,"パスワード（もう一度ご入力ください）" %><br />
     <%= f.password_field :password_confirmation,autocomplete: "new-password",required: true,class:"form-control" %>
   </div>
@@ -54,3 +50,4 @@
   <div>
   <p>既に会員の方は<%= link_to "こちら",new_user_session_path, class: "border-bottom" %>からログインしてください。</p>
   </div>
+  
