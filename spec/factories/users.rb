@@ -6,7 +6,6 @@ FactoryBot.define do
     # introduction { Faker::Lorem.characters(number: 20) }
     join_year { '新入社員' }
     department_id { 1 }
-    # is_valid { true }
     password { 'password' }
     password_confirmation { 'password' }
   end

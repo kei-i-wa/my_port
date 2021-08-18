@@ -32,6 +32,9 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.before(:all) do
+    FactoryBot.reload
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -64,4 +67,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   # letを使用したときに、FactoryBotが使用できるように設定
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end

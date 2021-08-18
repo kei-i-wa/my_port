@@ -16,6 +16,9 @@
 //= require popper
 //= require bootstrap-sprockets
 
+//= require summernote/summernote-bs4.min
+//= require summernote-init
+
 
 //= require rails-ujs
 //= require activestorage
@@ -25,8 +28,7 @@
 //= require chartkick
 //= require Chart.bundle
 
-//= require summernote/summernote-bs4.min
-//= require summernote-init
+
 
 
 // 以下で、４つの要素を取得している
