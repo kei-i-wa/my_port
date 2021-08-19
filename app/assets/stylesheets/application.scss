@@ -34,38 +34,17 @@ a:link,a:visited,a:active{
 }
 
 a:hover{
-  background-color:#dcdcdc;
+  background-color:white;
 }
 
-#page_top{
-  width: 50px;
-  height: 50px;
+#back {
   position: fixed;
-  right: 0;
-  bottom: 0;
-  background: #3f98ef;
-  opacity: 0.6;
+  right: 20px;
+  bottom: 20px;
 }
-#page_top a{
-  position: relative;
-  display: block;
+
+.back-img {
   width: 50px;
-  height: 50px;
-  text-decoration: none;
+  hover:none;
 }
-#page_top a::before{
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  content: '\f102';
-  font-size: 25px;
-  color: #fff;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  text-align: center;
-}
+
