@@ -19,6 +19,5 @@ module MyPort
     # 日本語化のために追記しました。
     config.i18n.default_locale = :ja
     config.time_zone = 'Tokyo'
-    config.paths.add 'lib', eager_load: true
   end
 end

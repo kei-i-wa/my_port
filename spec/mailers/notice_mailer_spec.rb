@@ -1,5 +1,5 @@
 require "rails_helper"
 
-RSpec.describe ScheduledProcessingMailer, type: :mailer do
+RSpec.describe NoticeMailer, type: :mailer do
   pending "add some examples to (or delete) #{__FILE__}"
 end
