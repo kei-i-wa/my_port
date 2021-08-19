@@ -9,6 +9,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @departments = Department.all
   end
+  
+  def after_sign_up_path
+      posts_path                 
+  end
 
   # def create
   #     @user=User.new(configure_permitted_parameters)
@@ -72,10 +76,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   user_path(resource)
-  # end
 
   # private
   # def configure_permitted_parameters
@@ -87,5 +87,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to posts_path, notice: 'ゲストユーザーは削除できません。'
     end
   end
-  
+
 end

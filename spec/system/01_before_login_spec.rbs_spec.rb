@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP1] ユーザログイン前のテスト' do
+describe 'ユーザログイン前のテスト' do
   describe 'トップ画面のテスト' do
     before do
       visit root_path
@@ -9,32 +9,99 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it'urlが正しい' do
         expect(current_path).to eq'/'
       end
-      
+
       it 'loginリンクの内容が正しい' do
         log_in_link = find_all('a')[4].native.inner_text
         expect(page).to have_link log_in_link, href: new_user_session_path
       end
-      
+
       it 'signupリンクの内容が正しい' do
         sign_up_link = find_all('a')[3].native.inner_text
         expect(page).to have_link sign_up_link, href: new_user_registration_path
       end
+
+      it 'ゲストログインリンクの内容が正しい' do
+        guest_link = find_all('a')[1].native.inner_text
+        expect(page).to have_link guest_link, href: users_guest_sign_in_path
+      end
+    end
+  end
+
+  describe 'ユーザー新規登録画面のテスト' do
+    before do
+      visit new_user_registration_path
+    end
+
+    context '表示内容の確認' do
+      it 'urlが正しい' do
+        expect(current_path).to eq '/users/sign_up'
+      end
+    end
+
+    # context '新規登録成功のテスト' do
+    #   it '新規登録後のリダイレクト先が投稿一覧ページ' do
+    #     click_button '登録する'
+    #     expect(current_path).to eq '/posts'
+    #   end
+    # end
+  end
+
+  describe 'ユーザーログイン' do
+    let(:user) { create(:user) }
+
+    before do
+      visit new_user_session_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/sign_in'
+      end
+    end
+
+    context 'ログイン成功時のテスト' do
+      before do
+        fill_in 'user[email]', with: user.email
+        fill_in 'user[password]', with: user.password
+        click_button 'ログインする'
+      end
+
+      it 'ログイン後の遷移先が投稿一覧画面' do
+        expect(current_path).to eq '/posts'
+      end
+    end
+
+    context 'ログイン失敗の時' do
+      before do
+        fill_in 'user[email]', with: ''
+        fill_in 'user[password]', with: ''
+        click_button 'ログインする'
+      end
+      it 'ログインに失敗しログイン画面に戻る' do
+        expect(current_path).to eq '/users/sign_in'
+      end
+    end
+  end
+  
+  describe 'ユーザーログアウトのテスト' do
+    let(:user) { create(:user) }
+    
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログインする'
+      logout_link = find_all('a')[7].native.inner_text
+      click_link logout_link
+    end
+    it '正しくログアウトし、ログインリンク存在する' do
+      expect(page).to have_link '',href: '/users/sign_in'
+    end
+    it '正しくログアウトし、新規登録リンク存在する' do
+      expect(page).to have_link '',href: '/users/sign_up'
+    end
+    it 'ログアウトしたらトップ画面に遷移' do
+      expect(current_path).to eq root_path
     end
   end
 end
-  
-  # describe 'ログインしてない時のヘッダーのテスト' do
-  #   before do
-  #     visit root_path
-  #   end
-    
-  #   cotext '表示内容の確認'
-  #     it 'TOPを押すとトップ画面に遷移する' do
-  #       top_link = find_all('a')[3].native.inner_text
-  #       top_link = top_link.delete(' ')
-  #       top_link.gsub!(/\n/, '')
-  #       click_link top_link
-  #       is_expected.to eq '/'
-  #     end
-  # end
-# end
