@@ -108,5 +108,6 @@ gem 'rails-i18n'
 
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+# バッチ処理を行うためのgem
+gem 'whenever', require: false
 

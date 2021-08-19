@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module MyPort
   class Application < Rails::Application
+    config.paths.add 'lib', eager_load: true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -17,5 +18,7 @@ module MyPort
     # the framework and any gems in your application.
     # 日本語化のために追記しました。
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
+    config.paths.add 'lib', eager_load: true
   end
 end
