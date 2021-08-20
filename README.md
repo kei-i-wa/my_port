@@ -1,5 +1,6 @@
 # :anchor:my port
-my portは社内の情報共有サイトです。
+my portは社内の情報共有サイトです。  
+![CB6B6019-B092-41AD-B992-662D3DCED53E_1_105_c](https://user-images.githubusercontent.com/83590000/130168931-10a3e7ca-4af3-4507-87b9-f4548f91eb7f.jpeg)
 
 ### :mag:サイト概要
 
