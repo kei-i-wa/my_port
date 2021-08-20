@@ -37,6 +37,7 @@ URL:
 -テーブル定義書：https://docs.google.com/spreadsheets/d/1XOzqwQbU1ZkUstGjmeaEbChlmGakMK73aPGOYHKz-Rg/edit?usp=sharing  
 -詳細設計：https://docs.google.com/spreadsheets/d/1WPLhhodtTDnt7MbZS4ar8xBifeaXXOGKKMzIOISe2uo/edit?usp=sharing  
 -WBS:https://docs.google.com/spreadsheets/d/1bnECdGxYu506fDCI-aZTNsy_W873OcBbnySi80CQOyw/edit#gid=1773513600  
+-インフラ構成図　https://app.diagrams.net/?libs=general;aws4#G1bgnUj_cFFnusmfQsOMVVfdwn7SDcrD8h
 
 ## :paperclip:チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
