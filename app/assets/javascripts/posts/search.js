@@ -2,7 +2,7 @@
 $(document).on('turbolinks:load', function(){
 // このアプリ（document)で、searc_inputで入力されるごとに、eという引数受け取る
   $(document).on('keyup', '.search_input_posts', function(e){
-// キャンセル可能なイベントをキャンセル？（意味不明）
+// キャンセル可能なイベントをキャンセル
     e.preventDefault();
 // 入力された言葉を取得し、前後の余白をtrimで取り除き、inputに代入する
     var input = $.trim($(this).val());
@@ -25,14 +25,9 @@ $(document).on('turbolinks:load', function(){
 // idがresultの子要素liを削除する
     $('#result_posts').find('li').remove();
 // dateをuserという変数に代入し以下を繰り返し処理する
-    // $(data).each(function(i, user){
     $(data).each(function(i,post) {
-//     $('.js-users').append(
-//       `<li class="user"><a href="/users/${user.id}">${user.name}</a></li>`
     $('#result_posts').append(`<li class="post"><a href="/posts/${post.id}">${post.title}</a></li>`)
-//       );
-// });
-// })
+
 });
     })
   });
