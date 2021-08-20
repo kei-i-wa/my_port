@@ -41,11 +41,22 @@
         <%= link_to 'New', new_post_path,class:"btn btn-light fas fa-plus" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'My page', user_path(current_user.id),class:"btn btn-light fas fa-ship" %>
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle fas fa-ship" type="button" data-toggle="dropdown">My page</button>
+          <div class="dropdown-menu">
+            <%=link_to"マイページ",user_path(current_user.id),class:"dropdown-item"%>
+            <p></p>
+            <%=link_to"いいねした記事",favorites_user_path(current_user),class:"dropdown-item"%>
+            <p></p>
+            <%=link_to "コメントした記事", comments_user_path(current_user),class:"dropdown-item"%>
+            <p></p>
+            <%=link_to "下書き記事", confirm_user_path(current_user),class:"dropdown-item"%>
+            <p></p>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+          </div>
+        </div>
       </li>
-      <li class="nav-item">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete,class:"btn btn-light fas fa-sign-out-alt" %>
-      </li>
+      
     <% else %>
     
     <li class="nav-item">
