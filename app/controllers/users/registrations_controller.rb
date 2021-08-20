@@ -9,9 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @departments = Department.all
   end
-  
+
   def after_sign_up_path
-      posts_path                 
+    posts_path
   end
 
   # def create
@@ -76,7 +76,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-
   # private
   # def configure_permitted_parameters
   #     # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
@@ -87,5 +86,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to posts_path, notice: 'ゲストユーザーは削除できません。'
     end
   end
-
 end

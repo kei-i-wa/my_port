@@ -1,9 +1,8 @@
 class Point < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
   belongs_to :post
   belongs_to :giver, class_name: 'User', foreign_key: 'giver_id', optional: true
   belongs_to :getter, class_name: 'User', foreign_key: 'getter_id', optional: true
-  
+
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
   scope :created_2days_ago, -> { where(created_at: 2.days.ago.all_day) }

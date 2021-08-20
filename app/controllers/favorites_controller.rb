@@ -4,13 +4,13 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
     @post = Post.find(params[:post_id])
-    
+
     unless @post.user == current_user
-    @post.point_by(current_user)
-    respond_to do |format|
-      format.html { redirect_to request.referer }
-      format.js
-    end
+      @post.point_by(current_user)
+      respond_to do |format|
+        format.html { redirect_to request.referer }
+        format.js
+      end
     end
   end
 

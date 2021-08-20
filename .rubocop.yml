@@ -2,59 +2,51 @@
 
 # inherit_from: .rubocop_todo.yml
 
+inherit_from:
+  - .rubocop_airbnb.yml
+
+#ここにはrubocopでコード解析したくないファイルやフォルダを指定します
 AllCops:
-  TargetRubyVersion: 2.7.1
-  TargetRailsVersion: 6.0.3.4
   Exclude:
-    - "vendor/**/*" # rubocop config/default.yml
-    - "db/schema*.rb"
-    - "node_modules/**/*"
-    - "db/migrate/**/*"
-    - "app/channels/**/*"
-    - "config/**/*"
-    - "config.ru"
-    - "bin/**/*"
-    - "public/**/*"
-    - "tmp/**/*"
-    - "log/**/*"
-    - "test/**/*"
-    - "Gemfile"
-    - "Rakefile"
-    - "helpers/**/*"
-    - "db/seeds.rb"
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+
+# AllCops:
+#   TargetRubyVersion: 2.7.1
+#   TargetRailsVersion: 6.0.3.4
+#   Exclude:
+#     - "vendor/**/*" # rubocop config/default.yml
+#     - "db/schema*.rb"
+#     - "node_modules/**/*"
+#     - "db/migrate/**/*"
+#     - "app/channels/**/*"
+#     - "config/**/*"
+#     - "config.ru"
+#     - "bin/**/*"
+#     - "public/**/*"
+#     - "tmp/**/*"
+#     - "log/**/*"
+#     - "test/**/*"
+#     - "Gemfile"
+#     - "Rakefile"
+#     - "helpers/**/*"
+#     - "db/seeds.rb"
+#     - "spec/**/*"
 
 
 
 
-  # コメント除外
-# Offense count: 52
-# Configuration parameters: AllowedChars.
-# AllowedChars: ©
+ 
 Style/AsciiComments:
   Enabled: false
-  # Exclude:
-    # - 'app/controllers/application_controller.rb'
-    # - 'app/controllers/favorites_controller.rb'
-    # - 'app/controllers/groups_controller.rb'
-    # - 'app/controllers/notifications_controller.rb'
-    # - 'app/controllers/post_comments_controller.rb'
-    # - 'app/controllers/posts_controller.rb'
-    # - 'app/controllers/users/registrations_controller.rb'
-    # - 'app/helpers/notifications_helper.rb'
-    # - 'app/mailers/contact_mailer.rb'
-    # - 'app/models/department.rb'
-    # - 'app/models/group.rb'
-    # - 'app/models/post.rb'
-    # - 'app/models/post_comment.rb'
-    # - 'app/models/tag.rb'
-    # - 'app/models/user.rb'
 
-
-    # あとで直す
-# Offense count: 1
-Lint/DuplicateMethods:
-  Exclude:
-    - 'app/models/post.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false

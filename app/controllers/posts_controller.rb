@@ -33,17 +33,17 @@ class PostsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     # @postオブジェクトを参照してタグの名前取得
     # もし公開記事だったら、
-      if @post.save
+    if @post.save
       tag_list = params[:post][:name].split(',')
-        if params[:post][:status]== "公開"
-          @post.save_tag(tag_list)
-          redirect_to post_path(@post), notice: '投稿完了しました:)'
-        else
-          redirect_to posts_path, notice: '下書きに登録しました。'
-        end
+      if params[:post][:status] == "公開"
+        @post.save_tag(tag_list)
+        redirect_to post_path(@post), notice: '投稿完了しました:)'
       else
-        render :new
+        redirect_to posts_path, notice: '下書きに登録しました。'
       end
+    else
+      render :new
+    end
   end
 
   def update
@@ -53,14 +53,14 @@ class PostsController < ApplicationController
     tag_list = params[:post][:name].split(',')
     # もしpostの情報が更新されたら
     if @post.update(post_params)
-      if params[:post][:status]== "公開"
-    # このpost_idに紐づいていたタグを@oldに入れる
-        @old_relations=PostTag.where(post_id: @post.id)
-    # それらを取り出し、消す。消し終わる
+      if params[:post][:status] == "公開"
+        # このpost_idに紐づいていたタグを@oldに入れる
+        @old_relations = PostTag.where(post_id: @post.id)
+        # それらを取り出し、消す。消し終わる
         @old_relations.each do |relation|
-        relation.delete
-        end  
-         @post.save_tag(tag_list)
+          relation.delete
+        end
+        @post.save_tag(tag_list)
         redirect_to post_path(@post.id), notice: '更新完了しました:)'
       else redirect_to posts_path, notice: '下書きに登録しました。'
       end
@@ -81,8 +81,8 @@ class PostsController < ApplicationController
   end
 
   def favorite_order
-    posts = Post.includes(:favorited_users)
-                .sort do |a, b|
+    posts = Post.includes(:favorited_users).
+      sort do |a, b|
       b.favorited_users.includes(:favorites).size <=>
         a.favorited_users.includes(:favorites).size
     end
@@ -93,8 +93,8 @@ class PostsController < ApplicationController
   def favorite_weekly_order
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    posts = Post.includes(:favorited_users)
-                .sort do |a, b|
+    posts = Post.includes(:favorited_users).
+      sort do |a, b|
       b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
     end
@@ -103,8 +103,8 @@ class PostsController < ApplicationController
   end
 
   def comment_order
-    posts = Post.includes(:commented_users)
-                .sort do |a, b|
+    posts = Post.includes(:commented_users).
+      sort do |a, b|
       b.commented_users.includes(:post_comments).size <=>
         a.commented_users.includes(:post_comments).size
     end
@@ -115,8 +115,8 @@ class PostsController < ApplicationController
   def comment_weekly_order
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    posts = Post.includes(:commented_users)
-                .sort do |a, b|
+    posts = Post.includes(:commented_users).
+      sort do |a, b|
       b.commented_users.includes(:post_comments).where(created_at: from...to).size <=>
         a.commented_users.includes(:post_comments).where(created_at: from...to).size
     end
@@ -132,8 +132,10 @@ class PostsController < ApplicationController
 
   def create_notification(current_user, user)
     # ↓ すでに「いいね」されているかwhereで探しに行かせます。
-    past_notices = Notification.where(['sender_id = ? and recipenter_id = ? and post_id = ? and action = ?',
-                                       current_user.id, user.id, id, 'favorite'])
+    past_notices = Notification.where([
+      'sender_id = ? and recipenter_id = ? and post_id = ? and action = ?',
+      current_user.id, user.id, id, 'favorite',
+    ])
     # ↓　blank?メソッドを使用すると、空の場合にtrueが返ります(RubyのメソッドではなくRailsに入っているActiveSupportのgemのメソッドらしいです)
     if past_notices.blank?
       # ↓ blanK?がtrueの場合のみ、通知作成を行います。(いいねボタン連打したりする人がいると通知がその分作成されて困るからです)
@@ -142,25 +144,22 @@ class PostsController < ApplicationController
         recipenter_id: end_user.id,
         action: 'favorite'
       )
-      notification.save  # バリデーションが実行された結果エラーが無い場合trueを返し，エラーが発生した場合falseを返す
+      notification.save # バリデーションが実行された結果エラーが無い場合trueを返し，エラーが発生した場合falseを返す
     end
   end
 
   private
-
- 
 
   def post_params
     params.require(:post).permit(:title, :content, :status)
   end
 
   def correct_user
-    @post=Post.find(params[:id])
-    @user=@post.user
+    @post = Post.find(params[:id])
+    @user = @post.user
     # 今のユーザーがpostのユーザーと違うなら
-    if current_user!=@user
+    if current_user != @user
       redirect_to posts_path
     end
   end
-
 end

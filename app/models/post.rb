@@ -2,8 +2,8 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   belongs_to :user
   # バリデーション　データの入力なければfalseが返ってくる
-  validates :title, presence: true,length:{in:2..60}
-  validates :content, presence: true,length:{minimum:20}
+  validates :title, presence: true, length: { in: 2..60 }
+  validates :content, presence: true, length: { minimum: 20 }
   # コメント（ユーザーは複数コメントする）
   has_many :post_comments, dependent: :destroy
   # お気に入り（ユーザーは複数お気に入りする）
@@ -39,12 +39,11 @@ class Post < ApplicationRecord
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(name: new)
-      post_tags.new(user_id: user_id,tag_id: new_post_tag.id).save
+      post_tags.new(user_id: user_id, tag_id: new_post_tag.id).save
     end
   end
 
   def self.search(search)
-    
     return Post.all unless search
     Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
   end
@@ -61,27 +60,26 @@ class Post < ApplicationRecord
   # scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
   # scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
 
-# 通知のアソシエーション
+  # 通知のアソシエーション
   has_many :notifications, dependent: :destroy
   has_many :points, dependent: :destroy
-# 通知の作成
+  # 通知の作成
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,
       visited_id: user_id,
       action: 'post_comment'
     )
-  
+
     notification.save if notification.valid?
   end
-# ポイントの
+
+  # ポイントの
   def point_by(current_user)
     point = current_user.active_points.new(
       post_id: id,
       getter_id: user_id
-      )
+    )
     point.save if point.valid?
-
   end
-
 end

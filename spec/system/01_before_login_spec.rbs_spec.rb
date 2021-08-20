@@ -5,9 +5,10 @@ describe 'ユーザログイン前のテスト' do
     before do
       visit root_path
     end
-    context'表示内容の確認' do
+
+    context '表示内容の確認' do
       it'urlが正しい' do
-        expect(current_path).to eq'/'
+        expect(current_path).to eq '/'
       end
 
       it 'loginリンクの内容が正しい' do
@@ -77,15 +78,16 @@ describe 'ユーザログイン前のテスト' do
         fill_in 'user[password]', with: ''
         click_button 'ログインする'
       end
+
       it 'ログインに失敗しログイン画面に戻る' do
         expect(current_path).to eq '/users/sign_in'
       end
     end
   end
-  
+
   describe 'ユーザーログアウトのテスト' do
     let(:user) { create(:user) }
-    
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -94,11 +96,12 @@ describe 'ユーザログイン前のテスト' do
       logout_link = find_all('a')[7].native.inner_text
       click_link logout_link
     end
+
     it '正しくログアウトし、ログインリンク存在する' do
-      expect(page).to have_link '',href: '/users/sign_in'
+      expect(page).to have_link '', href: '/users/sign_in'
     end
     it '正しくログアウトし、新規登録リンク存在する' do
-      expect(page).to have_link '',href: '/users/sign_up'
+      expect(page).to have_link '', href: '/users/sign_up'
     end
     it 'ログアウトしたらトップ画面に遷移' do
       expect(current_path).to eq root_path

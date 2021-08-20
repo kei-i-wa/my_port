@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'}
+    sessions: 'users/sessions',
+  }
   # devise_for :users
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  
-# post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+
+  # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   namespace :departments do
     resources :searches, only: :index
   end
 
-  resources :departments, only: %i[index create edit update] do
+  resources :departments, only: %i(index create edit update) do
   end
 
   namespace :posts do
@@ -23,9 +24,9 @@ Rails.application.routes.draw do
 
   resources :posts do
     # コメントは投稿に紐づくのでネストさせる
-    resources :post_comments, only: %i[create destroy]
+    resources :post_comments, only: %i(create destroy)
     # お気に入り
-    resource :favorites, only: %i[create destroy]
+    resource :favorites, only: %i(create destroy)
     get 'favorite_order' => 'posts#favorite_order'
     get 'favorite_weekly_order' => 'posts#favorite_weekly_order'
     get 'comment_order' => 'posts#comment_order'
@@ -37,9 +38,9 @@ Rails.application.routes.draw do
     resources :searches, only: :index
   end
 
-  resources :notifications, only: %i[index destroy]
+  resources :notifications, only: %i(index destroy)
 
-  resources :users, only: %i[show index edit update] do
+  resources :users, only: %i(show index edit update) do
     member do
       get :favorites
       get :comments
@@ -48,13 +49,12 @@ Rails.application.routes.draw do
       patch :destroy_user
     end
   end
-  resources :departments, only: %i[index edit update create]
+  resources :departments, only: %i(index edit update create)
 
   root to: 'homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # タグの検索で使用する
   get 'search_tag' => 'posts#search_tag'
-
 
   namespace :groups do
     resources :searches, only: :index

@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-  default_scope -> { order(created_at: :desc) }
   has_many :group_users
   # グループは複数のユーザーを持つ。group_usersから参照可能
   has_many :users, through: :group_users, dependent: :destroy
@@ -7,16 +6,16 @@ class Group < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true,
-                  length: {in:2..25}
+                   length: { in: 2..25 }
   validates :status, presence: true,
-                  length: {in:2..25}
-  validates :introduction, presence: true,length: {in:2..1000}
-  
+                     length: { in: 2..25 }
+  validates :introduction, presence: true, length: { in: 2..1000 }
+
   # 検索
   def self.search(search)
     return Group.all unless search
 
-    Group.where('name LIKE(?)', "%#{search}%").or(Group.where('introduction LIKE(?)', "%#{search}%"))
-         .or(Group.where('status LIKE(?)', "%#{search}%"))
+    Group.where('name LIKE(?)', "%#{search}%").or(Group.where('introduction LIKE(?)', "%#{search}%")).
+      or(Group.where('status LIKE(?)', "%#{search}%"))
   end
 end

@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: %i(mri mingw x64_mingw)
 end
 
 group :development do
@@ -60,7 +60,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 # 画像投稿用のgem
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 # 画像加工用のgem
@@ -74,8 +74,6 @@ gem 'jquery-rails'
 gem 'devise'
 # ページネーションの追加
 gem 'kaminari', '~> 1.2.1'
-# 閲覧数の計測
-gem 'impressionist', '~>1.6.1'
 # グラフの表示
 gem 'chartkick'
 
@@ -94,7 +92,8 @@ end
 group :development, :test do
   # デバッグ
   gem 'pry-byebug'
-  gem 'rubocop', require: false
+  # gem 'rubocop', require: false
+  gem 'rubocop-airbnb'
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
@@ -110,4 +109,3 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # バッチ処理を行うためのgem
 gem 'whenever', require: false
-

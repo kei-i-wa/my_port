@@ -6,13 +6,13 @@
 #         end
 #   let!(:user) { create(:user) }
 #   let!(:post) { create(:post, user_id: user.id) }
-  
+
 #   describe'投稿のテスト' do
 #     before do
 #       sign_in user
 #       visit new_post_path
 #     end
-    
+
 #     context '投稿は成功したとき' do
 #       it '遷移先が正しいか' do
 #         fill_in 'post[title]',with: Faker::Lorem.characters(number: 10)

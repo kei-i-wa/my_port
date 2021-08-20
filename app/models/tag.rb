@@ -5,5 +5,5 @@ class Tag < ApplicationRecord
   # タグは複数のユーザーを持つ
   has_many :users, through: :post_tags
 
-  validates :name,length:{maximum:10}
+  validates :name, length: { maximum: 10 }
 end

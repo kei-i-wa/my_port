@@ -6,12 +6,12 @@ class PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     if @comment.save
       # ユーザーステータス無効で、投稿者とコメント者が等しいとき
-      unless current_user==@post.user || @post.user.is_valid == false
-      @post.create_notification_by(current_user)
+      if current_user != @post.user && @post.user.is_valid == true
+        @post.create_notification_by(current_user)
       end
       @post_comment = PostComment.new
     else
-      render 'error'   
+      render 'error'
     end
   end
 

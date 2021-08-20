@@ -24,12 +24,12 @@
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
 set :environment, :development
- every 1.minutes do
+every 1.minutes do
   # every 1.days, at: '0:10 am' do
-    runner "Batch::DataReset.data_reset"
- end
+  runner "Batch::DataReset.data_reset"
+end
 
 # every 1.days, at: '0:10 am' do
 every 1.minutes do
-     runner "Batch::DataReset.data_notice"
+  runner "Batch::DataReset.data_notice"
 end
