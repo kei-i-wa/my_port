@@ -4,14 +4,7 @@
     
     <!--グループメンバー表示-->
     <div class="card col-md-3 mt-5">
-      <div class="card-body">
-       <h5 class="card-title"><i class="fas fa-users"></i>  勉強会参加者</h5>
-        <% @group.users.each do |member| %>
-          <p id="group_text"><%=link_to user_path(member.id) do %><%=member.name%><% end %>
-          </p>
-        <% end %>
-      </div>
-    <!--オーナーは勉強会編集削除ができる。それ以外は参加、退出のみ-->
+      <!--オーナーは勉強会編集削除ができる。それ以外は参加、退出のみ-->
       <% if @group.owner_id == current_user.id %>
         <%= link_to "参加者へ一斉通知",group_new_mail_path(@group), class: "btn btn-outline-info fas fa-paper-plane" %>
         <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-outline-primary fas fa-edit" %>
@@ -21,6 +14,13 @@
       <%else %>
         <%= link_to '参加', group_join_path(@group), class: "btn btn-outline-success" %>
       <% end %>
+      <div class="card-body">
+       <h5 class="card-title"><i class="fas fa-users"></i>  勉強会参加者</h5>
+        <% @group.users.each do |member| %>
+          <p id="group_text"><%=link_to user_path(member.id) do %><%=member.name%><% end %>
+          </p>
+        <% end %>
+      </div>
     </div>
 
     <div class="group-info col-md-7 ml-5 mt-5" style="margin-top:1em;">

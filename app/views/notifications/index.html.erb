@@ -2,7 +2,7 @@
     <div class='row justify-content-center mx-auto'>
         <div class="notification_box">
             <h4 class="text-center"><i class="fas fa-bell"></i>通知</h4>
-            <p>通知は30日間で自動的に削除されます。</p>
+            <p class="text-center">通知は30日間で自動的に削除されます。</p>
              <p class="text-right"><%= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-light fas fa-trash" %></p>
         <% if @notifications.exists? %>
         <!--%= render "notifications/notification" ,notification: @notifications %>-->
