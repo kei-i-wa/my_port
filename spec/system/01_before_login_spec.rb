@@ -38,13 +38,6 @@ describe 'ユーザログイン前のテスト' do
         expect(current_path).to eq '/users/sign_up'
       end
     end
-
-    # context '新規登録成功のテスト' do
-    #   it '新規登録後のリダイレクト先が投稿一覧ページ' do
-    #     click_button '登録する'
-    #     expect(current_path).to eq '/posts'
-    #   end
-    # end
   end
 
   describe 'ユーザーログイン' do
@@ -93,7 +86,7 @@ describe 'ユーザログイン前のテスト' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログインする'
-      logout_link = find_all('a')[7].native.inner_text
+      logout_link = find_all('a')[10].native.inner_text
       click_link logout_link
     end
 
