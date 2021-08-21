@@ -23,7 +23,7 @@
 # rails_env = Rails.env.to_sym
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
-set :environment, :development
+set :environment, :production
 every 1.minutes do
   # every 1.days, at: '0:10 am' do
   runner "Batch::DataReset.data_reset"
