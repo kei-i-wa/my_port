@@ -21,14 +21,6 @@
 @import 'font-awesome';
 @import "summernote-bs4";
 
-// .form-group{
-//   color:red;
-// }
-
-// required:after{
-//   content:"*";
-// }
-
 a:link,a:visited,a:active{
   color:dimgray;
 }
@@ -47,37 +39,3 @@ a:hover{
   width: 50px;
   hover:none;
 }
-
-
-// 以下ローディングページ
-
-// #loader_wrap {
-// position: fixed;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-// width: 100vw;
-// height: 100vh;
-// top: 0;
-// background: #fff;
-// }
-// /* ローディングアニメーションの設定 */
-// .loader {
-// width: 150px;
-// height: 150px;
-// background-image: image-url("logo_my_port.png")no-repeat;
-// opacity: 0;
-// animation: blink 1.5s infinite linear;
-// }
-
-// @keyframes blink {
-// 50% {
-// opacity: 1;
-// }
-// }
-
-// /* ローディング終了後 */
-// .loaded {
-// opacity: 0;
-// visibility: hidden;
-// }

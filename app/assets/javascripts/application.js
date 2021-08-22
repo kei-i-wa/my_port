@@ -78,8 +78,7 @@ tabs[i].addEventListener("click",function(e){
 })
 
 
-
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   $('#back a').on('click',function(event){
     $('body, html').animate({
       scrollTop:0
