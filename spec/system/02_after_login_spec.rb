@@ -83,6 +83,84 @@ describe 'ユーザーログイン後のテスト' do
             it '検索窓が表示される' do
                 expect(page).to have_field 'posts_keyword'
             end
+            # it 'いいね数のリンクが正しい' do
+            #     expect(page).to have_link 'いいね数', href: '/posts/:post_id/favorite_order'
+            # end
+            # it 'コメント数のリンクが正しい' do
+            #     expect(page).to have_link 'コメント数', href: post_comment_order_path(posts)
+            # end
+            # it '閲覧数のリンクが正しい' do
+            #     expect(page).to have_link '閲覧数', href: post_impressions_order_path(posts)
+            # end
         end
+        context '新規投稿画面の確認' do
+            before do
+                visit new_post_path
+            end
+            it 'titleフォームが表示される' do
+                expect(page).to have_field 'post[title]'
+            end
+            it 'titleフォームが空' do
+                expect(find_field('post[title]').text).to be_blank
+            end
+            it 'contentフォームが表示される' do
+                expect(page).to have_field 'post[content]'
+            end
+            it 'contentフォームが空' do
+                expect(find_field('post[content]').text).to be_blank
+            end
+            it 'タグが表示されるか' do
+                expect(page).to have_field 'post[name]'
+            end
+            it 'タグの入力欄が空' do
+                expect(find_field('post[name]').text).to be_blank
+            end
+            it '公開・非公開の選択がされてるか' do
+                expect(page).to have_checked_field 'post[status]'
+            end
+            it '投稿ボタンが存在するか' do
+                expect(page).to have_button '投稿'
+            end
+        end
+        context '投稿成功のテスト' do
+            before do
+                visit new_post_path
+                fill_in 'post[title]', with: Faker::Lorem.characters(number: 10)
+                fill_in 'post[content]',with: Faker::Lorem.characters(number: 40)
+            end
+            it '投稿が正しく保存される' do
+                expect { click_button '投稿' }.to change(user.posts, :count).by(1)
+            end
+        end
+        
+        describe '投稿詳細画面のテスト（自分）' do
+            before do
+                visit post_path(post)
+            end
+            
+            context '表示内容の確認' do
+                it 'urlが正しい' do
+                    expect(current_path).to eq '/posts/' + post.id.to_s
+                end
+                it 'ユーザーの名前のリンク先が正しい' do
+                    expect(page).to have_link post.user.name, href: user_path(post.user)
+                end
+                it '投稿のタイトルが表示される' do
+                    expect(page).to have_content post.title
+                end
+                it '投稿のコンテンツが表示される' do
+                    expect(page).to have_content post.content
+                end
+                it '投稿の編集リンクが表示される' do
+                    expect(page).to have_link '記事の編集', href: edit_post_path(post)
+                end
+                it '投稿の削除リンクが表示される' do
+                    expect(page).to have_link '記事の削除', href: post_path(post)
+                end
+            end
+        end
+    
+    
     end
+    
 end
