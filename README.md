@@ -42,6 +42,49 @@ URL:
 ## :paperclip:チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
+##　機能
+
+|   | 機能　　　　　 | 使用技術 |
+|:-----------|:------------|:------------:|
+|１ | ログイン・ログアウト機能 | devise         |
+|２ |プロフィール編集| devise      |
+|３ |ゲストログイン機能|ー         |
+|４ | 画像投稿機能 |refile, mini_magick|
+|５ | 投稿機能(CRUD) |ー           |
+|６ | 投稿への複数タグ付け |ー           |
+|７ | 並び替え |ー           |
+|８ | ランキング |ー           |
+|９ | 投稿の閲覧数表示 |impressionist|
+|10| いいね機能（非同期）  |ー           |
+|11| コメント機能（非同期） |ー           |
+|12| 勉強会登録機能 |ー           |
+|13| 部署登録機能 |ー           |
+|14| メール機能 |ー           |
+|15| メール配信（バッチ処理） |whenever|
+|16| 通知機能 |ー           |
+|17| 通知の定時削除（バッチ処理） |whenever|
+|18| 検索機能 |ー           |
+|19| インクリメンタルサーチ |jquery-rails|
+|20| マイページの活動グラフ |chartkick|
+|21| 画像スライドショー |ー           |
+|22| TOPに戻るボタン |ー           |
+|23| 投稿のテキストエディタ |summernote-rails|
+|24| 管理者機能 |cancancan/rails_admin|
+|25| エラー・フラッシュメッセージ |ー           |
+|26| 日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
+|27| レスポンシブデザイン |bootstrap|
+|28| ページ導入 |kaminari|
+
+##　非機能要件
+| | 機能　　　　　 | 使用技術 |
+|:-----------|:------------|:------------:|
+|１| リーダブルコード |rubocop-airbnb|
+|２|環境変数化|dotenv-rails|
+|３|デバッグ|pry-byebug|
+|４| テスト（単体/機能） |capybara/rspec-rails/factory_bot_rails/faker|
+|６| N＋１問題 |ー           |
+＊テストは全て網羅できておらず、日々少しずつテスト件数を増やしています。
+
 ## :pushpin:開発環境
 
 - OS：Linux(CentOS)
