@@ -3,9 +3,9 @@ my portは社内の情報共有サイトです。
 ![CB6B6019-B092-41AD-B992-662D3DCED53E_1_105_c](https://user-images.githubusercontent.com/83590000/130168931-10a3e7ca-4af3-4507-87b9-f4548f91eb7f.jpeg)  
 URL:http://my-port-202106.com/
 
-### 動作デモ
+### 🚡動作デモ
 
-### サイト概要
+### :mag:サイト概要
 
 自分が業務中にぶつかった問題、調べたこと、解決策を共有することで、  
 自身の業務の備忘録、同じ問題にぶつかった社員の助けになります。  
@@ -33,17 +33,10 @@ URL:http://my-port-202106.com/
 ・自身が業務中に色々調べた結果を残し、社内でシェアしたい場合. 
 ・社内で勉強会を開催したいとき. 
 
-## :ER図
+## 📍ER図
 <img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
 
-## :AWS（インフラ）構成図
--AWSについては学習中のため、追ってアップデートします。  
-![スクリーンショット 2021-08-23 18 58 12](https://user-images.githubusercontent.com/83590000/130428586-9d32846c-f917-4840-8712-b431b7ffd720.png)
-
-
-
-
-## :pushpin:　機能
+## 📍:　機能
 
 |   | 機能　　　　　 | 使用技術 |
 |:-----------|:------------|:------------:|
@@ -79,7 +72,7 @@ URL:http://my-port-202106.com/
 -チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
-## :pushpin:　非機能要件
+## 📍　非機能要件
 | | 機能　　　　　 | 使用技術 |
 |:-----------|:------------|:------------:|
 |１| リーダブルコード |rubocop-airbnb|
@@ -90,7 +83,13 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 
 ーテストは全て網羅できておらず、日々少しずつテスト件数を増やしています。
 
-## :pushpin:開発環境
+
+## 📍AWS（インフラ）構成図
+-AWSについては学習中のため、追ってアップデートします。  
+![スクリーンショット 2021-08-23 18 58 12](https://user-images.githubusercontent.com/83590000/130428586-9d32846c-f917-4840-8712-b431b7ffd720.png)
+
+
+## 📍:開発環境
 
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
