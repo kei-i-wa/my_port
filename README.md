@@ -59,8 +59,8 @@ URL:http://my-port-202106.com/
 |18| 検索機能 |ー           |
 |19| インクリメンタルサーチ |jquery-rails|
 |20| マイページの活動グラフ |chartkick|
-|21| 画像スライドショー |ー           |
-|22| TOPに戻るボタン |ー           |
+|21| 画像スライドショー |jquery-rails|
+|22| TOPに戻るボタン/タブ切り替え |jquery-rails|
 |23| 投稿のテキストエディタ |summernote-rails|
 |24| 管理者機能 |cancancan/rails_admin|
 |25| エラー・フラッシュメッセージ |ー           |
