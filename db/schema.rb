@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_090035) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
-    t.text "content", null: false
+    t.text "content", limit: 4294967295, null: false
     t.integer "user_id", null: false
     t.integer "impressions_count", default: 0
     t.boolean "status", default: true, null: false
