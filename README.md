@@ -31,6 +31,9 @@ URL:
 ・自身が業務中に色々調べた結果を残し、社内でシェアしたい場合. 
 ・社内で勉強会を開催したいとき. 
 
+## :ER図
+<img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
+
 ## :paperclip:設計書
 
 -ER図：https://drive.google.com/file/d/1v3620sm4i5ZRKwLGR8fDyXHk6-h61y6a/view?usp=sharing  
