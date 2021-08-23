@@ -42,7 +42,7 @@ URL:
 ## :paperclip:チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
-##　機能
+## :pushpin:　機能
 
 |   | 機能　　　　　 | 使用技術 |
 |:-----------|:------------|:------------:|
@@ -75,7 +75,7 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 |27| レスポンシブデザイン |bootstrap|
 |28| ページ導入 |kaminari|
 
-##　非機能要件
+## :pushpin:　非機能要件
 | | 機能　　　　　 | 使用技術 |
 |:-----------|:------------|:------------:|
 |１| リーダブルコード |rubocop-airbnb|
@@ -83,7 +83,8 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 |３|デバッグ|pry-byebug|
 |４| テスト（単体/機能） |capybara/rspec-rails/factory_bot_rails/faker|
 |６| N＋１問題 |ー           |
-＊テストは全て網羅できておらず、日々少しずつテスト件数を増やしています。
+
+ーテストは全て網羅できておらず、日々少しずつテスト件数を増やしています。
 
 ## :pushpin:開発環境
 
