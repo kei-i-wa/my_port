@@ -33,9 +33,6 @@ URL:http://my-port-202106.com/
 ・自身が業務中に色々調べた結果を残し、社内でシェアしたい場合. 
 ・社内で勉強会を開催したいとき. 
 
-## 📍ER図
-<img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
-
 ## 📍:　機能
 
 |   | 機能　　　　　 | 使用技術 |
@@ -83,6 +80,8 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 
 ーテストは全て網羅できておらず、日々少しずつテスト件数を増やしています。
 
+## 📍ER図
+<img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
 
 ## 📍AWS（インフラ）構成図
 -AWSについては学習中のため、追ってアップデートします。  
