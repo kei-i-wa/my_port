@@ -52,8 +52,8 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 |４ | 画像投稿機能 |refile, mini_magick|
 |５ | 投稿機能(CRUD) |ー           |
 |６ | 投稿への複数タグ付け |ー           |
-|７ | 並び替え |ー           |
-|８ | ランキング |ー           |
+|７ | 並び替え機能 |ー           |
+|８ | ランキング機能 |ー           |
 |９ | 投稿の閲覧数表示 |impressionist|
 |10| いいね機能（非同期）  |ー           |
 |11| コメント機能（非同期） |ー           |
