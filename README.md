@@ -34,12 +34,8 @@ URL:
 ## :ER図
 <img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
 
-## :paperclip:設計書
 
 
-
-## :paperclip:チャレンジ要素一覧
-https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
 ## :pushpin:　機能
 
@@ -73,6 +69,9 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 |26| 日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
 |27| レスポンシブデザイン |bootstrap|
 |28| ページ導入 |kaminari|
+
+-チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
 
 ## :pushpin:　非機能要件
 | | 機能　　　　　 | 使用技術 |
