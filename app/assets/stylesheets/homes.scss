@@ -92,20 +92,11 @@
   height: 600px;
 }
 
-// .carousel-caption-1 {
-//   position: absolute;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
 
-// .carousel-caption-2 {
-//   position: absolute;
-
-// }
-// #how_to_use{
-//   color:rgba(70, 130, 180,.8);
-//   font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif
-// }
+#how_to_use{
+  color:rgba(70, 130, 180,.8);
+  font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif
+}
 
 li{
   margin:0;
@@ -113,19 +104,9 @@ li{
 
 .contents li {
   position: relative;
-  // opacity: 0;
-  // // 下からふわっと（元々下に配置しておく）
-  // transform: translateY(50px);
-  // // 時間をかけて出てきてくれる
-  // transition: 1s;
+
 }
 
-// javascriptの記述ででshowがつくことになってる
-// .contents li.show {
-  // opacityだとポンっと出てくる
-  // opacity: 1;
-  // transform:none;
-// }
 
 .contents li:not(:first-of-type){
   margin-top: 50px;

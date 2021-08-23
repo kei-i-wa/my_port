@@ -16,7 +16,7 @@
         <!--画像が小さくなったら、もう文字は表示しない-->
         <div class="carousel-caption d-none d-md-block">
             <p class="title1 d-none d-lg-block">Welcome to my port !</p>
-            <p class="introduction"><br>"my port"は業務に関する知識をアウトプットし、社内で共有するサービスです。</p>
+            <p class="introduction" style="color:white;"><br>"my port"は業務に関する知識をアウトプットし、社内で共有するサービスです。</p>
           </div>
         </div>
 
@@ -77,35 +77,48 @@
       <strong>タグでの検索/ランキング/並び替え/検索</strong>ができます。<br>
       <strong>検索機能（インクリメンタルサーチ)</strong>を使用して<br>
       投稿を探しましょう。<br>
-      参考になった投稿には、いいね(★)やコメントをしましょう</p>
+      参考になった投稿には、いいねやコメントをしましょう</p>
     </div>
   </li>
   <li class="animationTarget">
     <%= image_tag asset_path("show3.png"),class:"img-fluid"%>
     <div class="contentsText">
       <h2>マイページ</h2>
+       <p><strong>Activity</strong>ではあなたのmy portでの活動をグラフにして表示します。<br>
+        記事にいいねがつくと<strong>TEU(ポイント）</strong>が溜まっていきます。</p>
     </div>
   </li>
   <li class="animationTarget">
     <%= image_tag asset_path("show4.png"),class:"img-fluid"%>
     <div class="contentsText">
       <h2>勉強会</h2>
-      <p>社内での勉強会の開催をお知らせできます。<br>
+      <p>社内での<strong>勉強会</strong>の開催をお知らせできます。<br>
       詳細ページから勉強会への参加、退出ができます。<br>
-      管理者はメンバーにメールでの一斉通知が可能です。</p>
+      管理者はメンバーに<strong>メール</strong>での一斉通知が可能です。</p>
     </div>
   </li>
 
   <li class="animationTarget">
-    <%= image_tag asset_path("show5.png"),class:"img-fluid"%>
+    <%= image_tag asset_path("show6.png"),class:"img-fluid"%>
     <div class="contentsText">
       <h2>いいね・コメント</h2>
-      <p>いいねやコメントをしましょう！<br>
-      いいねをもらうとマイページのTEUが増えていきます。<br>
-      コメントは通知からも確認可能です。<br>
-      未読の通知があるとNOTICEが赤くなります。</p>
+      <p>
+      <strong>いいね</strong>をもらうとマイページのTEUが増えていきます。<br>
+      コメントは<strong>通知</strong>からも確認可能です。<br>
+      <strong>未読の通知</strong>があるとNOTICEが赤くなります。</p>
     </div>
   </li>
+  
+  <li class="animationTarget">
+    <%= image_tag asset_path("show9.png"),class:"img-fluid"%>
+    <div class="contentsText">
+      <h2>メールへの連絡</h2>
+      <p>勉強会管理者はメンバーに<strong>メールで一斉通知</strong>ができます。<br>
+      また、未確認の通知が10件以上ある場合、<br>
+      <strong>自動配信メール</strong>でご連絡致します。</p>
+    </div>
+  </li>
+  
 </ul>
 </div>
 
