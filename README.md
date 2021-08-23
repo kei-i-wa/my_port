@@ -42,31 +42,33 @@ URL:http://my-port-202106.com/
 |１ | ログイン・ログアウト機能 | devise         |
 |２ |プロフィール編集| devise      |
 |３ |ゲストログイン機能|ー         |
-|４ | 画像投稿機能 |refile, mini_magick|
-|５ | 投稿機能(CRUD) |ー           |
-|６ | 投稿への複数タグ付け |ー           |
-|７ | 並び替え機能 |ー           |
-|８ | ランキング機能 |ー           |
-|９ | 投稿の閲覧数表示 |impressionist|
-|10| いいね機能（非同期）  |ー           |
-|11| コメント機能（非同期） |ー           |
-|12| 勉強会登録機能 |ー           |
-|13| 部署登録機能 |ー           |
-|14| メール機能 |ー           |
-|15| メール配信（バッチ処理） |whenever|
-|16| 通知機能 |ー           |
-|17| 通知の定時削除（バッチ処理） |whenever|
-|18| 検索機能 |ー           |
-|19| インクリメンタルサーチ |jquery-rails|
-|20| マイページの活動グラフ |chartkick|
-|21| 画像スライドショー |jquery-rails|
-|22| TOPに戻るボタン/タブ切り替え |jquery-rails|
-|23| 投稿のテキストエディタ |summernote-rails|
-|24| 管理者機能 |cancancan/rails_admin|
-|25| エラー・フラッシュメッセージ |ー           |
-|26| 日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
-|27| レスポンシブデザイン |bootstrap|
-|28| ページ導入 |kaminari|
+|4 |退会機能（論理削除）|ー         |
+|5 | 画像投稿機能 |refile, mini_magick|
+|6 | 投稿機能(CRUD) |ー           |
+|7 | 下書き機能|ー           |
+|8 | 投稿への複数タグ付け |ー           |
+|9 | 並び替え機能 |ー           |
+|10| ランキング機能 |ー           |
+|11| 投稿の閲覧数表示 |impressionist|
+|12| いいね機能（非同期）  |ー           |
+|13| コメント機能（非同期） |ー           |
+|14| 勉強会登録機能 |ー           |
+|15| 部署登録機能 |ー           |
+|16| メール機能 |ー           |
+|17| メール配信（バッチ処理） |whenever|
+|18| 通知機能 |ー           |
+|19| 通知の定時削除（バッチ処理） |whenever|
+|20| 検索機能 |ー           |
+|21| インクリメンタルサーチ |jquery-rails|
+|22| マイページの活動グラフ |chartkick|
+|23| 画像スライドショー |jquery-rails|
+|24| TOPに戻るボタン/タブ切り替え |jquery-rails|
+|25| 投稿のテキストエディタ |summernote-rails|
+|26| 管理者機能 |cancancan/rails_admin|
+|27| エラー・フラッシュメッセージ |ー           |
+|28| 日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
+|29| レスポンシブデザイン |bootstrap|
+|30| ページ導入 |kaminari|
 
 -チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKbZv0/edit#gid=566224576
