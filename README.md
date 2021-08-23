@@ -66,7 +66,7 @@ URL:http://my-port-202106.com/
 |25| 投稿のテキストエディタ |summernote-rails|
 |26| 管理者機能 |cancancan/rails_admin|
 |27| エラー・フラッシュメッセージ |ー           |
-|28| 日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
+|28| メッセージの日本語化 |rails-i18n/devise-i18n/devise-i18n-views|
 |29| デザイン |bootstrap|
 |30| ページ導入 |kaminari|
 
