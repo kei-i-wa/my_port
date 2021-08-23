@@ -1,7 +1,7 @@
 # :anchor:my port
 my portは社内の情報共有サイトです。  
 ![CB6B6019-B092-41AD-B992-662D3DCED53E_1_105_c](https://user-images.githubusercontent.com/83590000/130168931-10a3e7ca-4af3-4507-87b9-f4548f91eb7f.jpeg)  
-URL:
+URL:http://my-port-202106.com/
 
 ### :mag:サイト概要
 
@@ -33,6 +33,10 @@ URL:
 
 ## :ER図
 <img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
+
+## :AWS（インフラ）構成図
+-AWSについては学習中のため、追ってアップデートします。
+![スクリーンショット 2021-08-23 18 58 12](https://user-images.githubusercontent.com/83590000/130428586-9d32846c-f917-4840-8712-b431b7ffd720.png)
 
 
 
