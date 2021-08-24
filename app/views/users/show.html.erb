@@ -117,7 +117,7 @@
             <tr>
               <th class="width:90%"><%= link_to post_path(post.id) do %><%= post.title %><% end %></th>
               <% if post.favorited_by?(current_user) %>
-              <th class="width:10%"><i class="fas fa-check"><%= post.favorites.count %></i></th>
+              <th class="width:10%"><i class="fas fa-star star"><%= post.favorites.count %></i></th>
               <% else %>
               <th class="width:10%"><i class="far fa-star"><%=post.favorites.count%></i></th>
               <% end %>
@@ -159,4 +159,6 @@
     color: #474747;
     background:rgba(30, 144, 255,0.2);
   }
+  
+
 </style>
