@@ -6,7 +6,7 @@ URL:http://my-port-202106.com/
 ### 🚡動作デモ
 
 お忙しい方にもご覧いただきやすいよう、動作デモ（5分間）を編集しました。ぜひご覧ください。  (YouTubeが開きます)  
-＊いただいた[![レビュー](https://docs.google.com/spreadsheets/d/1pAyMYA0krrO3pSC5tShYLg_69_Q6Tw-3HffIdUT48HM/edit#gid=0)を元に随時修正しておりますので、現状、実物とは異なっていますが、  
+＊いただいた[レビュー](https://docs.google.com/spreadsheets/d/1pAyMYA0krrO3pSC5tShYLg_69_Q6Tw-3HffIdUT48HM/edit#gid=0)を元に随時修正しておりますので、現状、実物とは異なっていますが、  
 大体の機能は理解いただけるかと思います。  
 
 ＊音楽が鳴りますのでご注意ください!!!  
