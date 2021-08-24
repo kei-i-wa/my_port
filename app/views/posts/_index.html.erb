@@ -16,14 +16,13 @@
           </ul>
 
   　<div class="mb-5" style="text-align:center;">
-  　  <h6><i class="fas fa-sort">並び替え</i></h6>
-  　 <p> <%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>|<%= link_to "古い順", posts_path(sort: 'created_at ASC') %></p>
-  　 <p><%= link_to"いいね数",post_favorite_order_path(posts) %>|<%= link_to"コメント数",post_comment_order_path(posts) %>|<%= link_to"閲覧数",post_impressions_order_path(posts) %></p>
+  　  <h6><i class="fas fa-sort">並び替え</i></h6> 
+  　  <%= link_to"  いいね数",post_favorite_order_path(posts) %> | <%= link_to"コメント数",post_comment_order_path(posts) %><br><%= link_to"閲覧数",post_impressions_order_path(posts) %>
     </div>
 
     <div class="mb-5" style="text-align:center;">
       <h6><i class="fas fa-crown">Weeklyランキング</i></h6>
-          <%= link_to"いいね数",post_favorite_weekly_order_path(posts) %>｜<%= link_to"コメント数",post_comment_weekly_order_path(posts) %>
+          <%= link_to"いいね数",post_favorite_weekly_order_path(posts) %> | <%= link_to"コメント数",post_comment_weekly_order_path(posts) %>
     </div>
 
     <div style="text-align:center;">
