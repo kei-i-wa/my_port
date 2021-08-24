@@ -5,6 +5,12 @@ URL:http://my-port-202106.com/
 
 ### 🚡動作デモ
 
+お忙しい方にもご覧いただきやすいよう、動作デモ（5分間）を編集しました。ぜひご覧ください。  (YouTubeが開きます)  
+
+＊音楽が鳴りますのでご注意ください!!!  
+ 
+[![my_port](https://img.youtube.com/vi/tqwmsAYB7vQ/0.jpg)](https://www.youtube.com/watch?v=tqwmsAYB7vQ)
+
 ### :mag:サイト概要
 
 自分が業務中にぶつかった問題、調べたこと、解決策を共有することで、  
@@ -33,7 +39,15 @@ URL:http://my-port-202106.com/
 
 ・業務で分からないことにぶつかり、過去に同様のことが無かったか、解決策を調べたい時、誰か詳しい人を見つけたい時。  
 ・自身が業務中に色々調べた結果を残し、社内でシェアしたい場合. 
-・社内で勉強会を開催したいとき. 
+・社内で勉強会を開催したいとき
+
+### 💁重要視したこと
+私は「パッと見て必要な情報を得られる」ことを意識し、このサイトを作成しました。
+機能が多い分、レイアウトはシンプルに仕上げました。
+記事に複数タグを実装することで、記事の特徴をわかりやすくし、マイページではポイント機能、活動状況のグラフを作成し、自分の頑張りが一目でわかりやすいよう工夫しました。
+また、検索機能は通常の検索機能に加えて、インクリメンタルサーチ（逐次検索）もできるように、
+必要な情報にアクセスしやすいようにしました。
+
 
 ## 📍　機能
 
@@ -92,7 +106,7 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 ![スクリーンショット 2021-08-23 18 58 12](https://user-images.githubusercontent.com/83590000/130428586-9d32846c-f917-4840-8712-b431b7ffd720.png)
 
 
-## 📍:開発環境
+## 📍開発環境
 
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -107,3 +121,8 @@ https://tyoudoii-illust.com/
 http://flat-icon-design.com/?s=post  
 https://hatchful.shopify.com/ja/
 https://o-dan.net/ja/
+
+## 🧑‍🎓制作の記録
+プログラミング学習過程、ポートフォリオ制作過程で学んだことを[Qiita](https://qiita.com/ki_87)にてアウトプットしております。
+
+
