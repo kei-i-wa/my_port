@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
   def join
     @group = Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to  groups_path
+    redirect_to  group_path(@group)
   end
 
   def create
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     # current_userは@group_userから消える
     @group.users.delete(current_user)
-    redirect_to groups_path
+    redirect_to group_path(@group)
   end
 
   def all_destroy
