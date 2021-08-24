@@ -113,3 +113,8 @@ https://tyoudoii-illust.com/
 http://flat-icon-design.com/?s=post  
 https://hatchful.shopify.com/ja/
 https://o-dan.net/ja/
+
+## 🧑‍🎓:制作の記録
+プログラミング学習過程、ポートフォリオ制作過程で学んだことを[Qiita](https://qiita.com/ki_87)にてアウトプットしております。
+
+
