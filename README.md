@@ -5,6 +5,8 @@ URL:http://my-port-202106.com/
 
 ### 🚡動作デモ
 
+[![my_port](https://img.youtube.com/vi/tqwmsAYB7vQ/0.jpg)](https://www.youtube.com/watch?v=tqwmsAYB7vQ)
+
 ### :mag:サイト概要
 
 自分が業務中にぶつかった問題、調べたこと、解決策を共有することで、  
