@@ -5,9 +5,10 @@ URL:http://my-port-202106.com/
 
 ### 🚡動作デモ
 
-お忙しい方にもご覧いただきやすいよう、動作デモ（5分間）を編集しました。ぜひご覧ください。  
+お忙しい方にもご覧いただきやすいよう、動作デモ（5分間）を編集しました。ぜひご覧ください。  (YouTubeが開きます)  
+
 ＊音楽が鳴りますのでご注意ください!!!  
-＊YouTubeが開きますが、駆け足の編集となっております。  
+ 
 [![my_port](https://img.youtube.com/vi/tqwmsAYB7vQ/0.jpg)](https://www.youtube.com/watch?v=tqwmsAYB7vQ)
 
 ### :mag:サイト概要
