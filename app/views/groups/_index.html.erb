@@ -1,5 +1,4 @@
 <div class="container">
-  
   <!--エラーメッセージ-->
   <% if group.errors.any? %>
     <%= render 'errors', obj: group %>
@@ -13,7 +12,12 @@
     <%if groups.present? %>
       <% groups.each do |group| %>
         <div class="card mb-3">
-          <h4><i class="fas fa-user-friends"></i>
+          <h4>
+            <% if group.users.include?(current_user) %>
+            <i class="fas fa-check"></i>
+            <% else %>
+            <i class="fas fa-user-friends"></i>
+            <% end %>
             <%=link_to group_path(group) do%><%=group.name %><% end %>
           </h4>
             <p class="card-text" style="font-size:15px;"><%= group.introduction.truncate(40)  %></p>
