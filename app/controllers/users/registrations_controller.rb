@@ -82,7 +82,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
   # end
   def ensure_normal_user
-    if resource.email == 'guestguest@example.com'
+    if resource.email == 'guestda@example.com'
       redirect_to posts_path, notice: 'ゲストユーザーは削除できません。'
     end
   end

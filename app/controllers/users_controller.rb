@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def destroy_user
     @user = current_user
-    if @user.email == 'guestguest@example.com'
+    if @user.email == 'guestda@example.com'
       reset_session
       redirect_to :root
     else
