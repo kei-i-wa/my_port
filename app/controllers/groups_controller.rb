@@ -5,6 +5,8 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @groups = Group.page(params[:page]).per(20)
   end
+  
+
 
   def new; end
 

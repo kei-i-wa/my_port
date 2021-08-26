@@ -10,7 +10,4 @@ class Point < ApplicationRecord
   scope :created_4days_ago, -> { where(created_at: 4.days.ago.all_day) }
   scope :created_5days_ago, -> { where(created_at: 5.days.ago.all_day) }
   scope :created_6days_ago, -> { where(created_at: 6.days.ago.all_day) }
-
-  scope :created_this_1week, -> { where(created_at: 6.day.ago.beginning_of_day..Time.zone.now.end_of_day) }
-  scope :created_this_week, -> { where(created_at: Time.zone.now.prev_week(:monday)..Time.zone.now.prev_week(:friday)) }
 end

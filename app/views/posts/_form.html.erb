@@ -15,12 +15,12 @@
 
 
   <div class="form-group">
-    <%=f.label"タイトル"%>
-    <%= f.text_field:title,class:"form-control" %>
+    <%=f.label"タイトル（必須）"%>
+    <%= f.text_field:title,placeholder: "2~60字で入力してください",class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label"本文" %>
+    <%= f.label"本文（必須）" %>
     <%= f.text_area :content,'data-provider': :summernote %>
   </div>
 
@@ -28,7 +28,7 @@
   <div class="field">
     <!--%= f.hidden_field :user_id, :value => current_user.id %>-->
     <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
-    <%= f.text_field :name,class:"form-control"%>
+    <%= f.text_field :name,class:"form-control",placeholder: "１つのタグは１０字以内にしてください"%>
     <p>※下書き保存では、タグの情報は保存されません。</p>
   </div>
 
