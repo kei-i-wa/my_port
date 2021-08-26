@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー',
-                       email: 'guest@example.com',
+                       email: 'guestguest@example.com',
                        join_year: '新入社員',
                        department_id: 1,
                        is_valid: true) do |user|
