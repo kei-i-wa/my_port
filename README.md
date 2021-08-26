@@ -125,6 +125,6 @@ https://hatchful.shopify.com/ja/
 https://o-dan.net/ja/
 
 ## 🧑‍🎓制作の記録
-プログラミング学習過程、ポートフォリオ制作過程で学んだことを[Qiita](https://qiita.com/ki_87)にてアウトプットしております。
-
-
+学んだことを[Qiita](https://qiita.com/ki_87)にてアウトプットしております。  
+  
+[スクールでの発表スライド](https://docs.google.com/presentation/d/1gO3HAA0jwPUX9VD9vCupAU3nwCX-Gdqz0sldCtnpYBs/edit#slide=id.gc6f59039d_0_24)
