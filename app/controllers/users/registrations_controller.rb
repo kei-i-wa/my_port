@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: :destroy_confirm
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -81,9 +80,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #     # デフォルトにないname/join_year/部署を追加しているので、それらを許可するよう記載している
   #     devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:join_year,:department_id])
   # end
-  def ensure_normal_user
-    if resource.email == 'guestda@example.com'
-      redirect_to posts_path, notice: 'ゲストユーザーは削除できません。'
-    end
-  end
+  
 end
