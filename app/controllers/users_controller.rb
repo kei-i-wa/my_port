@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def confirm
     @user = User.find(params[:id])
-    @posts = Post.where(status: false).order('created_at DESC')
+    @posts = @user.posts.where(status: false).order('created_at DESC').page(params[:page]).per(20)
   end
 
   def destroy_confirm
