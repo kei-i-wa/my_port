@@ -34,7 +34,10 @@
         <div class="actions" style="margin:20px 0;">
           <%= f.submit "変更を保存" ,class:"btn btn-outline-primary btn-block" %>
         </div>
-  　　　<% end %>
+  　　　<%end%>
+  　　　<p class="text-right">
+　　　<%=link_to "退会処理へすすむ",destroy_confirm_user_path(@user),class:"fas fa-exclamation-circle"%>
+　　　</p>
 　　　<% end %>
     </div>
   </div>
