@@ -6,7 +6,7 @@
       <%= form_with(model:[post, post_comment], remote: true) do |f| %>
       <%= f.text_area :comment, rows:'2',placeholder: "感想や疑問点をコメントで伝えましょう",required: true,class:"form-control" %>
       <%=f.submit "コメントする",class:"mt-2 btn btn-outline-secondary btn-block btn-sm"%>
-    <% end %>
+      <% end %>
   </div>
   <% post.post_comments.each do |post_comment| %>
 　　<div class="comment_box">
