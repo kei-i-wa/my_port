@@ -10,9 +10,9 @@
         <%= link_to '勉強会編集', edit_group_path(@group), class: "btn btn-outline-primary fas fa-edit" %>
         <%= link_to '勉強会削除',group_all_destroy_path(@group),method: :delete,data: { confirm: '本当に削除しますか？' } ,class: "btn btn-outline-danger fas fa-exclamation-triangle" %>
       <% elsif @group.users.include?(current_user) %>
-        <%= link_to '退出', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-outline-danger " %>
+        <%= link_to '参加取り消し', group_path(@group), method: :delete,data: { confirm: '本当に退出しますか？' } ,class: "btn btn-outline-danger btn-lg fas fa-times-circle" %>
       <%else %>
-        <%= link_to '参加', group_join_path(@group), class: "btn btn-outline-success" %>
+        <%= link_to '参加する', group_join_path(@group), class: "btn btn-outline-success far fa-hand-point-up btn-lg" %>
       <% end %>
       <div class="card-body">
        <h5 class="card-title"><i class="fas fa-users"></i>  勉強会参加者</h5>
