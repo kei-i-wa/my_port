@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @point = @user.passive_points.all
     @posts_tag = @user.tags.order('created_at DESC').limit(15)
   end
+  
+  def joined_group
+    @user = User.find(params[:id])
+    @groups = @user.groups.order('created_at DESC').page(params[:page]).per(20)
+  end
 
   def index
     users = User.where(is_valid: true)

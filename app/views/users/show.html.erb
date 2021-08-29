@@ -98,13 +98,14 @@
 
 <!--自分のストックのエリア-->
 <div class="mt-3 col-md-3">
-  <% if @user == current_user %>
-    <h6>Stock</h6>
-      <p>他のユーザーには表示されません。</p>
+  <h6>Stock</h6>
+    <p style="font-size:18px;"><%=link_to "参加してる勉強会", joined_group_user_path(@user),class:"fas fa-graduation-cap"%></p>
+    <% if @user == current_user %>
+      <p>以下は他のユーザーには表示されません。</p>
       <p style="font-size:18px;"><%=link_to " 下書き記事", confirm_user_path(@user),class:"fas fa-edit"%></p>
       <p style="font-size:18px;"><%=link_to"いいねした記事　",favorites_user_path(@user),class:"fas fa-star"%></p>
       <p style="font-size:18px;"><%=link_to "コメントした記事", comments_user_path(@user),class:"fas fa-comment-dots"%></p>
-  <% end %>
+    <% end %>
 </div>
 
 <!--自分の投稿を表示-->

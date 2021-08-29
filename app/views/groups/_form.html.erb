@@ -1,4 +1,8 @@
 <div class="group_box col-md-4 mt-5">
+  <div style="text-align:center;"><h6><i class="fas fa-user">MY勉強会</i></h6>
+    <%=link_to "参加してる勉強会", joined_group_user_path(current_user),class:"fas fa-graduation-cap"%></p>
+  </div>
+  
   <div style="text-align:center;"><h6><i class="fas fa-search">勉強会を探す</i></h6>
   </div>
     <div class="mb-1">
@@ -8,6 +12,8 @@
       <!--インクリメンタルサーチの結果が出力-->
       <ul id="result_group"></ul>
   　</div>
+  　
+
 
     <div style="text-align:center;"><h6><i class="fas fa-user-graduate">新規作成</i></h6>
     </div>

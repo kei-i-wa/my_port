@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       get :comments
       get :confirm
       get :destroy_confirm
+      get :joined_group
       patch :destroy_user
     end
   end

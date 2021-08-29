@@ -52,6 +52,8 @@
             <p></p>
             <%=link_to "下書き記事", confirm_user_path(current_user),class:"dropdown-item"%>
             <p></p>
+            <%=link_to "MY勉強会",joined_group_user_path(current_user),class:"dropdown-item"%>
+            <p></p>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
           </div>
         </div>

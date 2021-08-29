@@ -1,6 +1,7 @@
 <div class="text-md-right" style="font-size:14px;">
  <!--タグの表示-->
   <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
+ <!--タグの表示-->
  <!--いいねのエリア-->
    <% if post.favorited_by?(current_user) %>
    <!--非同期通信のためremote true追記-->
