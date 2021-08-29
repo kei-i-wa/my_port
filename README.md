@@ -114,7 +114,7 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
-- IDE：Cloud9
+- IDE（ソースコードを記述するエディタ）：Cloud9
 
 ## :art:使用素材
 
