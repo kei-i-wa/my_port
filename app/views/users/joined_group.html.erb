@@ -1,7 +1,7 @@
 <% if @groups.present? %>
-  <p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>参加済勉強会を表示しています。</p>
+  <p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i><%= @user.name%>さんの参加済勉強会を表示しています。</p>
 <% else %>
-<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>参加してる勉強会はありません。</p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i><%= @user.name%>さんはまだ勉強会に参加していません。</p>
 <% end %>
 
 <div class="container">
