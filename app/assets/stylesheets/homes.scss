@@ -104,12 +104,12 @@ li{
 
 .contents li {
   position: relative;
-
+  margin-bottom: 30px;
 }
 
 
 .contents li:not(:first-of-type){
-  margin-top: 50px;
+  margin-top: 55px;
 }
 
 .contents li:nth-of-type(odd) .contentsText{
@@ -118,6 +118,7 @@ li{
 
 .contents li:nth-of-type(even) .contentsText{
   align-items:flex-start;
+
 }
 
 .contents li:nth-of-type(even) .img-fluid{

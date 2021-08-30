@@ -73,52 +73,45 @@
     <%= image_tag asset_path("show2.jpg"),class:"img-fluid"%>
     <div class="contentsText">
       <h2>記事の閲覧と検索</h2>
-      <p>Postの一覧ページでは投稿記事の一覧が見れます。<br>
-      <strong>タグでの検索/ランキング/並び替え/検索</strong>ができます。<br>
-      <strong>検索機能（インクリメンタルサーチ)</strong>を使用して<br>
-      投稿を探しましょう。<br>
-      参考になった投稿には、いいねやコメントをしましょう</p>
+      <p style="font-size:19px;">
+      <strong>検索/ランキング/並び替え/検索</strong>ができます。<br>
+      <strong>逐次検索</strong>で欲しい情報に簡単にアクセス可能。<br></p>
     </div>
   </li>
-  <li class="animationTarget">
-    <%= image_tag asset_path("show3.png"),class:"img-fluid"%>
-    <div class="contentsText">
-      <h2>マイページ</h2>
-       <p><strong>Activity</strong>ではあなたのmy portでの活動をグラフにして表示します。<br>
-        記事にいいねがつくと<strong>TEU(ポイント）</strong>が溜まっていきます。</p>
-    </div>
-  </li>
-  <li class="animationTarget">
-    <%= image_tag asset_path("show4.png"),class:"img-fluid"%>
-    <div class="contentsText">
-      <h2>勉強会</h2>
-      <p>社内での<strong>勉強会</strong>の開催をお知らせできます。<br>
-      詳細ページから勉強会への参加、退出ができます。<br>
-      管理者はメンバーに<strong>メール</strong>での一斉通知が可能です。</p>
-    </div>
-  </li>
+  
+  <h4 id="how_to_use" class="text-center">How to use (My page)</h4>
+    <li class="animationTarget">
+      <%= image_tag asset_path("show3.png"),class:"img-fluid"%>
+      <div class="contentsText">
+        <h2>マイページ</h2>
+         <p style="font-size:19px;">あなたのmy portでの頑張りが<strong>グラフ、</strong><br>
+          <strong>ポイント(TEU)</strong>ですぐにでわかります。</p>
+      </div>
+    </li>
+  
+  <h4 id="how_to_use" class="text-center">How to use (Group)</h4>
+    <li class="animationTarget">
+      <%= image_tag asset_path("show4.png"),class:"img-fluid"%>
+      <div class="contentsText">
+        <h2>勉強会</h2>
+        <p style="font-size:19px;">社内での<strong>勉強会</strong>の開催をお知らせできます。<br>
+        気になる勉強会に参加しましょう。<br>
+        管理者はメンバーに<strong>連絡（メール）</strong>が可能です。</p>
+      </div>
+    </li>
 
-  <li class="animationTarget">
-    <%= image_tag asset_path("show6.png"),class:"img-fluid"%>
-    <div class="contentsText">
-      <h2>いいね・コメント</h2>
-      <p>
-      <strong>いいね</strong>をもらうとマイページのTEUが増えていきます。<br>
-      コメントは<strong>通知</strong>からも確認可能です。<br>
-      <strong>未読の通知</strong>があるとNOTICEが赤くなります。</p>
-    </div>
-  </li>
-  
-  <li class="animationTarget">
-    <%= image_tag asset_path("show9.png"),class:"img-fluid"%>
-    <div class="contentsText">
-      <h2>メールへの連絡</h2>
-      <p>勉強会管理者はメンバーに<strong>メールで一斉通知</strong>ができます。<br>
-      また、未確認の通知が10件以上ある場合、<br>
-      <strong>自動配信メール</strong>でご連絡致します。</p>
-    </div>
-  </li>
-  
+　<h4 id="how_to_use" class="text-center">How to use (Comments etc)</h4>
+    <li class="animationTarget">
+      <%= image_tag asset_path("show6.png"),class:"img-fluid"%>
+      <div class="contentsText">
+        <h2>いいね・コメント（通知）</h2>
+        <p style="font-size:19px;">
+        <strong>いいね</strong>をもらうとポイントが増えていきます。<br>
+        コメントは<strong>通知</strong>からも確認可能。<br>
+        <strong>未読の通知</strong>があるとNOTICEが赤くなります。<br>
+        未読の通知が溜まると<strong>メール</strong>でお知らせします。</p>
+      </div>
+    </li>
 </ul>
 </div>
 
