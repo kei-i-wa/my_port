@@ -42,7 +42,7 @@ document.addEventListener("scroll",function(){
   // ４件分上からの距離を取得する　for文で回す
   for (let i = 0; i < targetElement.length; i++){
   // 上からの距離と、その要素がある程度たっしてから　６割くらい見えたら
-  const getElementDistance = targetElement[i].getBoundingClientRect().top + targetElement[i].clientHeight *.6
+  const getElementDistance = targetElement[i].getBoundingClientRect().top + targetElement[i].clientHeight *.5
 // 距離の取得ができない。
   // console.log(getElementDistance);
 // いまのブラウザの高さ取得
