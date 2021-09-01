@@ -60,7 +60,8 @@
             <p class="introduction2" style="color:white;">my portはあなたの知識・理解を深め、</p>
             <p class="introduction2" style="color:white;">あなたの投稿により社内の誰かの問題を解決できるかもしれません。</p>
             <p><%= link_to "新規登録", new_user_registration_path,class:"btn btn-outline-dark fas fa-user-plus" %>
-            <%= link_to "ログイン", new_user_session_path,class:"btn btn-outline-light fas fa-sign-in-alt" %></p>
+            <%= link_to "ログイン", new_user_session_path,class:"btn btn-outline-dark fas fa-sign-in-alt" %></p>
+            <p><%= link_to "ゲストログインはこちら", users_guest_sign_in_path,class:"btn btn-outline-info fas fa-seedling",method: :post %></p>
           </div>
         </div>
       </div>
