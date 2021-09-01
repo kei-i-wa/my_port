@@ -121,7 +121,7 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 [ICON BOX](https://iconbox.fun/)  
 [ちょうどいいイラスト](https://tyoudoii-illust.com/)  
 [FLAT ICON DESIGN](http://flat-icon-design.com/)  
-[hatchful](https://hatchful.shopify.com/ja/)  
+[hatchful 無料ロゴメーカー](https://hatchful.shopify.com/ja/)  
 [O-DAN](https://o-dan.net/ja/)
 
 ## 🧑‍🎓制作の記録
