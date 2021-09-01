@@ -118,11 +118,11 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 
 ## :art:使用素材
 
-https://iconbox.fun/  
-https://tyoudoii-illust.com/  
-http://flat-icon-design.com/?s=post  
-https://hatchful.shopify.com/ja/
-https://o-dan.net/ja/
+[ICON BOX](https://iconbox.fun/)  
+[ちょうどいいイラスト](https://tyoudoii-illust.com/)  
+[FLAT ICON DESIGN](http://flat-icon-design.com/)  
+[hatchful](https://hatchful.shopify.com/ja/)
+[O-DAN](https://o-dan.net/ja/)
 
 ## 🧑‍🎓制作の記録
 学んだことを[Qiita](https://qiita.com/ki_87)にてアウトプットしております。  
