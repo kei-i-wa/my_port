@@ -54,8 +54,12 @@ describe 'ユーザーログイン後のテスト' do
                 confirm_post = find_all('a')[9].native.inner_text
                 expect(page).to have_link confirm_post,href: confirm_user_path(user)
             end
+            it 'MY勉強会へのリンクが正しい' do
+                my_group = find_all('a')[10].native.inner_text
+                expect(page).to have_link my_group,href: joined_group_user_path(user)
+            end
             it 'ログアウトのリンクが正しい' do
-                logout_link = find_all('a')[10].native.inner_text
+                logout_link = find_all('a')[11].native.inner_text
                 expect(page).to have_link logout_link,href: destroy_user_session_path
             end
         end

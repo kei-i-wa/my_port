@@ -86,7 +86,7 @@ describe 'ユーザログイン前のテスト' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログインする'
-      logout_link = find_all('a')[10].native.inner_text
+      logout_link = find_all('a')[11].native.inner_text
       click_link logout_link
     end
 
