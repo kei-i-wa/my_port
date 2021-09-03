@@ -23,6 +23,11 @@
     <%= f.label"本文（必須）" %>
     <%= f.text_area :content,'data-provider': :summernote %>
   </div>
+  
+  <div class="field">
+    <%= f.label"どの国（エリア）に関する記事か" %></br>
+    <%= f.select :country,[["未選択", "未選択"],["日本", "日本"],["中国", "中国"], ["インド", "インド"], ["他アジア", "他アジア"],["アメリカ", "アメリカ"],["ヨーロッパ", "ヨーロッパ"],["アフリカ", "アフリカ"],["その他", "その他"]],class:"form-control" %>
+  </div>
 
 
   <div class="field">
