@@ -3,8 +3,7 @@
 
 
 <div class="col-md-7 ml-5">
-    <% @posts.each do |post| %>
-    
+    <% @posts.each do |post|%>
   <div class="card-body">
       <!--タイトル表示される文字数は２５文字までにしてます-->
       <h6 class="card-title">
@@ -12,13 +11,11 @@
         <% end %>
       </h6>
       <!--お気に入り、コメント数、投稿者は部分テンプレ-->
-        <div id="<%=post.id %>"><%= render 'favorites/favorite', post: post %></div>
-
-
+        <div id="<%=post.id %>"><%= render 'favorites/favorite', post: post %>
+        </div>
     </div>
+    <% end %>
   </div>
-
-  <% end %>
 </div>
 <!--rowのとじタグ-->
 </div>
