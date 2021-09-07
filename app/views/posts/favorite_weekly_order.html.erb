@@ -1,4 +1,4 @@
-<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>現在、「過去１週間のお気に入り数順」で表示しています。<p>
+<p class="text-center" style="color:blue; font-size:15px;"><i class="far fa-smile"></i>現在、「過去１週間のいいね数ベスト10」を表示しています。<p>
 <%= render 'posts/search', tag_list: @tag_list,posts: @posts %>
 
 <% unless @posts.present? %>
@@ -6,23 +6,7 @@
 <% end %>
 
 <div class="col-md-7 ml-5">
-    <% user_favorite = 0 %>
-    <% j = 1 %>
-  <% @posts.each.with_index(1) do |post,i| %>
-  <!--1つ目の場合そのお気に入り数を代入-->
-    <% if i == 1 %>
-    <% user_favorite = post.favorites.count %>
-    <% end %>
-  <div class="card">
-  <!--２個目に取り出したやつが、１個目のやつと等しくないなら-->
-    <% if post.favorites.count != user_favorite %>
-  <!--jにiを入れる。取り出した順番を順位にする-->
-  <!--投稿はカードで囲む-->
-      <p><i class="fas fa-crown" style="color:green;">第<%= i %>位</i></p>
-      <% else %>
-      <p><i class="fas fa-crown" style="color:green;">第<%= j %>位</i></p>
-      <% end %>
-    
+  <% @posts.each do |post| %>
   <div class="card-body">
       <!--タイトル表示される文字数は２５文字までにしてます-->
       <h6 class="card-title">
