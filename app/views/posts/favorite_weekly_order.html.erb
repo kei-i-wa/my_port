@@ -6,7 +6,8 @@
 <% end %>
 
 <div class="col-md-7 ml-5">
-  <% @posts.each do |post|%>
+    <% @posts.each.with_index(1) do |post,i|%>
+    <i class="fas fa-crown" style="color:green;">第<%= i %>位</i>
   <div class="card-body">
       <!--タイトル表示される文字数は２５文字までにしてます-->
       <h6 class="card-title">
