@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page]).per(20)
+    @posts = @tag.posts.page(params[:page]).per(20).order('id DESC')
   end
 
   def favorite_order
