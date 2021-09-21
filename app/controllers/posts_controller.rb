@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(status: true).order('id DESC').page(params[:page]).per(20)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def show
@@ -87,7 +87,7 @@ class PostsController < ApplicationController
         a.favorited_users.includes(:favorites).size
     end
     @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def favorite_weekly_order
@@ -99,7 +99,7 @@ class PostsController < ApplicationController
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
     end
     @posts = Kaminari.paginate_array(posts).page(1).per(10)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def comment_order
@@ -109,7 +109,7 @@ class PostsController < ApplicationController
         a.commented_users.includes(:post_comments).size
     end
     @posts = Kaminari.paginate_array(posts).page(params[:page]).per(20)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def comment_weekly_order
@@ -121,13 +121,13 @@ class PostsController < ApplicationController
         a.commented_users.includes(:post_comments).where(created_at: from...to).size
     end
     @posts = Kaminari.paginate_array(posts).page(1).per(10)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def impressions_order
     posts = Post.order(impressions_count: 'DESC')
     @posts = posts.page(params[:page]).per(20)
-    @tag_list = Tag.order('id DESC').limit(50)
+    @tag_list = Tag.order('id DESC').limit(20)
   end
 
   def create_notification(current_user, user)
