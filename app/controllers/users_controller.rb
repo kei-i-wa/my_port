@@ -41,13 +41,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # このユーザーがしたいいね　そしてそのpost_id
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    @favorite_posts = Post.order('id DESC').find(favorites)
   end
 
   def comments
     @user = User.find(params[:id])
     comments = PostComment.where(user_id: @user.id).pluck(:post_id)
-    @comment_posts = Post.find(comments)
+    @comment_posts = Post.order('id DESC').find(comments)
   end
 
   def confirm
