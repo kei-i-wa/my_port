@@ -44,8 +44,8 @@ class Post < ApplicationRecord
   end
 
   def self.search(search)
-    return Post.all unless search
-    Post.where('title LIKE(?)', "%#{search}%").or(Post.where('content LIKE(?)', "%#{search}%"))
+    return all unless search
+    where('title LIKE(?)', "%#{search}%").or(where('content LIKE(?)', "%#{search}%"))
   end
 
   # 過去7日間の投稿数表示
