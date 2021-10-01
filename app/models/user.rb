@@ -27,10 +27,10 @@ class User < ApplicationRecord
   has_many :tags, through: :post_tags
   # 検索用　名前、自己紹介、部署、クラスで検索可能
   def self.search(search)
-    return User.all unless search
-    User.where('name LIKE(?)', "%#{search}%").
-      or(User.where('introduction LIKE ?', "%#{search}%")).
-      or(User.where(department_id: search)).or(User.where(join_year: search))
+    return all unless search
+    where('name LIKE(?)', "%#{search}%").
+      or(where('introduction LIKE ?', "%#{search}%")).
+      or(where(department_id: search)).or(where(join_year: search))
   end
   # 通知　コメントする側、される側（通知受ける側）で２通り
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy

@@ -13,9 +13,9 @@ class Group < ApplicationRecord
 
   # 検索
   def self.search(search)
-    return Group.all unless search
+    return all unless search
 
-    Group.where('name LIKE(?)', "%#{search}%").or(Group.where('introduction LIKE(?)', "%#{search}%")).
-      or(Group.where('status LIKE(?)', "%#{search}%"))
+    where('name LIKE(?)', "%#{search}%").or(where('introduction LIKE(?)', "%#{search}%")).
+      or(where('status LIKE(?)', "%#{search}%"))
   end
 end
