@@ -49,6 +49,9 @@ class Post < ApplicationRecord
   end
 
   scope :created_days_ago, ->(n) { where(created_at: n.days.ago.all_day) }
+  def self.past_week_count
+ (0..6).map { |n| created_days_ago(n).count }.reverse
+  end
 
   # 通知のアソシエーション
   has_many :notifications, dependent: :destroy
