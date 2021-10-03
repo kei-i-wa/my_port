@@ -5,4 +5,8 @@ class Point < ApplicationRecord
 
   scope :created_days_ago, ->(n) { where(created_at: n.days.ago.all_day) }
 
+  def self.point_week_count
+    (0..6).map { |n| created_days_ago(n).count }.reverse
+  end
+
 end

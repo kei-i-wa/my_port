@@ -83,7 +83,7 @@
                     fill: false},{
 
                     label: "もらったいいね数",
-                    data: [<%= @point.created_days_ago(6).count %>,<%= @point.created_days_ago(5).count %>,<%= @point.created_days_ago(4).count %>,<%= @point.created_days_ago(3).count %>, <%= @point.created_days_ago(2).count %>, <%= @point.created_days_ago(1).count %>, <%= @point.created_days_ago(0).count %>],
+                    data: <%= @point.point_week_count %>,
                     backgroundColor: "rgba(255,0,0,0.4)",
                     borderColor: 'rgba(255,0,0,0.4)',
                     type: 'line',
