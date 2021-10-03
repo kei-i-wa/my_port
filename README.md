@@ -98,7 +98,7 @@ https://docs.google.com/spreadsheets/d/1HaNpYHFXyml-Vv_o5HNoRlMdPvuDcbhqFkOJKHKb
 |４| テスト（単体/機能） |capybara/rspec-rails/factory_bot_rails/faker|
 |６| N＋１問題 |ー           |
 
-ーテストコードは全て網羅できておらず、日々少しずつテスト件数を増やしています。
+ーテストコードは全て網羅できていません。
 
 ## 📍ER図
 <img width="1003" alt="スクリーンショット 2021-08-23 18 33 06" src="https://user-images.githubusercontent.com/83590000/130424971-293401b0-282d-4430-8d61-c3c323745c70.png">
