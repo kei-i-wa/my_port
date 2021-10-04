@@ -3,9 +3,10 @@ class Department < ApplicationRecord
   has_many :users, dependent: :destroy
   validates :name, presence: true, length: { maximum: 8 }
   validates :correct_name, presence: true, length: { maximum: 15 }
-  def self.search(search)
+  
+def self.search(search)
     return Department.all unless search
 
     Department.where('name LIKE(?)', "%#{search}%").or(Department.where('correct_name LIKE(?)', "%#{search}%"))
-  end
+end
 end

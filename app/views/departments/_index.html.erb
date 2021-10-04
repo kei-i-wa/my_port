@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="group_search col-md-4 mt-5">
+      <div style="text-alighn:center">
+        <h6><i class="fas fa-search">部署名検索</i></h6>
+      </div>
+      <div class="mb-1">
+        <%= form_with(url: departments_searches_path, local: true, method: :get, class: "search_form_dep") do |f|%>
+          <%= f.text_field :dep_keyword, placeholder: "部署名で検索", class: "search_input_dep"%>
+        <%= f.submit "検索", class: "search_btn"%><% end %>
+        <ul id="result_dep"></ul>
+      </div>
+      
+      <div class="text-align:center;">
+        <h6><i class="fas fa-user-graduate">新規作成</i></h6>
+          <%= form_with model:@department,local:true do |f| %>
+              <%=f.label"表示名（８字以内）"%>
+              <%= f.text_field :name,placeholder:"部署名(表示名）",class:"form-control",required:true%>
+              <%=f.label"部署名（正式名称）"%>
+              <%= f.text_field :correct_name,placeholder:"部署名(正式名称)",class:"form-control",required:true%>
+              <%= f.submit "新規登録",class:"btn btn-outline-secondary btn-block"%>
+            
+          <% end %>
+      </div>
+    </div>
+      
+    <div class="col-md-7 mt-5">
+       <% if @departments.present?%>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>NO</th>
+              <th>所属先(表示名）</th>
+              <th>正式名称</th>
+              <th>所属人数</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @departments.each do |department|%>
+            <tr>
+              <th><%=department.id %></th>
+              <th><%=department.name %></th>
+              <th><%=department.correct_name %></th>
+              <th><i class="fas fa-user-friends"> <%=department.users.count %></i></th>
+              <th><%=link_to "編集",edit_department_path(department),class:"fas fa-edit"%></th>
+            </tr>
+            <% end %>
+          </tbody>
+         </table>
+        <% else%><p>部署を登録してください。</p>
+        <%end%>
+    </div>
+  </div>
+</div>
+
+<style>
+    .group_search {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+h6 {
+  /*線の種類（実線） 太さ 色*/
+  text-align:center;
+  border-bottom: solid 3px black;
+}
+
+</style>
