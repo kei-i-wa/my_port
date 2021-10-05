@@ -5,8 +5,7 @@ class Department < ApplicationRecord
   validates :correct_name, presence: true, length: { maximum: 15 }
   
 def self.search(search)
-    return Department.all unless search
-
-    Department.where('name LIKE(?)', "%#{search}%").or(Department.where('correct_name LIKE(?)', "%#{search}%"))
+    return all unless search
+    where('name LIKE(?)', "%#{search}%").or(where('correct_name LIKE(?)', "%#{search}%"))
 end
 end
