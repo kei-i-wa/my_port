@@ -5,7 +5,6 @@ class Departments::SearchesController < ApplicationController
     respond_to do |format|
       format.json { render 'department/index', json: @departments }
       format.html
-      #   format.json { render '/departments/search/index', json: @departments }
     end
   end
 end
