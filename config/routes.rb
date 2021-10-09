@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get :confirm
       get :destroy_confirm
       get :joined_group
+      get :weather
       patch :destroy_user
     end
   end

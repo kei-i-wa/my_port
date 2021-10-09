@@ -7,9 +7,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        
-        
-  
+
+
+
   <!--ログインしてるユーザーが管理者の場合のみ-->
   <% if current_user.try(:admin?) %>
   <li class="nav-item">
@@ -21,13 +21,16 @@
         <!--カスタマーログイン後-->
      <% if user_signed_in? %>
      <li class="nav-item">
+       <%=link_to "Weather",weather_user_path(current_user),class:"btn btn-light fas fa-sun"%>
+     </li>
+     <li class="nav-item">
        <% if unchecked_notifications.any? %>
          <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-bell",style: "color:tomato;"%>
       <% else %>
          <li><%= link_to "Notice",notifications_path, class: "btn btn-light fas fa-check"%>
       <% end %>
       </li>
-    
+
       <li class="nav-item">
         <%= link_to 'Groups',groups_path,class:"btn btn-light fas fa-graduation-cap" %>
      </li>
@@ -54,13 +57,15 @@
             <p></p>
             <%=link_to "MY勉強会",joined_group_user_path(current_user),class:"dropdown-item"%>
             <p></p>
+            <%=link_to "世界の天気",weather_user_path(current_user),class:"dropdown-item"%>
+            <p></p>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
           </div>
         </div>
       </li>
-      
+
     <% else %>
-    
+
     <li class="nav-item">
         <%= link_to "ゲストログイン", users_guest_sign_in_path,class:"btn btn-light fas fa-seedling",method: :post %>
     </li>
@@ -73,7 +78,7 @@
       <li class="nav-item">
         <%= link_to "Log in", new_user_session_path,class:"btn btn-light fas fa-sign-in-alt" %>
       </li>
-      
+
     <% end %>
     </div>
     </ul>
