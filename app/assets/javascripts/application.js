@@ -89,12 +89,12 @@ document.addEventListener("turbolinks:load", function() {
 
 
 const API_KEY = "f1a2f1d313c70884b7afed0ae889de9c";
-
+// const API_KEY = "f1a2f1d313c70884b7afed0ae889de9c";
 document.addEventListener("turbolinks:load", function() {
   $('#btn').on('click', function() {
     // 入力された都市名でWebAPIに天気情報をリクエスト
     $.ajax({
-      url: "https://api.openweathermap.org/data/2.5/weather?q=" + $('#cityname').val() + "&units=metric&appid=" + API_KEY,
+      url: "https://api.openweathermap.org/data/2.5/weather?q=" + $('#cityname').val() + "&units=metric&appid=" +API_KEY,
       dataType : 'jsonp',
     }).done(function (data){
       //通信成功
