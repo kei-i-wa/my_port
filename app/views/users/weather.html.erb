@@ -1,25 +1,40 @@
 <div class="container">
     <div class="col-md-8 col-lg-5 px-5 mx-auto px-sm-0 mt-3">
-        <title>世界の天気</title>
-        <h3>世界の天気</h3>
-        <label>都市名：</label>
-        <input id="cityname" type="text" size="16" maxlength="16" placeholder="Tokyo ローマ字入力">
-        <button id="btn">検索</button><br>
-        <span>場所 :</span>
-        <span id="place"></span><br>
-        <span>最高気温 :</span>
-        <span id="temp_max"></span>
-        <span> ℃</span><br>
-        <span>最低気温 :</span>
-        <span id="temp_min"></span>
-        <span> ℃</span><br>
-        <span>湿度 :</span>
-        <span id="humidity"></span>
-        <span> %</span><br>
-        <span>風速 :</span>
-        <span id="speed"></span>
-        <span> m/s</span><br>
-        <span>天気 :</span>
-        <span id="weather"></span>
+        <div class="box-weather">
+            <title>世界の天気</title>
+                <h3>世界の天気</h3>
+                    <label>都市名：</label>
+                    <input id="cityname" type="text" size="16" maxlength="16" placeholder="Tokyo ローマ字入力">
+                    <button id="btn">検索</button><br>
+                    <span>場所 :</span>
+                    <span id="place"></span><br>
+                    <span>最高気温 :</span>
+                    <span id="temp_max"></span>
+                    <span> ℃</span><br>
+                    <span>最低気温 :</span>
+                    <span id="temp_min"></span>
+                    <span> ℃</span><br>
+                    <span>湿度 :</span>
+                    <span id="humidity"></span>
+                    <span> %</span><br>
+                    <span>風速 :</span>
+                    <span id="speed"></span>
+                    <span> m/s</span><br>
+                    <span>天気 :</span>
+                    <span id="weather"></span>
+        </div>
     </div>
 </div>
+
+<style>
+    .box-weather{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+    
+</style>
